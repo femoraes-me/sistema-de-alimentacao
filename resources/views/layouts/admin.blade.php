@@ -178,7 +178,8 @@
           <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
       </ul>
-        <main class="py-1">
+
+        <main id="content-wrapper" class="py-1">
         @yield('content')
         </main>
         
