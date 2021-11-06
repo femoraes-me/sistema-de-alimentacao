@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// ROTAS DA ANA
 Route::get('/', function () {
     return view('welcome');
 });
@@ -20,3 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// ROTAS DO FELIPE SILVA
+
+
+// ROTAS DO FELIPE MORAES
