@@ -9015,7 +9015,6 @@ a:focus {
 }
 #wrapper {
   display: flex;
-  margin: 0 auto;
 }
 #wrapper #content-wrapper {
   background-color: #f8f9fc;
@@ -9606,7 +9605,7 @@ a:focus {
 }
 @media (min-width: 768px) {
   .sidebar {
-    width: 5.5rem !important;
+    width: 14rem !important;
   }
   .sidebar .nav-item .collapse {
     position: relative;
@@ -9636,7 +9635,7 @@ a:focus {
     width: 14rem;
   }
   .sidebar .nav-item .nav-link i {
-    font-size: 0.85rem;
+    /* font-size: 0.85rem; */
     margin-right: 0.25rem;
   }
   .sidebar .nav-item .nav-link span {

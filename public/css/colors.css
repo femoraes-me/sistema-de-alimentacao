@@ -1,3 +1,16 @@
 .fundo {
   background-color: #e9e9e9;
 }
+.fundo2 {
+  background-color: #fafafa;
+}
+.fundo-barra {
+  background-color: #5202bb;
+}
+a.icon-white i {
+  color: #fff !important;
+}
+
+.espaco {
+  margin-top: 20px;
+}

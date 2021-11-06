@@ -15,4 +15,8 @@ mix
   .js('resources/js/app.js', 'public/js')
   .vue()
   .sass('resources/sass/app.scss', 'public/css')
-  .browserSync('http://localhost:3000');
+  .browserSync({
+    proxy: 'http://localhost',
+    port: 8000,
+    open: true,
+  });
