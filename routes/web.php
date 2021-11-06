@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// ROTAS DA ANA
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,3 +25,8 @@ Route::get('/estoque', function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// ROTAS DO FELIPE SILVA
+
+
+// ROTAS DO FELIPE MORAES
