@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
+    "content-hash": "8de0599a805ff74b251c8b60f2d208b0",
+=======
     "content-hash": "eff666e05f5eb09a72fe776470fbc99b",
+>>>>>>> 8eeac1152231e0ea9c11fada8e2bd15ec4ab6730
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1128,7 +1132,13 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
+<<<<<<< HEAD
             "time": "2021-11-02T13:53:22+00:00"
+=======
+            "time": "2021-10-27T12:31:46+00:00"
+<<<<<<< HEAD
+=======
+>>>>>>> 1c8fa6fa77c09870cdd8cc30785dfc26a2c2fd40
         },
         {
             "name": "laravel/sanctum",
@@ -1193,6 +1203,7 @@
                 "source": "https://github.com/laravel/sanctum"
             },
             "time": "2021-10-26T18:23:26+00:00"
+>>>>>>> 8eeac1152231e0ea9c11fada8e2bd15ec4ab6730
         },
         {
             "name": "laravel/serializable-closure",
@@ -6012,7 +6023,13 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
+<<<<<<< HEAD
             "time": "2021-11-05T13:35:24+00:00"
+=======
+            "time": "2021-10-26T21:37:54+00:00"
+<<<<<<< HEAD
+=======
+>>>>>>> 1c8fa6fa77c09870cdd8cc30785dfc26a2c2fd40
         },
         {
             "name": "lucascudo/laravel-pt-br-localization",
@@ -6057,6 +6074,7 @@
                 "source": "https://github.com/lucascudo/laravel-pt-BR-localization/tree/v1.1.10"
             },
             "time": "2021-09-07T08:37:58+00:00"
+>>>>>>> 8eeac1152231e0ea9c11fada8e2bd15ec4ab6730
         },
         {
             "name": "mockery/mockery",
