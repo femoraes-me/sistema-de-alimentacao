@@ -39,7 +39,6 @@
                 </div>
               </div>
             </form>
-
             <!-- Tabela de Estoque de Alimentos -->
             <div class="card shadow mb-4">
               <div class="card-body">
