@@ -15,6 +15,7 @@ class CreateEstoqueTable extends Migration
             $table->integer('quantidade');
             $table->unsignedBigInteger('alimento_id');
             $table->timestamps();
+            
             $table->foreign('alimento_id')->references('id')->on('alimentos');
         });
     }
