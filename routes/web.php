@@ -24,6 +24,10 @@ Route::get('/estoque', function () {
     return view('estoque');
 });
 
+Route::get('/alimentos', function () {
+    return view('alimentos');
+});
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // ROTAS DO FELIPE SILVA

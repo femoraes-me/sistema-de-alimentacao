@@ -36,7 +36,7 @@
 
                 <!-- Nav Item - Home -->
                 <li class="nav-item">
-                    <a class="nav-link icon-white" href="/alimentos">
+                    <a class="nav-link icon-white" href="/estoque">
                         <i class="fas fa-fw fa-home fa-2x"></i>
                         <span>Aliementos Estoque</span>
                     </a>
