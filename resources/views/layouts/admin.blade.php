@@ -79,7 +79,7 @@
             <!-- End of Sidebar -->
 
             <!-- Content Wrapper -->
-            <div id="content" class="d-flex flex-column espaco">
+            <div id="content-wrapper" class="d-flex flex-column espaco">
                 @yield('content')
             </div>
             <!-- End of Content Wrapper -->
