@@ -1,27 +1,37 @@
 .fundo {
-  background-color: #e9e9e9;
+    background-color: #e9e9e9;
 }
 
 .fundo2 {
-  background-color: #fafafa;
+    background-color: #fafafa;
 }
 
 .fundo-barra {
-  background-color: #5202bb;
+    background-color: #5202bb;
 }
 
 .letra {
-  color: #fff;
+    color: #fff;
 }
 
 a.icon-white i {
-  color: #fff !important;
+    color: #fff !important;
 }
 
 .espaco {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 .btn-color {
-  background-color: #7532cc;
+    background-color: #7532cc;
+}
+
+.bdr-cor {
+    border-width: 1px !important;
+    border-color: #4e73df !important;
+}
+
+.fnd-bdr th {
+    color: #363636 !important;
+    background-color: #D3D3D3 !important;
 }
