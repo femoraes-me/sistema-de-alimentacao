@@ -10004,3 +10004,7 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.btn:hover {
+  color: #ececec !important;
+}
+
