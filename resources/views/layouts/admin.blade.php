@@ -45,7 +45,7 @@
 
                 <!-- Nav Item - Cadastrar alimentos / Consumo Diário -->
                 <li class="nav-item">
-                    <a class="nav-link icon-white" href="/alimentos">
+                    <a class="nav-link icon-white" href="/consumo">
                         <i class="fas fa-fw fa-calendar-check fa-2x"></i>
                         <span>Consumo diário</span>
                     </a>
@@ -79,7 +79,7 @@
             <!-- End of Sidebar -->
 
             <!-- Content Wrapper -->
-            <div id="content-wrapper" class="d-flex flex-column espaco">
+            <div id="content-wrapper" class="d-flex flex-column">
                 @yield('content')
             </div>
             <!-- End of Content Wrapper -->
