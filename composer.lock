@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "8de0599a805ff74b251c8b60f2d208b0",
-=======
-    "content-hash": "eff666e05f5eb09a72fe776470fbc99b",
->>>>>>> 8eeac1152231e0ea9c11fada8e2bd15ec4ab6730
+    "content-hash": "eb38d52f041f2991ed3fa38742e7461e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1132,78 +1128,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-<<<<<<< HEAD
             "time": "2021-11-02T13:53:22+00:00"
-=======
-            "time": "2021-10-27T12:31:46+00:00"
-<<<<<<< HEAD
-=======
->>>>>>> 1c8fa6fa77c09870cdd8cc30785dfc26a2c2fd40
-        },
-        {
-            "name": "laravel/sanctum",
-            "version": "v2.12.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/sanctum.git",
-                "reference": "e610647b04583ace6b30c8eb74cee0a866040420"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sanctum/zipball/e610647b04583ace6b30c8eb74cee0a866040420",
-                "reference": "e610647b04583ace6b30c8eb74cee0a866040420",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "illuminate/contracts": "^6.9|^7.0|^8.0",
-                "illuminate/database": "^6.9|^7.0|^8.0",
-                "illuminate/support": "^6.9|^7.0|^8.0",
-                "php": "^7.2|^8.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.0",
-                "orchestra/testbench": "^4.0|^5.0|^6.0",
-                "phpunit/phpunit": "^8.0|^9.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.x-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Laravel\\Sanctum\\SanctumServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Laravel\\Sanctum\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
-            "description": "Laravel Sanctum provides a featherweight authentication system for SPAs and simple APIs.",
-            "keywords": [
-                "auth",
-                "laravel",
-                "sanctum"
-            ],
-            "support": {
-                "issues": "https://github.com/laravel/sanctum/issues",
-                "source": "https://github.com/laravel/sanctum"
-            },
-            "time": "2021-10-26T18:23:26+00:00"
->>>>>>> 8eeac1152231e0ea9c11fada8e2bd15ec4ab6730
         },
         {
             "name": "laravel/serializable-closure",
@@ -6023,13 +5948,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-<<<<<<< HEAD
             "time": "2021-11-05T13:35:24+00:00"
-=======
-            "time": "2021-10-26T21:37:54+00:00"
-<<<<<<< HEAD
-=======
->>>>>>> 1c8fa6fa77c09870cdd8cc30785dfc26a2c2fd40
         },
         {
             "name": "lucascudo/laravel-pt-br-localization",
@@ -6074,7 +5993,6 @@
                 "source": "https://github.com/lucascudo/laravel-pt-BR-localization/tree/v1.1.10"
             },
             "time": "2021-09-07T08:37:58+00:00"
->>>>>>> 8eeac1152231e0ea9c11fada8e2bd15ec4ab6730
         },
         {
             "name": "mockery/mockery",
