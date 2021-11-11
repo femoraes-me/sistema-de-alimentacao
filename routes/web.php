@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Participant\CardapioController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,6 +28,7 @@ Route::get('/estoque', function () {
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // ROTAS DO FELIPE SILVA
-
+//Rotas da pagina de cadastro de Cardapio
+Route::get('cardapio', [CardapioController::class, 'create'])->name('cadarpio.create');
 
 // ROTAS DO FELIPE MORAES
