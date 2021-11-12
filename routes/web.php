@@ -34,5 +34,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // ROTAS DO FELIPE SILVA
 //Rotas da pagina de cadastro de Cardapio
 Route::get('cardapio', [CardapioController::class, 'create'])->name('cadarpio.create');
+Route::post('cardapio', [CardapioController::class, 'store'])->name('cardapio.store');
 
 // ROTAS DO FELIPE MORAES

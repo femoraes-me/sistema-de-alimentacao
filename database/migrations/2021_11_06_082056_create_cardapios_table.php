@@ -16,8 +16,8 @@ class CreateCardapiosTable extends Migration
         Schema::create('cardapios', function (Blueprint $table) {
             $table->id();
             $table->string('alimentacao');
-            $table->integer('quantidade');
-            $table->integer('repeticoes');
+            $table->integer('quantidade')->nullable();
+            $table->integer('repeticoes')->nullable();
             $table->string('cardapio');
             $table->date('data');
             $table->timestamps();
