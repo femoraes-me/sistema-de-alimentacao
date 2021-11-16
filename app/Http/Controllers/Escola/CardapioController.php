@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Participant;
+namespace App\Http\Controllers\Escola;
 
 use App\Http\Controllers\Controller;
-use App\Models\Partcipant\Cardapio;
+use App\Models\Escola\Cardapio;
 use Illuminate\Http\Request;
+use App\Http\Requests\CardapioRequest;
 
 class CardapioController extends Controller
 {
@@ -13,11 +14,11 @@ class CardapioController extends Controller
         return view('escola.cardapio');
     }
 
-    public function store(Request $request)
+    public function store(CardapioRequest $request)
     {
 
         $requestData = $request->all();
-        //return array_keys($requestData['cardapio']);
+        
 
         $cardapio = $requestData['cardapio'];
 
@@ -29,11 +30,6 @@ class CardapioController extends Controller
             Cardapio::create($requestData);
         }
 
-        /*
-        foreach (array_keys($requestData['cardapio']) as $alimentacao) {
-            $requestData['alimentacao'] = $alimentacao;
-            
-        }
-        dd($requestData);*/
+     
     }
 }

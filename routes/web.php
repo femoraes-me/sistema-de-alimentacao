@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Participant\CardapioController;
+use App\Http\Controllers\Escola\CardapioController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 

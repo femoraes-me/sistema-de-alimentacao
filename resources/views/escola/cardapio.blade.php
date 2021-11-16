@@ -7,58 +7,59 @@
         <div class="container mt-5">
             <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Cadastrar Cardápio do Dia</h1>
-            </div>   
-            
+            </div>
 
-            <form action="{{route('cardapio.store')}}" method="POST">
+
+            <form action="{{ route('cardapio.store') }}" method="POST">
                 @csrf
+
                 <div class="form-group col-md-6">
                     <label for="data">Cardápio do dia:</label>
-                    <input
-                        type="date"
-                        class="form-control"
-                        id="data_cardapio"
-                        name="data"
-                        value=""
-                        data-mask=""
-                        placeholder="Buscar..."
-                    >
+                    <input type="date" class="form-control {{ $errors->has('data') ? 'is-invalid' : '' }} "
+                        id="data_cardapio" name="data" value="{{ old('data') }}" data-mask="" placeholder="Buscar..."
+                        maxlength="100">
+                    <div class="invalid-feedback">{{ $errors->first('data') }}</div>
                 </div>
+
 
                 <div class="form-group col-md-6">
                     <label for="cardapio_manha"></label>
                     <input type="text" name="cardapio[lanche_manha]"
-                    class="form-control" id="cardapio_manha" placeholder="Cardápio da Manhã">
+                        class="form-control {{ $errors->has('cardapio.lanche_manha') ? 'is-invalid' : '' }} "
+                        id="cardapio_manha" value="{{ old('cardapio.lache_manha') }}" placeholder="Cardápio da Manhã"
+                        maxlength="100">
+                    <div class="invalid-feedback">{{ $errors->first('cardapio.lanche_manha') }}</div>
                 </div>
 
                 <div class="form-group col-md-6">
                     <label for="almoco"></label>
-                    <input type="text"  name="cardapio[almoco]" 
-                    class="form-control" id="cardapio_manha" 
-                    placeholder="Almoço">
+                    <input type="text" name="cardapio[almoco]"
+                        class="form-control {{ $errors->has('cardapio.almoco') ? 'is-invalid' : '' }}" id="cardapio_manha"
+                        value="{{ old('cardapio.almoco') }}" placeholder="Almoço" maxlength="100">
+                    <div class="invalid-feedback">{{ $errors->first('cardapio.almoco') }}</div>
                 </div>
 
                 <div class="form-group col-md-6">
                     <label for="lanche_tarde"></label>
-                    <input type="text"  name="cardapio[lanche_tarde]" 
-                    class="form-control" 
-                    id="cardapio_manha" 
-                    placeholder="Lanche da Tarde">
+                    <input type="text" name="cardapio[lanche_tarde]"
+                        class="form-control {{ $errors->has('cardapio.lanche_tarde') ? 'is-invalid' : '' }}"
+                        id="cardapio_manha" value="{{ old('cardapio.lanche_tarde') }}" placeholder="Lanche da Tarde"
+                        maxlength="100">
+                    <div class="invalid-feedback">{{ $errors->first('cardapio.lanche_tarde') }}</div>
                 </div>
 
                 <div class="form-group col-md-6">
                     <label for="janta"></label>
-                    <input type="text"  
-                    name="cardapio[janta]" 
-                    class="form-control"
-                    id="janta" 
-                    placeholder="Janta">
+                    <input type="text" name="cardapio[janta]"
+                        class="form-control {{ $errors->has('cardapio.janta') ? 'is-invalid' : '' }}" id="janta"
+                        value="{{ old('cardapio.janta') }}" placeholder="Janta" maxlength="100">
+                    <div class="invalid-feedback">{{ $errors->first('cardapio.janta') }}</div>
                 </div>
 
                 <div class="form-group col-md-6">
                     <input type="submit" value="Cadastrar" class="btn btn-primary px-4">
-                </div>               
-                
+                </div>
+
             </form>
 
         </div>
