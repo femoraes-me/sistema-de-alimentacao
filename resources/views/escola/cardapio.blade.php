@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="form-group mt-4 d-flex justify-content-center">
-                        <input type="submit" value="Cadastrar" class="btn btn-success px-4 w-50">
+                        <input type="submit" value="Cadastrar" class="btn btn-success px-4 w-25">
                     </div>
                 </div>
 

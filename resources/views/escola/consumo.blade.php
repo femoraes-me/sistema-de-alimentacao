@@ -23,26 +23,39 @@
                 <table class="table">
                     <thead>
                         <th class="col-md-6">Alimentos</th>
-                        <th>Unidade de Medida</th>
-                        <th>Quantidade Consumida</th>
+                        <th class="text-center">Unidade de Medida</th>
+                        <th class="text-center">Quantidade Consumida</th>
                     </thead>
                     <tbody>
                         <tr>
                             <td>
                                 TESTE
                             </td>
-                            <td>
+                            <td class="text-center">
                                 KG
                             </td>
+                            <td class="text-center">
+                                5
+                            </td>
+                        </tr>
+                        <tr>
                             <td>
+                                TESTE
+                            </td>
+                            <td class="text-center">
+                                KG
+                            </td>
+                            <td class="text-center">
                                 5
                             </td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
 
-                
+                <div class="form-group mt-4 d-flex justify-content-center">
+                        <input type="submit" value="Cadastrar" class="btn btn-success px-4 w-25">
+                </div>
+            </div>
         </form>
 
 
