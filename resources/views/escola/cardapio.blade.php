@@ -28,7 +28,7 @@
                 </div>
 
 
-                <div class="card p-4 col-10">
+                <div class="card shadow p-4">
 
                     <div class="form-group">
                         <label for="cardapio_manha">Cardápio da Manhã</label>
@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="form-group mt-4 d-flex justify-content-center">
-                        <input type="submit" value="Cadastrar" class="btn btn-success px-4 w-25">
+                        <input type="submit" value="Cadastrar" class="btn btn-success px-4">
                     </div>
                 </div>
 
