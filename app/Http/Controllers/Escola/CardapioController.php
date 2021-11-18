@@ -30,6 +30,6 @@ class CardapioController extends Controller
             Cardapio::create($requestData);
         }
 
-        return redirect()->route('cardapio.create')->with('success', "Cardapio cadastrado com sucesso");
+        return redirect()->route('cardapio.create')->with('message', "Cardapio cadastrado com sucesso");
     }
 }

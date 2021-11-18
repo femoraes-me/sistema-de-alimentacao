@@ -10,7 +10,7 @@
             </div>
 
             @if (session()->has('success'))
-                <div class="alert alert-success">{{ session('success') }}</div>
+                <div class="alert alert-success">{{ session('message') }}</div>
             @endif
 
 
