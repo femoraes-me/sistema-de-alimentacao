@@ -17,7 +17,7 @@ class CardapioController extends Controller
     public function store(CardapioRequest $request)
     {
 
-        $requestData = $request->all();
+        $requestData = $request->validated();
         
 
         $cardapio = $requestData['cardapio'];
@@ -30,6 +30,6 @@ class CardapioController extends Controller
             Cardapio::create($requestData);
         }
 
-     
+        return redirect()->route('cardapio.create')->with('success', "Cardapio cadastrado com sucesso");
     }
 }

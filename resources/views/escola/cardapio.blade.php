@@ -9,19 +9,27 @@
                 <h1 class="h3 text-gray-900 mb-4">Cadastrar Cardápio do Dia</h1>
             </div>
 
-            
+            @if (session()->has('success'))
+                <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
+
+
             <form action="{{ route('cardapio.store') }}" method="POST">
+                
                 @csrf
 
+                
                 <div class="form-group  col-md-6">
                     <label for="data">Data do Cardápio:</label>
-                    <input type="date" class="text-secondary border border-secondary rounded {{ $errors->has('data') ? 'is-invalid' : '' }}"
-                        id="data_cardapio" name="data" value="{{ old('data') }}" data-mask="" placeholder="Buscar..."
-                        maxlength="100">
+                    <input type="date"
+                        class="text-secondary border p-1 rounded {{ $errors->has('data') ? 'is-invalid' : '' }}"
+                        id="data_cardapio" name="data" value="{{ old('data') }}" maxlength="100">
                     <div class="invalid-feedback">{{ $errors->first('data') }}</div>
                 </div>
 
-                <div class="p-3 mb-2 col-md-8 rounded">
+
+                <div class="card p-4 col-10">
+
                     <div class="form-group">
                         <label for="cardapio_manha">Cardápio da Manhã</label>
                         <input type="text" name="cardapio[lanche_manha]"
@@ -60,7 +68,8 @@
                         <input type="submit" value="Cadastrar" class="btn btn-success px-4 w-50">
                     </div>
                 </div>
-            </form>            
+
+            </form>
         </div>
     </div>
 
