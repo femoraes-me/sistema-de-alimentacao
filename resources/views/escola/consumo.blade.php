@@ -7,7 +7,7 @@
     <div class="container mt-5">
 
         <div class="text-center">
-            <h1 class="h3 text-gray-900 mb-4">Cadastrar Consumo Diário</h1>
+            <h1 class="mb-4">Consumo Diário</h1>
         </div>
 
 
@@ -19,7 +19,7 @@
                 <input type="date" name="data_consumo" id="data_consumo" class="text-secondary border rounded p-1">
             </div>
 
-            <div class="card">
+            <div class="card shadow">
                 <table class="table">
                     <thead>
                         <th class="col-md-6">Alimentos</th>
@@ -54,7 +54,7 @@
             </div>
 
             <div class="form-group mt-4 d-flex justify-content-center">
-                <input type="submit" value="Cadastrar" class="btn btn-success px-4 w-25">
+                <input type="submit" value="Cadastrar" class="btn btn-success px-4">
             </div>
 
         </form>

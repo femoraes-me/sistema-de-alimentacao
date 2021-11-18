@@ -9,19 +9,15 @@
                 <div class="text-center">
                     <h1 class="h3 text-gray-900 mb-4">Cadastrar Cardápio do Dia</h1>
                 </div>
+
                 @if (session()->has('message'))
-                    <div class="alert alert-success text-center m-4 col-8">{{ session('message') }}</div>
+                    <div class="alert alert-success card text-center m-4 col-8">{{ session('message') }}</div>
                 @endif
 
                 <div class="card p-4 col-10">
 
-
-
                     <form action="{{ route('cardapio.store') }}" method="POST">
-
                         @csrf
-
-
                         <div class="form-group">
                             <label for="data">Data do Cardápio:</label>
                             <input type="date"
@@ -29,9 +25,6 @@
                                 id="data_cardapio" name="data" value="{{ old('data') }}" maxlength="100">
                             <div class="invalid-feedback">{{ $errors->first('data') }}</div>
                         </div>
-
-
-
 
                         <div class="form-group">
                             <label for="cardapio_manha">Cardápio da Manhã</label>
