@@ -7,7 +7,7 @@
     <div class="container mt-5">
 
         <div class="text-center">
-            <h1 class="h3 text-gray-900 mb-4">Cadastrar Consumo Diário</h1>
+            <h1 class="mb-4">Consumo Diário</h1>
         </div>
 
 

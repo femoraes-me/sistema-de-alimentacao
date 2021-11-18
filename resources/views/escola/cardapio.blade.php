@@ -6,7 +6,7 @@
         <!-- Main Content-->
         <div class="container mt-5">
             <div class="text-center">
-                <h1 class="h3 text-gray-900 mb-4">Cadastrar Cardápio do Dia</h1>
+                <h1 class="mb-4">Cardápio do Dia</h1>
             </div>
 
             @if (session()->has('success'))
