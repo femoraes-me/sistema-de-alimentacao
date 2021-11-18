@@ -9,13 +9,18 @@
                 <h1 class="h3 text-gray-900 mb-4">Cadastrar Cardápio do Dia</h1>
             </div>
 
-            
+            @if (session()->has('success'))
+                <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
+
+
             <form action="{{ route('cardapio.store') }}" method="POST">
                 @csrf
 
                 <div class="form-group  col-md-6">
                     <label for="data">Data do Cardápio:</label>
-                    <input type="date" class="text-secondary border border-secondary rounded {{ $errors->has('data') ? 'is-invalid' : '' }}"
+                    <input type="date"
+                        class="text-secondary border border-secondary rounded {{ $errors->has('data') ? 'is-invalid' : '' }}"
                         id="data_cardapio" name="data" value="{{ old('data') }}" data-mask="" placeholder="Buscar..."
                         maxlength="100">
                     <div class="invalid-feedback">{{ $errors->first('data') }}</div>
@@ -26,7 +31,7 @@
                         <label for="cardapio_manha"></label>
                         <input type="text" name="cardapio[lanche_manha]"
                             class="form-control {{ $errors->has('cardapio.lanche_manha') ? 'is-invalid' : '' }} "
-                            id="cardapio_manha" value="{{ old('cardapio.lache_manha') }}" placeholder="Cardápio da Manhã"
+                            id="cardapio_manha" value="{{ old('cardapio.lanche_manha') }}" placeholder="Cardápio da Manhã"
                             maxlength="100">
                         <div class="invalid-feedback">{{ $errors->first('cardapio.lanche_manha') }}</div>
                     </div>
@@ -34,8 +39,8 @@
                     <div class="form-group">
                         <label for="almoco"></label>
                         <input type="text" name="cardapio[almoco]"
-                            class="form-control {{ $errors->has('cardapio.almoco') ? 'is-invalid' : '' }}" id="cardapio_manha"
-                            value="{{ old('cardapio.almoco') }}" placeholder="Almoço" maxlength="100">
+                            class="form-control {{ $errors->has('cardapio.almoco') ? 'is-invalid' : '' }}"
+                            id="cardapio_manha" value="{{ old('cardapio.almoco') }}" placeholder="Almoço" maxlength="100">
                         <div class="invalid-feedback">{{ $errors->first('cardapio.almoco') }}</div>
                     </div>
 
@@ -60,7 +65,7 @@
                         <input type="submit" value="Cadastrar" class="btn btn-success px-4 w-50">
                     </div>
                 </div>
-            </form>            
+            </form>
         </div>
     </div>
 

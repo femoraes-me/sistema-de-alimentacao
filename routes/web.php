@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Escola\CardapioController;
+use App\Http\Controllers\Escola\ConsumoContoller;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,7 +34,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // ROTAS DO FELIPE SILVA
 //Rotas da pagina de cadastro de Cardapio
-Route::get('cardapio', [CardapioController::class, 'create'])->name('cadarpio.create');
+Route::get('cardapio', [CardapioController::class, 'create'])->name('cardapio.create');
 Route::post('cardapio', [CardapioController::class, 'store'])->name('cardapio.store');
+Route::get('consumo', [ConsumoContoller::class, 'create'])->name('consumo.create');
 
 // ROTAS DO FELIPE MORAES
