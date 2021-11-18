@@ -5,7 +5,7 @@
     <div id="content">
         <!-- Main Content-->
         <div class="container mt-5">
-            <div class="">
+            <div class="text-center">
                 <h1 class="h3 text-gray-900 mb-4">Cadastrar Cardápio do Dia</h1>
             </div>
 
@@ -21,38 +21,38 @@
                     <div class="invalid-feedback">{{ $errors->first('data') }}</div>
                 </div>
 
-                <div class="bg-secondary p-3 mb-2 col-md-8 rounded">
+                <div class="p-3 mb-2 col-md-8 rounded">
                     <div class="form-group">
-                        <label for="cardapio_manha"></label>
+                        <label for="cardapio_manha">Cardápio da Manhã</label>
                         <input type="text" name="cardapio[lanche_manha]"
                             class="form-control {{ $errors->has('cardapio.lanche_manha') ? 'is-invalid' : '' }} "
-                            id="cardapio_manha" value="{{ old('cardapio.lache_manha') }}" placeholder="Cardápio da Manhã"
+                            id="cardapio_manha" value="{{ old('cardapio.lache_manha') }}" placeholder="Ex: Bolacha maizena, bolacha rosquinha, café, leite..."
                             maxlength="100">
                         <div class="invalid-feedback">{{ $errors->first('cardapio.lanche_manha') }}</div>
                     </div>
 
                     <div class="form-group">
-                        <label for="almoco"></label>
+                        <label for="almoco">Almoço</label>
                         <input type="text" name="cardapio[almoco]"
                             class="form-control {{ $errors->has('cardapio.almoco') ? 'is-invalid' : '' }}" id="cardapio_manha"
-                            value="{{ old('cardapio.almoco') }}" placeholder="Almoço" maxlength="100">
+                            value="{{ old('cardapio.almoco') }}" placeholder="Ex: Arroz, feijão, frango desfiado e salada de alface e tomate..." maxlength="100">
                         <div class="invalid-feedback">{{ $errors->first('cardapio.almoco') }}</div>
                     </div>
 
                     <div class="form-group">
-                        <label for="lanche_tarde"></label>
+                        <label for="lanche_tarde">Lanche da Tarde</label>
                         <input type="text" name="cardapio[lanche_tarde]"
                             class="form-control {{ $errors->has('cardapio.lanche_tarde') ? 'is-invalid' : '' }}"
-                            id="cardapio_manha" value="{{ old('cardapio.lanche_tarde') }}" placeholder="Lanche da Tarde"
+                            id="cardapio_manha" value="{{ old('cardapio.lanche_tarde') }}" placeholder="Ex: Bolacha maizena, bolacha rosquinha, café, leite..."
                             maxlength="100">
                         <div class="invalid-feedback">{{ $errors->first('cardapio.lanche_tarde') }}</div>
                     </div>
 
                     <div class="form-group">
-                        <label for="janta"></label>
+                        <label for="janta">Janta</label>
                         <input type="text" name="cardapio[janta]"
                             class="form-control {{ $errors->has('cardapio.janta') ? 'is-invalid' : '' }}" id="janta"
-                            value="{{ old('cardapio.janta') }}" placeholder="Janta" maxlength="100">
+                            value="{{ old('cardapio.janta') }}" placeholder="Ex: Arroz, feijão, frango desfiado e salada de alface e tomate..." maxlength="100">
                         <div class="invalid-feedback">{{ $errors->first('cardapio.janta') }}</div>
                     </div>
 
