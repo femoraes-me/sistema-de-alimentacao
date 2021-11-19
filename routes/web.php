@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Escola\CardapioController;
 use App\Http\Controllers\Escola\ConsumoContoller;
+use App\Http\Controllers\Escola\AlimentosController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,9 +27,9 @@ Route::get('/estoque', function () {
     return view('estoque');
 });
 
-Route::get('/alimentos', function () {
-    return view('alimentos');
-});
+Route::get('alimentos', [AlimentosController::class, 'index'])->name('alimentos');
+Route::get('alimentos/novo', [AlimentosController::class, 'create'])->name('alimentos.novo');
+Route::post('alimentos/novo', [AlimentosController::class, 'store'])->name('alimentos.novo');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
