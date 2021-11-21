@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-
     <div id="content">
         <!-- Main Content-->
         <div class="container mt-5">
@@ -16,7 +15,7 @@
 
                 <div class="card p-4 col-10">
 
-                    <form action="{{ route('alimentos.novo') }}" method="POST">
+                    <form action="{{ route('alimentos.cadastrar') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="alimento">Nome do alimento</label>
@@ -58,5 +57,4 @@
             </div>
         </div>
     </div>
-
 @endsection

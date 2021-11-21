@@ -24,19 +24,19 @@
     <link href="{{ asset('css/colors.css') }}" rel="stylesheet">
 </head>
 
-<body id="page-top" class="fundo2">
+<body id="page-top" class="fundo2 sidebar-toggled">
     <div id="app">
         <!-- Page Wrapper -->
         <div id="wrapper">
             <!-- Sidebar -->
-            <ul class="navbar-nav fundo-barra sidebar sidebar-dark accordion" id="accordionSidebar">
+            <ul class="navbar-nav fundo-barra sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
                 <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block" />
 
                 <!-- Nav Item - Home -->
                 <li class="nav-item">
-                    <a class="nav-link icon-white" href="/estoque">
+                    <a class="nav-link icon-white" href="{{ route('alimentos') }}">
                         <i class="fas fa-fw fa-home fa-2x"></i>
                         <span>Estoque de Alimentos</span>
                     </a>
@@ -135,7 +135,6 @@
 
     <!-- Page level custom scripts -->
     <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
-
 </body>
 
 </html>

@@ -11,14 +11,15 @@
                     <h1 class="h2 mb-2 text-gray-800">Estoque de Alimentos</h1>
                 </div>
                 <div class="col-sm-4">
-                    <!--- Botão de Cadastro -->
-                    <div class="my-2"></div>
-                    <a href="{{ route('alimentos.novo') }}" class="btn letra btn-color btn-icon-split icon-white">
-                        <span class="icon text-white-50">
-                            <i class="fas fa-apple-alt"></i>
-                        </span>
-                        <span class="text">Cadastrar alimentos</span>
-                    </a>
+                    @if (Auth::user()->name == 'Edson')
+                        <a href="{{ route('alimentos.novo') }}" style="float: right"
+                            class="btn letra btn-color btn-icon-split icon-white">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-apple-alt"></i>
+                            </span>
+                            <span class="text">Cadastrar alimentos</span>
+                        </a>
+                    @endif
                 </div>
             </div>
 

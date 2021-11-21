@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Auth;
 */
 // ROTAS DA ANNA
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('escola.alimentos');
+})->middleware('auth');
 
 Auth::routes();
 
@@ -28,8 +28,8 @@ Route::get('/estoque', function () {
 });
 
 Route::get('alimentos', [AlimentosController::class, 'index'])->name('alimentos');
-Route::get('alimentos/novo', [AlimentosController::class, 'create'])->name('alimentos.novo');
-Route::post('alimentos/novo', [AlimentosController::class, 'store'])->name('alimentos.novo');
+Route::get('alimentosnovo', [AlimentosController::class, 'create'])->name('alimentos.novo');
+Route::post('alimentos/novo', [AlimentosController::class, 'store'])->name('alimentos.cadastrar');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
