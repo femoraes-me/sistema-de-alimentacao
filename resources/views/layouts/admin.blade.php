@@ -35,29 +35,55 @@
                 <hr class="sidebar-divider d-none d-md-block" />
 
                 <!-- Nav Item - Home -->
-                <li class="nav-item">
-                    <a class="nav-link icon-white" href="{{ route('alimentos') }}">
-                        <i class="fas fa-fw fa-home fa-2x"></i>
-                        <span>Estoque de Alimentos</span>
-                    </a>
-                </li>
+
+                @if (Auth::user()->name == 'migue')
+                    <li class="nav-item">
+                        <a class="nav-link icon-white" href="{{ route('home') }}">
+                            <i class="fas fa-fw fa-home fa-2x"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link icon-white" href="{{ route('alimentos') }}">
+                            <i class="fas fa-fw fa-home fa-2x"></i>
+                            <span>Estoque de Alimentos</span>
+                        </a>
+                    </li>
+                @endif
 
 
                 <!-- Nav Item - Cadastrar alimentos / Consumo Diário -->
+                @if(Auth::user()->name != 'migue')
                 <li class="nav-item">
-                    <a class="nav-link icon-white" href="/consumo">
+                    <a class="nav-link icon-white" href="{{route('consumo.create')}}">
                         <i class="fas fa-fw fa-calendar-check fa-2x"></i>
                         <span>Consumo diário</span>
                     </a>
                 </li>
+                @endif
 
                 <!-- Nav Item - Cadastrar cardapio do dia -->
+                @if(Auth::user()->name != 'migue')
                 <li class="nav-item">
-                    <a class="nav-link icon-white" href="/cardapio">
+                    <a class="nav-link icon-white" href="{{route('cardapio.create')}}">
                         <i class="fas fa-fw fa-coffee fa-2x"></i>
                         <span>Cardápio do dia</span>
                     </a>
                 </li>
+                @endif
+
+                <!-- Nav Item - escola -->
+
+                @if (Auth::user()->name == 'migue')
+                    <li class="nav-item">
+                        <a class="nav-link icon-white" href="/login">
+                            <i class="fas fa-fw fa-school fa-2x"></i>
+                            <span>Escolas</span>
+                        </a>
+                    </li>
+                @endif
+
 
                 <!-- Nav Item - Sair -->
 

@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 */
 // ROTAS DA ANNA
 Route::get('/', function () {
-    return view('escola.alimentos');
+    return view('home');
 })->middleware('auth');
 
 Auth::routes();
