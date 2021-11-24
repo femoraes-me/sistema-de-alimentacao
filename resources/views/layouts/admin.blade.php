@@ -56,7 +56,7 @@
                 <!-- Nav Item - Cadastrar alimentos / Consumo Diário -->
                 @if(Auth::user()->name != 'migue')
                 <li class="nav-item">
-                    <a class="nav-link icon-white" href="{{route('consumo.create')}}">
+                    <a class="nav-link icon-white" href="{{route('escola.consumo.create')}}">
                         <i class="fas fa-fw fa-calendar-check fa-2x"></i>
                         <span>Consumo diário</span>
                     </a>
@@ -66,7 +66,7 @@
                 <!-- Nav Item - Cadastrar cardapio do dia -->
                 @if(Auth::user()->name != 'migue')
                 <li class="nav-item">
-                    <a class="nav-link icon-white" href="{{route('cardapio.create')}}">
+                    <a class="nav-link icon-white" href="{{route('escola.cardapio.create')}}">
                         <i class="fas fa-fw fa-coffee fa-2x"></i>
                         <span>Cardápio do dia</span>
                     </a>
@@ -106,6 +106,8 @@
 
             <!-- Content Wrapper -->
             <div id="content-wrapper" class="d-flex flex-column">
+                <!-- Page Heading -->
+                @yield('pageHeading')
                 @yield('content')
             </div>
             <!-- End of Content Wrapper -->

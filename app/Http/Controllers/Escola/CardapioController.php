@@ -11,7 +11,7 @@ class CardapioController extends Controller
 {
     public function create()
     {
-        return view('escola.cardapio.create');
+        return view('escola.cardapio');
     }
 
     public function store(CardapioRequest $request)
@@ -30,6 +30,6 @@ class CardapioController extends Controller
             Cardapio::create($requestData);
         }
 
-        return redirect()->route('cardapio.create')->with('message', "Cardápio cadastrado com sucesso");
+        return redirect()->route('escola.cardapio.create')->with('message', "Cardápio cadastrado com sucesso");
     }
 }
