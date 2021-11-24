@@ -14,7 +14,9 @@ class Cardapio extends Model
     protected $fillable = [
         'data',
         'cardapio',
-        'alimentacao'
+        'alimentacao',
+        'quantidade',
+        'repeticoes'
     ];
 
     //Mutators

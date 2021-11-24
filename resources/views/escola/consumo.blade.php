@@ -59,8 +59,9 @@
                     </table>
                 </div>
 
-                <div class="form-group mt-4 d-flex justify-content-center">
-                    <input type="submit" value="Cadastrar" class="btn btn-success px-4">
+                    <div class="form-group mt-4 d-flex justify-content-center">
+                        <input type="submit" value="Cadastrar" class="btn btn-success px-5">
+                    </div>
                 </div>
             </div>
         </form>
