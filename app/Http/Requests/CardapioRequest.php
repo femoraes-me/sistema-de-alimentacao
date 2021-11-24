@@ -26,6 +26,8 @@ class CardapioRequest extends FormRequest
         return [
             'data' => 'required',
             'cardapio.lanche_manha' =>  'required',
+            'cardapio.lanche_manha_quantidade' => 'required',
+            'cardapio.lanche_manha_repeticoes' => 'required',
             'cardapio.almoco' => 'required',
             'cardapio.lanche_tarde' => 'required',
             'cardapio.janta' => 'required'
@@ -36,6 +38,8 @@ class CardapioRequest extends FormRequest
     {
         return [
             'cardapio.lanche_manha' => 'lanche da manha',
+            'cardapio.lanche_manha_quantidade' => 'quantidade',
+            'cardapio.lanche_manha_repeticoes' => 'repeticoes',
             'cardapio.almoco' => 'almoço',
             'cardapio.lanche_tarde' => 'lanche da tarde',
             'cardapio.janta' => 'janta'
