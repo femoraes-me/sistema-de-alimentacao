@@ -4,20 +4,31 @@ namespace App\Http\Controllers\Escola;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Escola\Consumo;
+use App\Models\Escola\{Consumo, Alimento};
 use App\Http\Requests\ConsumoRequest;
 
 class ConsumoContoller extends Controller
 {
     public function create()
     {
-        return view('escola.consumo');
+        $alimentos = Alimento::all();
+        return view('escola.consumo', compact('alimentos'));
     }
 
-    public function store(ConsumoRequest $request)
+    public function store(Request $request)
     {
-        $requestData = $request;
+        $requestData = $request->all();
+        $data = ['data' =>$requestData['data_consumo']];
+        $ref = array_keys($requestData);
         
-        Consumo::create($requestData);
+        
+        for ($i = 2; $i < count($ref); $i++) {
+            $newRequest = array_merge($data, $requestData[$ref[$i]]);
+            Consumo::create($newRequest);
+        }
+
+        return redirect()->route('escola.consumo.create')->with('message', "Consumo diário cadastrado");
     }
+
+    
 }
