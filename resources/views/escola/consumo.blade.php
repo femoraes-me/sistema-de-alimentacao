@@ -34,17 +34,18 @@
                                 <tr>
                                     <td class="col-6">
                                         <div class="form-group">
-                                            <input type="text" readonly class="form-control-plaintext" placeholder="Arroz"
-                                                value="1" name="alimento_id">
+                                            <input 
+                                                type="text" 
+                                                readonly 
+                                                class="form-control-plaintext" 
+                                                placeholder="Arroz"
+                                                value="1" 
+                                                name="alimento_id"
+                                            >
                                         </div>
                                     </td>
                                     <td class="col-3">
                                         <div class="form-group text-center">
-                                            <select class="form-control col-4 mx-auto" name="medida">
-                                                <option value="kg">kg</option>
-                                                <option value="g">g</option>
-                                                <option value="mg">mg</option>
-                                            </select>
                                         </div>
                                     </td>
                                     <td class="text-center col-3">
