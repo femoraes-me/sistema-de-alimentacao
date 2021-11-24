@@ -36,7 +36,7 @@
 
                 <!-- Nav Item - Home -->
 
-                @if (Auth::user()->name == 'migue')
+                @if (Auth::user()->role == 'secretaria')
                     <li class="nav-item">
                         <a class="nav-link icon-white" href="{{ route('home') }}">
                             <i class="fas fa-fw fa-home fa-2x"></i>
@@ -54,28 +54,28 @@
 
 
                 <!-- Nav Item - Cadastrar alimentos / Consumo Diário -->
-                @if(Auth::user()->name != 'migue')
-                <li class="nav-item">
-                    <a class="nav-link icon-white" href="{{route('escola.consumo.create')}}">
-                        <i class="fas fa-fw fa-calendar-check fa-2x"></i>
-                        <span>Consumo diário</span>
-                    </a>
-                </li>
+                @if (Auth::user()->role != 'secretaria')
+                    <li class="nav-item">
+                        <a class="nav-link icon-white" href="{{ route('escola.consumo.create') }}">
+                            <i class="fas fa-fw fa-calendar-check fa-2x"></i>
+                            <span>Consumo diário</span>
+                        </a>
+                    </li>
                 @endif
 
                 <!-- Nav Item - Cadastrar cardapio do dia -->
-                @if(Auth::user()->name != 'migue')
-                <li class="nav-item">
-                    <a class="nav-link icon-white" href="{{route('escola.cardapio.create')}}">
-                        <i class="fas fa-fw fa-coffee fa-2x"></i>
-                        <span>Cardápio do dia</span>
-                    </a>
-                </li>
+                @if (Auth::user()->role != 'secretaria')
+                    <li class="nav-item">
+                        <a class="nav-link icon-white" href="{{ route('escola.cardapio.create') }}">
+                            <i class="fas fa-fw fa-coffee fa-2x"></i>
+                            <span>Cardápio do dia</span>
+                        </a>
+                    </li>
                 @endif
 
                 <!-- Nav Item - escola -->
 
-                @if (Auth::user()->name == 'migue')
+                @if (Auth::user()->role == 'secretaria')
                     <li class="nav-item">
                         <a class="nav-link icon-white" href="/login">
                             <i class="fas fa-fw fa-school fa-2x"></i>
@@ -88,7 +88,7 @@
                 <!-- Nav Item - Sair -->
 
                 <li class="nav-item">
-                    <a class="nav-link icon-white" href="/login">
+                    <a class="nav-link icon-white" href="{{ route('home') }}">
                         <i class="fas fa-fw fa-door-closed fa-2x"></i>
                         <span>Sair</span>
                     </a>
