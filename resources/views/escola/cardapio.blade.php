@@ -52,19 +52,19 @@
                                         <label>Quantidade</label>
                                         <input 
                                             type="number"
-                                            name="cardapio[lanche_manha_quantidade]"
-                                            class="form-control {{ $errors->has('cardapio.lanche_manha_quantidade') ? 'is-invalid' : '' }}"
+                                            name="quantidade[lanche_manha_quantidade]"
+                                            class="form-control {{ $errors->has('quantidade.lanche_manha_quantidade') ? 'is-invalid' : '' }}"
                                         >
-                                        <div class="invalid-feedback">{{ $errors->first('cardapio.lanche_manha_quantidade') }}</div>
+                                        <div class="invalid-feedback">{{ $errors->first('quantidade.lanche_manha_quantidade') }}</div>
                                     </div>        
                                     <div class="col-2">
                                         <label>Repetições</label>
                                         <input 
                                             type="number"
-                                            name="cardapio[lanche_manha_repeticoes]"
-                                            class="form-control {{ $errors->has('cardapio.lanche_manha_repeticoes') ? 'is-invalid' : '' }}"
+                                            name="repeticoes[lanche_manha_repeticoes]"
+                                            class="form-control {{ $errors->has('repeticoes.lanche_manha_repeticoes') ? 'is-invalid' : '' }}"
                                         >
-                                        <div class="invalid-feedback">{{ $errors->first('cardapio.lanche_manha_repeticoes') }}</div>
+                                        <div class="invalid-feedback">{{ $errors->first('repeticoes.lanche_manha_repeticoes') }}</div>
                                     </div>   
                                 </div>
                             </div>
@@ -87,7 +87,6 @@
                                         <label>Quantidade</label>
                                         <input 
                                             type="number"
-                                            name="cardapio[almoco_quantidade]"
                                             class="form-control"
                                         >
                                     </div>        
@@ -95,7 +94,6 @@
                                         <label>Repetições</label>
                                         <input 
                                             type="number"
-                                            name="cardapio[almoco_repeticoes]"
                                             class="form-control"
                                         >
                                     </div>   
@@ -120,7 +118,6 @@
                                         <label>Quantidade</label>
                                         <input 
                                             type="number"
-                                            name="cardapio[lanche_tarde_quantidade]"
                                             class="form-control"
                                         >
                                     </div>        
@@ -128,7 +125,6 @@
                                         <label>Repetições</label>
                                         <input 
                                             type="number"
-                                            name="cardapio[lanche_tarde_repeticoes]"
                                             class="form-control"
                                         >
                                     </div>  
@@ -153,7 +149,6 @@
                                         <label>Quantidade</label>
                                         <input 
                                             type="number"
-                                            name="cardapio[janta_quantidade]"
                                             class="form-control"
                                         >
                                     </div>        
@@ -161,7 +156,6 @@
                                         <label>Repetições</label>
                                         <input 
                                             type="number"
-                                            name="cardapio[janta_repeticoes]"
                                             class="form-control"
                                         >
                                     </div>   

@@ -19,13 +19,17 @@ class CardapioController extends Controller
 
         $requestData = $request->validated();
         
-
         $cardapio = $requestData['cardapio'];
+
+        $quantidade = $requestData['quantidade'];
+        $repeticoes = $requestData['repeticoes'];
 
         for ($i = 0; $i < count($cardapio); $i++) {
             $alimentacao = array_keys($cardapio);
             $requestData['alimentacao'] = $alimentacao[$i];
             $requestData['cardapio'] = $cardapio[$alimentacao[$i]];
+            $requestData['quantidade'] = $quantidade;
+            $requestData['repeticoes'] = $repeticoes;
 
             Cardapio::create($requestData);
         }

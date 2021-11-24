@@ -26,8 +26,8 @@ class CardapioRequest extends FormRequest
         return [
             'data' => 'required',
             'cardapio.lanche_manha' =>  'required',
-            'cardapio.lanche_manha_quantidade' => 'required',
-            'cardapio.lanche_manha_repeticoes' => 'required',
+            'quantidade.lanche_manha_quantidade' => 'required',
+            'repeticoes.lanche_manha_repeticoes' => 'required',
             'cardapio.almoco' => 'required',
             'cardapio.lanche_tarde' => 'required',
             'cardapio.janta' => 'required'
