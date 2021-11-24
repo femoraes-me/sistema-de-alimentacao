@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Escola\Cardapio;
 use Illuminate\Http\Request;
 use App\Http\Requests\CardapioRequest;
+use Illuminate\Http\Resources\MergeValue;
 
 class CardapioController extends Controller
 {
@@ -18,20 +19,12 @@ class CardapioController extends Controller
     {
 
         $requestData = $request->validated();
-        
-        $cardapio = $requestData['cardapio'];
+        $data = ['data' => $requestData['data']];
+        $cardapios = $requestData['cardapios'];
 
-        $quantidade = $requestData['quantidade'];
-        $repeticoes = $requestData['repeticoes'];
-
-        for ($i = 0; $i < count($cardapio); $i++) {
-            $alimentacao = array_keys($cardapio);
-            $requestData['alimentacao'] = $alimentacao[$i];
-            $requestData['cardapio'] = $cardapio[$alimentacao[$i]];
-            $requestData['quantidade'] = $quantidade;
-            $requestData['repeticoes'] = $repeticoes;
-
-            Cardapio::create($requestData);
+        for ($i = 0; $i < count($requestData['cardapios']); $i++) {
+            $newRequest = array_merge($data, $cardapios[$i]);
+            Cardapio::create($newRequest);
         }
 
         return redirect()->route('escola.cardapio.create')->with('message', "Cardápio cadastrado com sucesso");
