@@ -3,6 +3,7 @@
 use App\Http\Controllers\Escola\CardapioController;
 use App\Http\Controllers\Escola\ConsumoContoller;
 use App\Http\Controllers\Escola\AlimentosController;
+use App\Http\Controllers\Secretaria\EscolaContoller;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,5 +43,8 @@ Route::prefix('escola')->name('escola.')->middleware('role:escola')->group(funct
     Route::post('/consumo', [ConsumoContoller::class, 'store'])->name('consumo.store')->middleware('auth');
 });
 
-
+//Rotas do user tipo secretaria
+Route::prefix('secretaria')->name('secretaria.')->middleware('role:secretaria')->group(function () {
+    Route::get('/escola', [EscolaContoller::class, 'index'])->name('escola.index')->middleware('auth');
+});
 // ROTAS DO FELIPE MORAES
