@@ -78,7 +78,11 @@ class AlimentosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $estoque = Estoque::with('alimentos')->where('id','=',$id)->get()[0];
+
+        // dd($estoque);
+
+        return view('escola.alimentos-editar', compact('estoque') );
     }
 
     /**
@@ -90,7 +94,17 @@ class AlimentosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $estoque = Estoque::with('alimentos')->where('id','=',$id)->get()[0];
+        $requestData = $request->all();
+
+        $estoque->quantidade =  $requestData['quantidade'];
+        $estoque->alimentos->nome = $requestData['alimento'];
+        $estoque->alimentos->unidade = $requestData['unidade'];
+        $estoque->data = $requestData['data'];
+        $estoque->save();
+        $estoque->alimentos->save();
+        
+        return redirect()->route('alimentos');
     }
 
     /**
@@ -101,6 +115,8 @@ class AlimentosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $estoque = Estoque::with('alimentos')->where('id','=',$id)->get()[0];
+        $estoque->delete();
+        return redirect()->route('alimentos');
     }
 }

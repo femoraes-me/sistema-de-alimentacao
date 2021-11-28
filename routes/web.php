@@ -23,14 +23,15 @@ Route::get('/', function () {
 })->middleware('auth');
 
 Auth::routes();
+Route::get('/estoque', [AlimentosController::class, 'index'])->name('estoque');
 
-Route::get('/estoque', function () {
-    return view('estoque');
-});
 
 Route::get('alimentos', [AlimentosController::class, 'index'])->name('alimentos');
 Route::get('alimentosnovo', [AlimentosController::class, 'create'])->name('alimentos.novo');
 Route::post('alimentos/novo', [AlimentosController::class, 'store'])->name('alimentos.cadastrar');
+Route::get('alimentos/{id}/editar', [AlimentosController::class, 'edit'])->name('alimentos.editar');
+Route::post('alimentos/{id}/salvar', [AlimentosController::class, 'update'])->name('alimentos.salvar');
+Route::get('alimentos/{id}/apagar', [AlimentosController::class, 'destroy'])->name('alimentos.apagar');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

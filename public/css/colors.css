@@ -35,3 +35,11 @@ a.icon-white i {
     color: #363636 !important;
     background-color: #D3D3D3 !important;
 }
+
+.text-purple {
+    color: #7532cc !important;
+}
+
+.text-red {
+    color: #FF0000 !important;
+}
