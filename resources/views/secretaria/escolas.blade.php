@@ -10,15 +10,13 @@
 
     <div id="content">
         <!-- Main Content-->
-
         <div class="container-fluid mt-4">
             <form action="" method="">
                 @csrf
                 <div class="form-group col-md-8">
                     <label for="data_consumo">Dia:</label>
-                    <input type="date" name="data_consumo" id="data_consumo"
-                        class="text-secondary border rounded p-1 {{ $errors->has('data_consumo') ? 'is-invalid' : '' }}">
-                    <div class="invalid-feedback">{{ $errors->first('data_consumo') }}</div>
+                    <input type="date" name="" id="" class="text-secondary border rounded p-1">
+                    <div class="invalid-feedback"></div>
                 </div>
                 <div class="card border-light shadow pb-2 px-2">
                     <div class="card-body">
@@ -35,13 +33,23 @@
                                     <td class="text-center">1</td>
                                     <td>IFSP - Carguatatuba</td>
                                     <td class="text-center">
-                                        <button type="button" class="btn btn-secondary">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                                <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
-                                            </svg>
-                                        </button>
-                                    
+                                        <div class="align-self-center">
+                                            <a href="" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <form action="" method="">
+                                                @csrf
+                                                <button type="submit" class="btn btn-sm btn-danger confirm-submit">
+                                                    <i class="fa fa-trash "></i>
+                                                </button>
+                                            </form>
+                                            <a href="" class="btn btn-sm btn-secondary">
+                                                <i class="fas fa-ellipsis-h"></i>
+                                            </a>
+                                        </div>
+
+
+
                                     </td>
                                 </tr>
                             </tbody>

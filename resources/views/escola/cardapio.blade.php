@@ -13,12 +13,12 @@
     <!-- Main Content-->
     <div class="container mt-2">
         <div class="row justify-content-center">
-            @if (session()->has('message'))
-                <div class="alert alert-success card text-center m-4 col-8">{{ session('message') }}</div>
-            @endif
 
+            <!-- messagem -->
+            @include('layouts._partials.return_message')
+
+            <!-- formulário -->
             <div class="col-10">
-
                 <form action="{{ route('escola.cardapio.store') }}" method="POST">
                     @csrf
                     <!--campo data -->
@@ -31,7 +31,6 @@
                     </div>
 
                     <div class="card pt-4 px-4">
-
                         <!-- inputs café da manhã -->
                         <div class="form-group">
                             <div class="row">
@@ -97,7 +96,7 @@
                         <!-- inputs café da tarde -->
                         <div class="form-group">
                             <div class="row">
-                            <input type="hidden" name="cardapios[2][alimentacao]" value="café da tarde">
+                                <input type="hidden" name="cardapios[2][alimentacao]" value="café da tarde">
                                 <div class="col-8">
                                     <label for="lanche_tarde">Lanche da Tarde</label>
                                     <input type="text" name="cardapios[2][cardapio]"
