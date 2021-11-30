@@ -9,6 +9,6 @@ class EscolaContoller extends Controller
 {
     public function index()
     {
-        return view('secretaria.escolas');
+        return view('secretaria.escolas.index');
     }
 }
