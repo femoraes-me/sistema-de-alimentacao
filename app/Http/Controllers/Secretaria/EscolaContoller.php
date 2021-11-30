@@ -11,4 +11,9 @@ class EscolaContoller extends Controller
     {
         return view('secretaria.escolas');
     }
+
+    public function showActions()
+    {
+        return view('secretaria.menu-acoes-escolas');
+    }
 }
