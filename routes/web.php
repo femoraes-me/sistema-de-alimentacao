@@ -3,6 +3,7 @@
 use App\Http\Controllers\Escola\CardapioController;
 use App\Http\Controllers\Escola\ConsumoContoller;
 use App\Http\Controllers\Escola\AlimentosController;
+use App\Http\Controllers\Secretaria\EscolaContoller;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,10 +35,15 @@ Route::post('alimentos/novo', [AlimentosController::class, 'store'])->name('alim
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // ROTAS DO FELIPE SILVA
-//Rotas da pagina de cadastro de Cardapio
-Route::get('cardapio', [CardapioController::class, 'create'])->name('cardapio.create');
-Route::post('cardapio', [CardapioController::class, 'store'])->name('cardapio.store');
-Route::get('consumo', [ConsumoContoller::class, 'create'])->name('consumo.create');
-Route::post('consumo', [ConsumoContoller::class, 'store'])->name('consumo.store');
+//Rotas do user tipo escola
+Route::prefix('escola')->name('escola.')->middleware('role:escola')->group(function () {
+    Route::get('/cardapio', [CardapioController::class, 'create'])->name('cardapio.create')->middleware('auth');
+    Route::post('/cardapio', [CardapioController::class, 'store'])->name('cardapio.store')->middleware('auth');
+    Route::get('/consumo', [ConsumoContoller::class, 'create'])->name('consumo.create')->middleware('auth');
+    Route::post('/consumo', [ConsumoContoller::class, 'store'])->name('consumo.store')->middleware('auth');
+});
 
-// ROTAS DO FELIPE MORAES
+//Rotas do user tipo secretaria
+Route::prefix('secretaria')->name('secretaria.')->middleware('role:secretaria')->group(function () {
+    Route::get('/escola', [EscolaContoller::class, 'index'])->name('escola.index')->middleware('auth');
+});

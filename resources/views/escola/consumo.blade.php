@@ -1,17 +1,21 @@
 @extends('layouts.admin')
-
+@section('pageHeading')
+    <div class="container-fluid mt-4">
+        <div class="text-left">
+            <h1 class="h2 text-gray-900 mb-4">Consumo Diário</h1>
+        </div>
+    </div>
+@endsection
 @section('content')
 
     <div id="content">
         <!-- Main Content-->
+
         <div class="container-fluid mt-4">
-
-            <div class="text-center">
-                <h1 class="h2 text-gray-900 mb-4">Consumo Diário</h1>
-            </div>
-
-
-            <form action="{{ route('consumo.store') }}" method="POST">
+            @if (session()->has('message'))
+                <div class="alert alert-success card text-center m-4">{{ session('message') }}</div>
+            @endif
+            <form action="{{ route('escola.consumo.store') }}" method="POST">
                 @csrf
 
                 <div class="form-group col-md-6">
@@ -64,18 +68,6 @@
                 </div>
             </form>
 
-
         </div>
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
 @endsection

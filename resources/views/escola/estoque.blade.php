@@ -11,7 +11,7 @@
                     <h1 class="h2 mb-2 text-gray-800">Estoque de Alimentos</h1>
                 </div>
                 <div class="col-sm-4">
-                    @if (Auth::user()->name == 'Edson')
+                    @if (Auth::user()->role == 'secretaria')
                         <a href="{{ route('alimentos.novo') }}" style="float: right"
                             class="btn letra btn-color btn-icon-split icon-white">
                             <span class="icon text-white-50">

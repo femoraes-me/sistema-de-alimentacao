@@ -13,8 +13,8 @@ class Cardapio extends Model
 
     protected $fillable = [
         'data',
-        'cardapio',
         'alimentacao',
+        'cardapio',
         'quantidade',
         'repeticoes'
     ];
