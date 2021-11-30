@@ -21,11 +21,11 @@ class Role
         if ($userRole !== $role) {
 
             if ($userRole === 'escola') {
-                return route('home');
+                return redirect()->route('alimentos');
             }
 
             if ($userRole === 'secretaria') {
-                return route('home');
+                return redirect()->route('secretaria.escola.index');
             }
         }
         return $next($request);

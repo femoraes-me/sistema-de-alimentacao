@@ -77,7 +77,7 @@
 
                 @if (Auth::user()->role == 'secretaria')
                     <li class="nav-item">
-                        <a class="nav-link icon-white" href="/login">
+                        <a class="nav-link icon-white" href="{{ route('secretaria.escolas.index') }}">
                             <i class="fas fa-fw fa-school fa-2x"></i>
                             <span>Escolas</span>
                         </a>

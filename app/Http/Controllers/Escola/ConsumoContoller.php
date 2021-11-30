@@ -27,7 +27,7 @@ class ConsumoContoller extends Controller
             Consumo::create($newRequest);
         }
 
-        return redirect()->route('escola.consumo.create')->with('message', "Consumo diário cadastrado");
+        return redirect()->route('escola.consumo.create')->with('success', "Consumo diário cadastrado");
     }
 
     
