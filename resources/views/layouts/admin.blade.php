@@ -10,10 +10,10 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -38,7 +38,7 @@
 
                 @if (Auth::user()->role == 'secretaria')
                     <li class="nav-item">
-                        <a class="nav-link icon-white" href="{{ route('home') }}">
+                        <a class="nav-link icon-white" href="{{ route('alimentos') }}">
                             <i class="fas fa-fw fa-home fa-2x"></i>
                             <span>Home</span>
                         </a>
