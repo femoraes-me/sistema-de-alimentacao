@@ -15,7 +15,7 @@ class ConsumoContoller extends Controller
         return view('escola.consumo', compact('alimentos'));
     }
 
-    public function store(Request $request)
+    public function store(ConsumoRequest $request)
     {
         $requestData = $request->all();
         $data = ['data' =>$requestData['data_consumo']];
