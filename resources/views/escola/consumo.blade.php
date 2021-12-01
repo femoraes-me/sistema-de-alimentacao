@@ -35,29 +35,32 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="col-6">
-                                        <div class="form-group">
-                                            <input 
-                                                type="text" 
-                                                readonly 
-                                                class="form-control-plaintext" 
-                                                placeholder="Arroz"
-                                                value="1" 
-                                                name="alimento_id"
-                                            >
-                                        </div>
-                                    </td>
-                                    <td class="col-3">
-                                        <div class="form-group text-center">
-                                        </div>
-                                    </td>
-                                    <td class="text-center col-3">
-                                        <div class="col-md-5 mx-auto">
-                                            <input type="text" class="form-control" name="quantidade">
-                                        </div>
-                                    </td>
-                                </tr>
+                                @foreach ($alimentos as $alimento)
+                                    <tr>
+                                        <input type="hidden" value="{{ $alimento->id }}"
+                                            name="{{ $alimento->nome }}[alimentos_id]">
+                                        <td class="col-6">
+                                            {{ $alimento->nome }}
+                                        </td>
+                                        <td class="col-3">
+                                            <div class="form-group text-center">
+                                                <div class="col-4 mx-auto" name="medida">
+                                                    {{ $alimento->unidade }}
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center col-3">
+                                            <div class="">
+                                                <input type="text"
+                                                    class="form-control col-md-5 mx-auto {{ $errors->has('quantidade_consumida') ? 'is-invalid' : '' }} text-center"
+                                                    name="{{ $alimento->nome }}[quantidade_consumida]"
+                                                    value="{{ old('quantidade_consumida') }}">
+                                                <div class="invalid-feedback">
+                                                    {{ $errors->first('quantidade_consumida') }}</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

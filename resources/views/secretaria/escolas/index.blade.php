@@ -34,8 +34,7 @@
                                     <a href="" class="btn btn-sm btn-primary mr-2">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <form action="" method="">
-                                        @csrf
+                                    <form>
                                         <button type="submit" class="btn btn-sm btn-danger confirm-submit">
                                             <i class="fa fa-trash "></i>
                                         </button>
