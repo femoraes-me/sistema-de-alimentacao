@@ -34,8 +34,10 @@
                                     <th>Alimento</th>
                                     <th>Unidade</th>
                                     <th>Quantidade</th>
-                                    <th>Editar</th>
-                                    <th>Excluir</th>
+                                    @if (Auth::user()->role == 'secretaria')
+                                        <th>Editar</th>
+                                        <th>Excluir</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tfoot class="table-secondary">
@@ -44,8 +46,10 @@
                                     <th>Alimento</th>
                                     <th>Unidade</th>
                                     <th>Quantidade</th>
-                                    <th>Editar</th>
-                                    <th>Excluir</th>
+                                    @if (Auth::user()->role == 'secretaria')
+                                        <th>Editar</th>
+                                        <th>Excluir</th>
+                                    @endif
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -55,8 +59,12 @@
                                         <td>{{ $estoque->alimentos->nome }}</td>
                                         <td>{{ $estoque->alimentos->unidade }}</td>
                                         <td>{{ $estoque->quantidade }}</td>
-                                        <td> <a href="{{ route('alimentos.editar', $estoque->id) }}"><i class="far fa-edit text-purple"></i></a>
-                                        <td> <a href="{{ route('alimentos.apagar', $estoque->id) }}"><i class="fas fa-trash text-red"></i></a>
+                                        @if (Auth::user()->role == 'secretaria')
+                                            <td> <a href="{{ route('alimentos.editar', $estoque->id) }}"><i
+                                                        class="far fa-edit text-purple"></i></a>
+                                            <td> <a href="{{ route('alimentos.apagar', $estoque->id) }}"><i
+                                                        class="fas fa-trash text-red"></i></a>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>

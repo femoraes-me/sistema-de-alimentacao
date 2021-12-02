@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Escola\CardapioController;
 use App\Http\Controllers\Escola\ConsumoContoller;
 use App\Http\Controllers\Escola\AlimentosController;
+use App\Http\Controllers\Secretaria\DadosEscolaController;
 use App\Http\Controllers\Secretaria\EscolaContoller;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -17,15 +19,21 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// ROTAS DA ANNA
+// ROTA INICIAL
 Route::get('/', function () {
-    return view('home');
-})->middleware('auth');
+    return view('auth/login');
+});
+
+//ROTAS DE REDIRECIONAMENTO
+Route::prefix('secretaria')->group(function () {
+    Route::get('/', function () {
+        return view('/secretaria/escolas');
+    });
+});
+
 
 Auth::routes();
 Route::get('/estoque', [AlimentosController::class, 'index'])->name('estoque');
-
-
 Route::get('alimentos', [AlimentosController::class, 'index'])->name('alimentos');
 Route::get('alimentosnovo', [AlimentosController::class, 'create'])->name('alimentos.novo');
 Route::post('alimentos/novo', [AlimentosController::class, 'store'])->name('alimentos.cadastrar');
@@ -33,9 +41,11 @@ Route::get('alimentos/{id}/editar', [AlimentosController::class, 'edit'])->name(
 Route::post('alimentos/{id}/salvar', [AlimentosController::class, 'update'])->name('alimentos.salvar');
 Route::get('alimentos/{id}/apagar', [AlimentosController::class, 'destroy'])->name('alimentos.apagar');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//DADOS ESCOLA
+Route::get('dados-escola', [DadosEscolaController::class, 'index'])->name('dados');
 
-// ROTAS DO FELIPE SILVA
+
+//
 //Rotas do user tipo escola
 Route::prefix('escola')->name('escola.')->middleware('role:escola')->group(function () {
     Route::get('/cardapio', [CardapioController::class, 'create'])->name('cardapio.create')->middleware('auth');
@@ -46,6 +56,7 @@ Route::prefix('escola')->name('escola.')->middleware('role:escola')->group(funct
 
 //Rotas do user tipo secretaria
 Route::prefix('secretaria')->name('secretaria.')->middleware('role:secretaria')->group(function () {
-    Route::get('/escolas', [EscolaContoller::class, 'index'])->name('escolas.index')->middleware('auth');
     Route::get('/escolas/acoes', [EscolaContoller::class, 'showActions'])->name('escolas.actions')->middleware('auth');
+    Route::get('/escolas/list', [EscolaContoller::class, 'listEscolas'])->name('escolas.list')->middleware('auth');
+    Route::resource('/escolas', EscolaContoller::class)->middleware('auth');
 });

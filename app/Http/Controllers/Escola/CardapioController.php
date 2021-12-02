@@ -19,15 +19,9 @@ class CardapioController extends Controller
     {
 
         $requestData = $request->validated();
-<<<<<<< HEAD
-        
-        $cardapio = $requestData['cardapio'];
-    
-=======
 
         $data = ['data' => $requestData['data']];
         $cardapios = $requestData['cardapios'];
->>>>>>> d823f88a227017b9df1e1c7d645464962a1cc0fb
 
         for ($i = 0; $i < count($cardapios); $i++) {
             $newRequest = array_merge($data, $cardapios[$i]);
