@@ -145,8 +145,8 @@
 
     <!-- Page level custom scripts -->
     <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
-
     <script src="{{ asset('js/secretaria/escolas/index.js') }}"></script>
+    @yield('scripts')
 </body>
 
 </html>
