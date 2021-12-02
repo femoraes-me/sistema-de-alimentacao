@@ -31,7 +31,7 @@
                             <a href="" class="btn btn-success p-5">Relatório da Escola</a>
                         </div>
                         <div class="col-4">
-                            <a href="" class="btn btn-success p-5">Dados da Escola</a>
+                            <a href="{{ route('dados') }}" class="btn btn-success p-5">Dados da Escola</a>
                         </div>
                         <div class="col-2"></div>
                     </div>
