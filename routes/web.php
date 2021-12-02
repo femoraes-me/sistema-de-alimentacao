@@ -35,7 +35,7 @@ Route::get('alimentos/{id}/apagar', [AlimentosController::class, 'destroy'])->na
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// ROTAS DO FELIPE SILVA
+//
 //Rotas do user tipo escola
 Route::prefix('escola')->name('escola.')->middleware('role:escola')->group(function () {
     Route::get('/cardapio', [CardapioController::class, 'create'])->name('cardapio.create')->middleware('auth');

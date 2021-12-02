@@ -1,7 +1,7 @@
-var btnEscolaCadastro = document.getElementById('escolaCadastro');
-var formEscola = document.getElementById('formEscola');
-function showForm(){
-    formEscola.classList.remove('d-none');
-}
+$('#escolaCadastro').on('click', function(e) {
+    $('#formEscola').removeClass("d-none");
+});
 
-btnEscolaCadastro.addEventListener('click', showForm);
+$('.close').on('click', function(e) {
+    $('.alert').hide()
+});
