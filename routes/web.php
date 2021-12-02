@@ -45,7 +45,7 @@ Route::get('alimentos/{id}/apagar', [AlimentosController::class, 'destroy'])->na
 Route::get('dados-escola', [DadosEscolaController::class, 'index'])->name('dados');
 
 
-// ROTAS DO FELIPE SILVA
+//
 //Rotas do user tipo escola
 Route::prefix('escola')->name('escola.')->middleware('role:escola')->group(function () {
     Route::get('/cardapio', [CardapioController::class, 'create'])->name('cardapio.create')->middleware('auth');
@@ -57,5 +57,6 @@ Route::prefix('escola')->name('escola.')->middleware('role:escola')->group(funct
 //Rotas do user tipo secretaria
 Route::prefix('secretaria')->name('secretaria.')->middleware('role:secretaria')->group(function () {
     Route::get('/escolas/acoes', [EscolaContoller::class, 'showActions'])->name('escolas.actions')->middleware('auth');
+    Route::get('/escolas/list', [EscolaContoller::class, 'listEscolas'])->name('escolas.list')->middleware('auth');
     Route::resource('/escolas', EscolaContoller::class)->middleware('auth');
 });
