@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Auth;
 // ROTAS DA ANNA
 Route::get('/', function () {
     return view('auth/login');
-});
+})->middleware('auth');
 
 //ROTAS DE REDIRECIONAMENTO
 Route::prefix('secretaria')->group(function () {
@@ -44,6 +44,7 @@ Route::get('alimentos/{id}/apagar', [AlimentosController::class, 'destroy'])->na
 //DADOS ESCOLA
 Route::get('dados-escola', [DadosEscolaController::class, 'index'])->name('dados');
 
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // ROTAS DO FELIPE SILVA
 //Rotas do user tipo escola
