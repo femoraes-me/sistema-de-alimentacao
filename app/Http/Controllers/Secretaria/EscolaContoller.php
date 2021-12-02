@@ -12,7 +12,10 @@ class EscolaContoller extends Controller
 {
     public function index()
     {
-        return view('secretaria.escolas.index');
+        $escolas = Escola::paginate(10);
+        return view('secretaria.escolas.index', [
+            'escolas' => $escolas
+        ]);
     }
 
     public function showActions()
@@ -23,18 +26,18 @@ class EscolaContoller extends Controller
     public function store(EscolaRequest $request)
     {
         $requestData = $request->validated();
-        /*
-        $validator = Validator::make(
-            $request->all(),
-            [
-                'nome' => 'required',
-                'qtd_alunos' => 'required'
-            ]
-        );*/
-
         //cria usuário
 
         Escola::create($requestData);
+        return response()->json([
+            'status' => 200,
+            'message' => 'Escola criada com sucesso'
+        ]);
+    }
+
+    public function edit(Escola $escola, Request $request)
+    {
+        //$escola->update($request->all());
         return response()->json([
             'status' => 200,
             'message' => 'Escola criada com sucesso'

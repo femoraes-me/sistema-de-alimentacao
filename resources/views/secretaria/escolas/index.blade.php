@@ -14,6 +14,7 @@
         </div>
 
         @include('layouts._partials.register')
+        @include('layouts._partials.edit')
 
         <div class="card border-light shadow-sm pb-2 px-2 mt-2">
             <div class="card-body">
@@ -21,33 +22,38 @@
                     <thead class="thead-light">
                         <tr>
                             <th class="text-center col-1">ID</th>
-                            <th class="text-left">Nome</th>
+                            <th class="text-left col-8">Nome</th>
                             <th class="text-center">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="align-middle text-center">1</td>
-                            <td class="align-middle">IFSP - Carguatatuba</td>
-                            <td class="align-middle">
-                                <div class="row justify-content-center">
-                                    <a href="" class="btn btn-sm btn-primary mr-2">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <form>
+                        @foreach ($escolas as $escola)
+                            <tr>
+                                <td class="align-middle text-center">{{ $escola->id }}</td>
+                                <td class="align-middle">{{ $escola->nome }}</td>
+                                <td class="align-middle">
+                                    <div class="row justify-content-center">
+                                        <button href="" value="{{ $escola->id }}" class="btn btn-sm btn-primary mr-2"
+                                            id="btnEditar">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
                                         <button type="submit" class="btn btn-sm btn-danger confirm-submit">
                                             <i class="fa fa-trash "></i>
                                         </button>
-                                    </form>
-                                    <a href="{{ route('secretaria.escolas.actions') }}"
-                                        class="btn btn-sm btn-secondary ml-2">
-                                        <i class="fas fa-ellipsis-h"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
+                                        <a href="{{ route('secretaria.escolas.actions') }}"
+                                            class="btn btn-sm btn-secondary ml-2">
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
+                <!-- Cria Paginação -->
+                <div class="d-flex justify-content-start mt-3">
+                    {{ $escolas->links() }}
+                </div>
             </div>
         </div>
     </div>
@@ -56,9 +62,28 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
-            
 
-            
+            /*teste
+            $(document).on('click', '#btnEditar', function(e) {
+                e.preventDefault();
+                var escolaID = $(this).val();
+                console.log(escolaID);
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                
+                $.ajax({
+                    type: "GET",
+                    url: "/secretaria/escolas/edit"+escolaID,
+                    success: function(response) {
+                        console.log(response)
+                    }
+                });
+            });*/
+
             //realiza cadastro de escola
             $(document).on('click', '#btnCadastrar', function(e) {
                 e.preventDefault();

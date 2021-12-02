@@ -10,7 +10,6 @@
            </div>
            
            <form>
-               @csrf
                <div class="row justify-content-center px-2" id="formEscola">
                    <div class="col-9" id="divInputNome">
                        <label for="">Nome da Escola</label>
