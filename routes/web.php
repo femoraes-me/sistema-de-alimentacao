@@ -21,19 +21,11 @@ use Illuminate\Support\Facades\Auth;
 */
 // ROTA INICIAL
 Route::get('/', function () {
-    return view('auth/login');
+    return Auth::user()->role == 'secretaria' ? redirect('alimentos') : redirect('alimentos');
 })->middleware('auth');
 
-//ROTAS DE REDIRECIONAMENTO
-Route::prefix('secretaria')->group(function () {
-    Route::get('/', function () {
-        return view('/secretaria/escolas');
-    });
-});
-
-
 Auth::routes();
-Route::get('/estoque', [AlimentosController::class, 'index'])->name('estoque');
+
 Route::get('alimentos', [AlimentosController::class, 'index'])->name('alimentos');
 Route::get('alimentosnovo', [AlimentosController::class, 'create'])->name('alimentos.novo');
 Route::post('alimentos/novo', [AlimentosController::class, 'store'])->name('alimentos.cadastrar');
@@ -44,7 +36,7 @@ Route::get('alimentos/{id}/apagar', [AlimentosController::class, 'destroy'])->na
 //DADOS ESCOLA
 Route::get('dados-escola', [DadosEscolaController::class, 'index'])->name('dados');
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //
 //Rotas do user tipo escola

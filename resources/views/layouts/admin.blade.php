@@ -29,7 +29,7 @@
         <!-- Page Wrapper -->
         <div id="wrapper">
             <!-- Sidebar -->
-            <ul class="navbar-nav fundo-barra sidebar sidebar-dark accordion toggled" id="accordionSidebar">
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
                 <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block" />
