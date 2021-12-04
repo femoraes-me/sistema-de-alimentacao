@@ -1,12 +1,14 @@
-$('#escolaCadastro').on('click', function(e) {
+$('#escolaCadastro').on('click', function(event) {
     $('#formEscola').removeClass("d-none");
 });
 
-$('.close').on('click', function(e) {
-    $('.alert').hide()
+$('.close').on('click', function(event) {
+    $('.alert').hide();
 });
 
-$(document).on('click', '#btnCadastrar', function(e) {
+
+//cadastra escola 
+$(document).on('click', '#btnCadastrar', function(event) {
     e.preventDefault();
     var data = {
         'nome': $('#nome').val(),
@@ -77,4 +79,10 @@ $(document).on('click', '#btnCadastrar', function(e) {
         }
 
     });
+});
+
+//alerta ao excluir
+$(document).on('cliclk', '.btnDelete', function(event){
+    event.preventDefault();
+    console.log('teste');
 });

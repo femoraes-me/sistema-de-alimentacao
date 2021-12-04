@@ -20,14 +20,13 @@ class EscolaContoller extends Controller
 
     public function showActions()
     {
-        return view('secretaria.menu-acoes-escolas');
+        return view('secretaria.escolas.menu-acoes-escolas');
     }
 
     public function store(EscolaRequest $request)
     {
         $requestData = $request->validated();
         //cria usuário
-
         Escola::create($requestData);
         return response()->json([
             'status' => 200,
@@ -35,12 +34,15 @@ class EscolaContoller extends Controller
         ]);
     }
 
-    public function edit(Escola $escola, Request $request)
+    
+
+
+    public function destroy(Escola $escola)
     {
-        //$escola->update($request->all());
-        return response()->json([
-            'status' => 200,
-            'message' => 'Escola criada com sucesso'
-        ]);
+        $escola->delete();
+
+        return redirect()
+            ->route('secretaria.escolas.index')
+            ->with('success', 'Escola deletada com sucesso');
     }
 }

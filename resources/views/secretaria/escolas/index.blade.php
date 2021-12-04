@@ -13,8 +13,59 @@
             <button class="btn letra btn-color font-weight-bolder ml-2" id="escolaCadastro">Cadastrar Escola</button>
         </div>
 
-        @include('layouts._partials.register')
-        @include('layouts._partials.edit')
+        <!-- Register Escola -->
+        <div class="card mt-2 d-none" id="formEscola">
+            <div class="card-body">
+
+                <div class="d-none" id="divMessage">
+                    <div class="alert alert-dismissible fade show" role="alert" id="message">
+                        <button type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+
+                <form>
+                    <div class="row justify-content-center px-2" id="formEscola">
+                        <div class="col-9" id="divInputNome">
+                            <label for="">Nome da Escola</label>
+                            <input name="nome" type="text" class="form-control" id="nome">
+                            <div class="invalid-feedback" id="nomeErrorMessage"></div>
+                        </div>
+
+                        <div class="col-3">
+                            <label for="">Quantidade de Alunos</label>
+                            <input name="qtd_alunos" type="text" class="form-control text-center" id="qtd_alunos">
+                            <div class="invalid-feedback" id="qtd_alunosErrorMessage"></div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-4 mb-0 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-success px-3" id="btnCadastrar">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- -->
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
         <div class="card border-light shadow-sm pb-2 px-2 mt-2">
             <div class="card-body">
@@ -33,9 +84,15 @@
                                 <td class="align-middle">{{ $escola->nome }}</td>
                                 <td class="align-middle">
                                     <div class="row justify-content-center">
-                                        <button type="submit" class="btn btn-sm btn-danger confirm-submit">
-                                            <i class="fa fa-trash "></i>
-                                        </button>
+                                       <!-- <form action="{{ route('secretaria.escolas.destroy', $escola->id) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('DELETE')-->
+                                            <button type="submit" class="btn btn-sm btn-danger confirm-submit btnDelete"
+                                                id="btnDelete" data-toggle="modal" data-target="#exampleModal">
+                                                <i class="fa fa-trash "></i>
+                                            </button>
+                                    <!-- </form> -->
                                         <a href="{{ route('secretaria.escolas.actions') }}"
                                             class="btn btn-sm btn-secondary ml-2">
                                             <i class="fas fa-ellipsis-h"></i>
@@ -56,11 +113,5 @@
 @endsection
 
 @section('scripts')
-    <script>
-        $(document).ready(function() {
-
-           
-           
-        });
-    </script>
+    <script src="{{ asset('js/secretaria/escolas/index.js') }}"></script>
 @endsection
