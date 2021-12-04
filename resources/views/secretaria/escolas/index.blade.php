@@ -5,7 +5,7 @@
         <div class="text-left">
             <h1 class="h2 text-gray-900 mb-4">Escolas</h1>
         </div>
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between mb-2">
             <div class="d-flex flex-fill">
                 <input type="text" name="search" class="form-control mr-2 w-50" value="" placeholder="Pesquisar...">
                 <button type="submit" class="btn letra btn-color "><i class="fa fa-search"></i></button>
@@ -14,7 +14,7 @@
         </div>
 
         <!-- Register Escola -->
-        <div class="card mt-2 d-none" id="formEscola">
+        <div class="card d-none" id="formEscola">
             <div class="card-body">
 
                 <div class="d-none" id="divMessage">
@@ -47,25 +47,23 @@
         </div>
         <!-- -->
 
+        <!-- cofirmation modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                <div class="modal-content">
+                    <div class="modal-body mt-3 mb-2">
+
+                    </div>
+                    <div class="modal-footer py-2">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="btnCancelar">Cancelar</button>
+                        <button type="button" class="btn btn-success" id="btnConfirm">Confirmar</button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
             </div>
-          </div>
+        </div>
+        <!-- -->
+
+        @include('layouts._partials.return_message')
 
         <div class="card border-light shadow-sm pb-2 px-2 mt-2">
             <div class="card-body">
@@ -81,18 +79,18 @@
                         @foreach ($escolas as $escola)
                             <tr>
                                 <td class="align-middle text-center">{{ $escola->id }}</td>
-                                <td class="align-middle">{{ $escola->nome }}</td>
+                                <td class="align-middle" id="tdNome">{{ $escola->nome }}</td>
                                 <td class="align-middle">
                                     <div class="row justify-content-center">
-                                       <!-- <form action="{{ route('secretaria.escolas.destroy', $escola->id) }}"
+                                        <form action="{{ route('secretaria.escolas.destroy', $escola->id) }}"
                                             method="POST">
                                             @csrf
-                                            @method('DELETE')-->
-                                            <button type="submit" class="btn btn-sm btn-danger confirm-submit btnDelete"
-                                                id="btnDelete" data-toggle="modal" data-target="#exampleModal">
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger" id="btnDelete"
+                                                data-toggle="modal" data-target="#exampleModal">
                                                 <i class="fa fa-trash "></i>
                                             </button>
-                                    <!-- </form> -->
+                                        </form>
                                         <a href="{{ route('secretaria.escolas.actions') }}"
                                             class="btn btn-sm btn-secondary ml-2">
                                             <i class="fas fa-ellipsis-h"></i>

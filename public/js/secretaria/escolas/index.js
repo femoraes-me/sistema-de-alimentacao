@@ -82,7 +82,13 @@ $(document).on('click', '#btnCadastrar', function(event) {
 });
 
 //alerta ao excluir
-$(document).on('cliclk', '.btnDelete', function(event){
+$(document).on('click', '#btnDelete', function(event){
     event.preventDefault();
-    console.log('teste');
+    const form = $(this).parent();
+    var role = $(this).closest("tr");
+    var nome = role.find('#tdNome').text();
+    $('.modal-body').append('<span class="font-weight-bolder">Tem certeza que deseja excluir a escola: '+nome+'</span>');
+    $('#btnConfirm').on('click', function(e){
+        form.trigger('submit');
+    });
 });
