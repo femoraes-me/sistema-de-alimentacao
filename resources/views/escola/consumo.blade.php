@@ -12,19 +12,7 @@
         <!-- Main Content-->
 
         <div class="container-fluid mt-4">
-            @if (session()->has('message'))
-                <div class="alert alert-success card text-center m-4">{{ session('message') }}</div>
-            @endif
-
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+            @include('layouts._partials.return_message')
 
             <form action="{{ route('escola.consumo.store') }}" method="POST">
                 @csrf

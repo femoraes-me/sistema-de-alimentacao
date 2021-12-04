@@ -18,15 +18,13 @@ class ConsumoContoller extends Controller
     public function store(ConsumoRequest $request)
     {
 
-        return $request->all();
-
         $requestData = $request->all();
         $data = ['data' =>$requestData['data_consumo']];
-        $ref = array_keys($requestData);
+        $ref = array_keys($requestData['alimentos']);
         
         
-        for ($i = 2; $i < count($ref); $i++) {
-            $newRequest = array_merge($data, $requestData[$ref[$i]]);
+        for ($i = 0; $i < count($ref); $i++) {
+            $newRequest = array_merge($data, $requestData['alimentos'][$ref[$i]]);
             Consumo::create($newRequest);
         }
 
