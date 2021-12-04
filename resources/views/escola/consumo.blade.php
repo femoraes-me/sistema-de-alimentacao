@@ -15,9 +15,19 @@
             @if (session()->has('message'))
                 <div class="alert alert-success card text-center m-4">{{ session('message') }}</div>
             @endif
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <form action="{{ route('escola.consumo.store') }}" method="POST">
                 @csrf
-
                 <div class="form-group col-md-6">
                     <label for="data_consumo">Dia:</label>
                     <input type="date" name="data_consumo" id="data_consumo"
@@ -30,33 +40,36 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th class="col-6">Alimentos</th>
-                                    <th class="text-center">Unidade de Medida</th>
-                                    <th class="text-center">Quantidade Consumida</th>
+                                    <th class="text-center col-3">Unidade de Medida</th>
+                                    <th class="text-center  col-3">Quantidade Consumida</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($alimentos as $alimento)
                                     <tr>
-                                        <input type="hidden" value="{{ $alimento->id }}"
-                                            name="{{ $alimento->nome }}[alimentos_id]">
-                                        <td class="col-6">
+                                        <!--campo id  -->
+                                        <input type="hidden" name="alimentos[{{ $alimento->nome }}][alimentos_id]"
+                                            value="{{ $alimento->id }}">
+                                        <td>
                                             {{ $alimento->nome }}
                                         </td>
-                                        <td class="col-3">
+                                        <td>
                                             <div class="form-group text-center">
                                                 <div class="col-4 mx-auto" name="medida">
                                                     {{ $alimento->unidade }}
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="text-center col-3">
+                                        <td class="text-center">
                                             <div class="">
+                                                <!-- campo quantidade consumida -->
                                                 <input type="text"
-                                                    class="form-control col-md-5 mx-auto {{ $errors->has('quantidade_consumida') ? 'is-invalid' : '' }} text-center"
-                                                    name="{{ $alimento->nome }}[quantidade_consumida]"
-                                                    value="{{ old('quantidade_consumida') }}">
+                                                    class="form-control col-md-5 mx-auto {{ $errors->has("alimentos.{$alimento->nome}.quantidade_consumida") ? 'is-invalid' : '' }} text-center"
+                                                    name="alimentos[{{ $alimento->nome }}][quantidade_consumida]"
+                                                    value="{{old("alimentos.{$alimento->nome}.quantidade_consumida")}}">
                                                 <div class="invalid-feedback">
-                                                    {{ $errors->first('quantidade_consumida') }}</div>
+                                                    {{ $errors->first("alimentos.{$alimento->nome}.quantidade_consumida") }}
+                                                </div>
                                             </div>
                                         </td>
                                     </tr>

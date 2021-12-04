@@ -17,6 +17,9 @@ class ConsumoContoller extends Controller
 
     public function store(ConsumoRequest $request)
     {
+
+        return $request->all();
+
         $requestData = $request->all();
         $data = ['data' =>$requestData['data_consumo']];
         $ref = array_keys($requestData);

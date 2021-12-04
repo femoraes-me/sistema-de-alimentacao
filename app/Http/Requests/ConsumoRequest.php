@@ -25,10 +25,8 @@ class ConsumoRequest extends FormRequest
     {
 
         return [
-            'data_consumo' => 'required',
-            'alimento_id' =>  'required',
-            'unidade' => 'required',
-            'quantidade' => ['required', 'numeric']
+            'data_consumo' => ['required', 'date'],
+            'alimentos.*.quantidade_consumida' => ['required', 'numeric']
         ];
     }
 
@@ -41,6 +39,6 @@ class ConsumoRequest extends FormRequest
 
     public function messages()
     {
-        return ['quantidade.required' => 'Campo obrigatótio'];
+        return ['alimentos.*.quantidade_consumida.required' => 'Campo obrigatório'];
     }
 }
