@@ -50,6 +50,5 @@ Route::prefix('escola')->name('escola.')->middleware('role:escola')->group(funct
 //Rotas do user tipo secretaria
 Route::prefix('secretaria')->name('secretaria.')->middleware('role:secretaria')->group(function () {
     Route::get('/escolas/acoes', [EscolaContoller::class, 'showActions'])->name('escolas.actions')->middleware('auth');
-    Route::delete('escolas/{escola}', [EscolaContoller::class, 'destroy'])->name('events.destroy')->middleware('auth');
     Route::resource('/escolas', EscolaContoller::class)->middleware('auth');
 });

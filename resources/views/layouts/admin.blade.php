@@ -84,6 +84,15 @@
                     </li>
                 @endif
 
+                @if (Auth::user()->role === 'secretaria')
+                    <li class="nav-item">
+                        <a class="nav-link icon-white" href="{{route('register')}}">
+                            <i class="fas fa-fw fa-user-edit fa-2x"></i>
+                            <span>Usuários</span>
+                        </a>
+                    </li>
+                @endif
+
 
                 <!-- Nav Item - Sair -->
 
