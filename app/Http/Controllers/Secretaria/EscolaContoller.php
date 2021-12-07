@@ -12,9 +12,13 @@ class EscolaContoller extends Controller
 {
     public function index()
     {
-        $escolas = Escola::paginate(10);
+
+
+        $escolas = Escola::query()->select('id', 'nome')->where('id','>', 1);
+
+       
         return view('secretaria.escolas.index', [
-            'escolas' => $escolas
+            'escolas' => $escolas->paginate(10)
         ]);
     }
 

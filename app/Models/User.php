@@ -23,8 +23,22 @@ class User extends Authenticatable
         'email',
         'password',
         'username',
+        'escola_id',
         'role'
     ];
+
+    //relantionships
+
+    public function escolas(){
+        return $this->belongsTo(Escola::class);
+    }
+
+    //mutators
+
+    public function setPasswordAttribute($value){
+        $this->attributes['password'] = bcrypt($value);
+    }
+
 
     /**
      * The attributes that should be hidden for serialization.
