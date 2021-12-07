@@ -16,9 +16,9 @@ class AddEscolaIdToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             Schema::table('users', function (Blueprint $table) {
-                $table->unsignedBigInteger('escola_id')->after('id');
+                $table->unsignedBigInteger('escolas_id')->after('id');
 
-                $table->foreign('escola_id')->references('id')->on("escolas");
+                $table->foreign('escolas_id')->references('id')->on("escolas");
             });
         });
     }

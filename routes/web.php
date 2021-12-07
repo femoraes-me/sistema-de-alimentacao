@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/cardapio', [CardapioController::class, 'store'])->name('cardapio.store');
         Route::get('/consumo', [ConsumoContoller::class, 'create'])->name('consumo.create');
         Route::post('/consumo', [ConsumoContoller::class, 'store'])->name('consumo.store');
+        Route::get('/editar', [EscolaContoller::class, 'editar'])->name('escola.editar');
     });
     
     //Rotas do user tipo secretaria

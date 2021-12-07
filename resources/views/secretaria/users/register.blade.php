@@ -86,8 +86,8 @@
 
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Escola</label>
-                                        <select class="form-control @error('escola_id') is-invalid @enderror" id="escola_id"
-                                            name="escola_id">
+                                        <select class="form-control @error('escolas_id') is-invalid @enderror" id="escolas_id"
+                                            name="escolas_id">
                                             <option value="">Selecione</option>
                                             @foreach ($escolas as $escola)
                                                 <option value="{{ $escola->id }}">{{ $escola->nome }}</option>

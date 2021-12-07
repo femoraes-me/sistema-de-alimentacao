@@ -44,19 +44,19 @@ class RegisterController extends Controller
     {
         $requestData = $request->all();
 
-        if ($requestData['role'] !== 'on') {
-            $requestData['role'] = 'escola';
-        } else {
+        if (array_key_exists('role', $requestData)) {
             $requestData['escola_id'] = 1;
             $requestData['role'] = 'secretaria';
+        } else {
+            $requestData['role'] = 'escola';
         }
 
-        return $requestData;
+       
 
 
 
-        // User::create($requestData);
-        // return redirect()->route('secretaria.usuarios.create')->with('success', 'Usuário criado com sucesso');
+        User::create($requestData);
+        return redirect()->route('secretaria.usuarios.create')->with('success', 'Usuário criado com sucesso');
     }
 
     /**

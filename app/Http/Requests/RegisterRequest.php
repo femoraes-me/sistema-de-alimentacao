@@ -27,12 +27,12 @@ class RegisterRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'username' => ['required', 'string', 'min:8', 'unique:users,usermane'],
-            'escola_id'=>'required_unless:role,on'
+            'username' => ['required', 'string', 'min:8', 'unique:users'],
+            'escolas_id'=>'required_unless:role,on'
         ];
     }
 
     public function messages(){
-        return ['escola_id.required_unless' => 'Por favor selecione uma escola'];
+        return ['escolas_id.required_unless' => 'Por favor selecione uma escola'];
     }
 }
