@@ -73,6 +73,16 @@
                     </li>
                 @endif
 
+                 <!-- Nav Item - Editar quantidade de alunos da escola -->
+                @if (Auth::user()->role !== 'secretaria')
+                    <li class="nav-item">
+                        <a class="nav-link icon-white" href="{{ route('escola.escola.info') }}">
+                            <i class="fas fa-fw fa-edit fa-2x"></i>
+                            <span>Info Escola</span>
+                        </a>
+                    </li>
+                @endif
+
                 <!-- Nav Item - escola -->
 
                 @if (Auth::user()->role == 'secretaria')

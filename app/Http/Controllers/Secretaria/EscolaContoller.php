@@ -37,7 +37,7 @@ class EscolaContoller extends Controller
         ]);
     }
 
-    public function editar()
+    public function show()
     {
         $userId = Auth::user()->id;
 
