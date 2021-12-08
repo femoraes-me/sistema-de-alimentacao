@@ -13,7 +13,7 @@
                 <div class="col-sm-4">
                     @if (Auth::user()->role == 'secretaria')
                         <a href="{{ route('alimentos.novo') }}" style="float: right"
-                            class="btn letra btn-color btn-icon-split icon-white">
+                            class="btn letra btn-primary btn-icon-split icon-white">
                             <span class="icon text-white-50">
                                 <i class="fas fa-apple-alt"></i>
                             </span>

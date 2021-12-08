@@ -8,9 +8,9 @@
         <div class="d-flex justify-content-between mb-2">
             <div class="d-flex flex-fill">
                 <input type="text" name="search" class="form-control mr-2 w-50" value="" placeholder="Pesquisar...">
-                <button type="submit" class="btn letra btn-color "><i class="fa fa-search"></i></button>
+                <button type="submit" class="btn letra btn-primary "><i class="fa fa-search"></i></button>
             </div>
-            <button class="btn letra btn-color font-weight-bolder ml-2" id="escolaCadastro">Cadastrar Escola</button>
+            <button class="btn letra btn-primary font-weight-bolder ml-2" id="escolaCadastro">Cadastrar Escola</button>
         </div>
 
         <!-- Register Escola -->

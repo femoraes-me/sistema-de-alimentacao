@@ -15,7 +15,7 @@
 
                 <div class="card p-4 col-10">
 
-                    <form action="{{ route('alimentos.cadastrar') }}" method="POST">
+                    <form action="{{ route('alimentos.cadastrar') }}" method="POST" id="formAlimentos">
                         @csrf
                         <div class="form-group">
                             <label for="alimento">Nome do alimento</label>
@@ -33,8 +33,13 @@
 
                         <div class="form-group">
                             <label for="alimento">Unidade de medida</label>
-                            <input type="text" id="unidade" name="unidade" class="form-control"
-                                placeholder="Ex: KG, g (grama), L (litro)">
+                            <select form="formAlimentos" id="unidade" name="unidade" class="form-control">
+                                <option value="kg">Quilograma</option>
+                                <option value="g">Grama</option>
+                                <option value="mg">Miligrama</option>
+                                <option value="L">Litro</option>
+                                <option value="mL">Miliitro</option>
+                            </select>
                         </div>
 
                         <div class="form-group">
@@ -49,7 +54,7 @@
                         </div>
 
                         <div class="form-group mt-4 d-flex justify-content-center">
-                            <input type="submit" value="Cadastrar" class="btn btn-color letra px-4 w-25">
+                            <input type="submit" value="Cadastrar" class="btn btn-success letra px-4 w-25">
                         </div>
 
                     </form>
