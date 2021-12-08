@@ -8,8 +8,18 @@ use Illuminate\Http\Request;
 class DadosEscolaController extends Controller
 {
     //
-    public function index()
+    public function exibeDados()
     {
-        return view('secretaria.dados-escola');
+        return view('secretaria.dados');
+    }
+
+    public function exibeConsumo()
+    {
+        return view('secretaria.escolas.consumo');
+    }
+
+    public function exibeCardapio()
+    {
+        return view('secretaria.escolas.cardapio');
     }
 }
