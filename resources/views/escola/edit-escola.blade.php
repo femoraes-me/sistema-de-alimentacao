@@ -51,7 +51,6 @@
 
             qtdAlunosInput.bind('change keyup input', function() {
                 if (oldData !== qtdAlunosInput.val()) {
-                    console.log(qtdAlunosInput.val());
                     $('#btnSave').removeAttr("disabled");
                 } else {
                     $('#btnSave').attr("disabled", 'true');

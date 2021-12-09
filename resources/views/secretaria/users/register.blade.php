@@ -9,7 +9,7 @@
 
         <div class="row justify-content-center">
             <div class="col-12">
-            @include('layouts._partials.return_message')</div>
+                @include('layouts._partials.return_message')</div>
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
@@ -67,7 +67,7 @@
                                             <label for="password">{{ __('Password') }}</label>
                                             <input id="password" type="password"
                                                 class="form-control @error('password') is-invalid @enderror" name="password"
-                                                 autocomplete="new-password">
+                                                autocomplete="new-password">
 
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
@@ -86,11 +86,12 @@
 
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Escola</label>
-                                        <select class="form-control @error('escolas_id') is-invalid @enderror" id="escolas_id"
-                                            name="escolas_id">
+                                        <select class="form-control @error('escolas_id') is-invalid @enderror"
+                                            id="escolas_id" name="escolas_id">
                                             <option value="">Selecione</option>
                                             @foreach ($escolas as $escola)
-                                                <option value="{{ $escola->id }}">{{ $escola->nome }}</option>
+                                                <option class="option" value="{{ $escola->id }}">
+                                                    {{ $escola->nome }}</option>
                                             @endforeach
                                         </select>
 
@@ -103,7 +104,7 @@
 
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" @if (array_key_exists('role', old()))
-                                            checked
+                                        checked
                                         @endif class="custom-control-input" id="userRole" name="role">
                                         <label class="custom-control-label" for="userRole">Pertence a SEDUC</label>
                                     </div>
@@ -121,4 +122,31 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+
+            //desativa o select
+            $('#userRole').click(function() {
+                if ($("#userRole").prop("checked")) {
+                    $("#escolas_id").attr("disabled", 'true');
+                } else {
+                    $("#escolas_id").removeAttr("disabled");
+                }
+            });
+
+            //
+            $('#escolas_id').click(function() {
+                if ($(".option").prop("selected")) {
+                    $("#userRole").attr('disabled', 'true');
+                } else {
+                    $("#userRole").removeAttr('disabled');
+                }
+
+            });
+
+        });
+    </script>
 @endsection
