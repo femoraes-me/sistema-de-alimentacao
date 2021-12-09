@@ -50,11 +50,7 @@ class RegisterController extends Controller
         } else {
             $requestData['role'] = 'escola';
         }
-
        
-
-
-
         User::create($requestData);
         return redirect()->route('secretaria.usuarios.create')->with('success', 'Usuário criado com sucesso');
     }

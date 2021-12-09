@@ -58,7 +58,7 @@ class CreateSecUser extends Command
         User::create([
             'name' => $name,
             'email' => $email,
-            'password' => Hash::make($password),
+            'password' => $password,
             'username' => $username,
             'escolas_id' => '1',
             'role' => 'secretaria'
