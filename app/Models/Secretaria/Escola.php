@@ -15,4 +15,10 @@ class Escola extends Model
         'nome',
         'qtd_alunos'
     ];
+
+    //relationships
+
+    public function users(){
+        return $this->hasMany(User::class);
+    }
 }
