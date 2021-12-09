@@ -22,11 +22,11 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Alimento</th>
-                                    <th>Unidade</th>
-                                    <th>Quantidade</th>
+                                    <th class="text-center">Unidade</th>
+                                    <th class="text-center">Quantidade</th>
                                     @if (Auth::user()->role == 'secretaria')
-                                        <th>Editar</th>
-                                        <th>Excluir</th>
+                                        <th class="text-center">Editar</th>
+                                        <th class="text-center">Excluir</th>
                                     @endif
                                 </tr>
                             </thead>
@@ -34,17 +34,27 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Alimento</th>
-                                    <th>Unidade</th>
-                                    <th>Quantidade</th>
+                                    <th class="text-center">Unidade</th>
+                                    <th class="text-center">Quantidade</th>
                                     @if (Auth::user()->role == 'secretaria')
-                                        <th>Editar</th>
-                                        <th>Excluir</th>
+                                        <th class="text-center">Editar</th>
+                                        <th class="text-center">Excluir</th>
                                     @endif
                                 </tr>
                             </tfoot>
                             <tbody>
                                 @foreach ($alimentos as $alimento)
                                     <tr>
+<<<<<<< HEAD
+                                        <td>{{ $estoque->id }}</td>
+                                        <td>{{ $estoque->alimentos->nome }}</td>
+                                        <td class="text-center">{{ $estoque->alimentos->unidade }}</td>
+                                        <td class="text-center">{{ $estoque->quantidade }}</td>
+                                        @if (Auth::user()->role == 'secretaria')
+                                            <td class="text-center"> <a href="{{ route('alimentos.editar', $estoque->id) }}"><i
+                                                        class="far fa-edit text-purple"></i></a>
+                                            <td class="text-center"> <a href="{{ route('alimentos.apagar', $estoque->id) }}"><i
+=======
                                         <td>{{ $alimento->id }}</td>
                                         <td>{{ $alimento->nome }}</td>
                                         <td class="text-center">{{ $alimento->unidade }}</td>
@@ -53,6 +63,7 @@
                                             <td> <a href="{{ route('alimentos.editar', $alimento->id) }}"><i
                                                         class="far fa-edit text-purple"></i></a>
                                             <td> <a href="{{ route('alimentos.apagar', $alimento->id) }}"><i
+>>>>>>> 6e59700973ed0aed5b9ecf1dcadb136426cbbb04
                                                         class="fas fa-trash text-red"></i></a>
                                         @endif
                                     </tr>
