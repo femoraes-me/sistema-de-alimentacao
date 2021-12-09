@@ -48,9 +48,9 @@
                                         <td>{{ $alimento->nome }}</td>
                                         <td class="text-center">{{ $alimento->unidade }}</td>
                                         @if (Auth::user()->role == 'secretaria')
-                                            <td> <a href="{{ route('alimentos.editar', $alimento->id) }}"><i
+                                            <td class="text-center"> <a href="{{ route('alimentos.editar', $alimento->id) }}"><i
                                                         class="far fa-edit text-purple"></i></a>
-                                            <td> <a href="{{ route('alimentos.apagar', $alimento->id) }}"><i
+                                            <td class="text-center"> <a href="{{ route('alimentos.apagar', $alimento->id) }}"><i
                                                         class="fas fa-trash text-red"></i></a>
                                         @endif
                                     </tr>
