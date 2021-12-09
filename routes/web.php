@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Escola\CardapioController;
-use App\Http\Controllers\Escola\ConsumoContoller;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Escola\{CardapioController, ConsumoContoller};
 use App\Http\Controllers\Escola\AlimentosController;
-use App\Http\Controllers\Secretaria\DadosEscolaController;
-use App\Http\Controllers\Secretaria\EscolaContoller;
+use App\Http\Controllers\Secretaria\{DadosEscolaController, EscolaContoller};
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Secretaria\Auth\RegisterController as User;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,13 +38,6 @@ Route::get('alimentos/{id}/apagar', [AlimentosController::class, 'destroy'])->na
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //
-//Rotas do user tipo escola
-Route::prefix('escola')->name('escola.')->middleware('role:escola')->group(function () {
-    Route::get('/cardapio', [CardapioController::class, 'create'])->name('cardapio.create')->middleware('auth');
-    Route::post('/cardapio', [CardapioController::class, 'store'])->name('cardapio.store')->middleware('auth');
-    Route::get('/consumo', [ConsumoContoller::class, 'create'])->name('consumo.create')->middleware('auth');
-    Route::post('/consumo', [ConsumoContoller::class, 'store'])->name('consumo.store')->middleware('auth');
-});
 
 //Rotas do user tipo secretaria
 Route::prefix('secretaria')->name('secretaria.')->middleware('role:secretaria')->group(function () {
@@ -55,4 +48,24 @@ Route::prefix('secretaria')->name('secretaria.')->middleware('role:secretaria')-
     Route::delete('escolas/{escola}', [EscolaContoller::class, 'destroy'])->name('events.destroy')->middleware('auth');
     Route::get('/escolas/{id}/acoes/entrada', [DadosEscolaController::class, 'exibeEntrada'])->name('escolas.actions.entrada')->middleware('auth');
     Route::resource('/escolas', EscolaContoller::class)->middleware('auth');
+});
+
+Route::middleware('auth')->group(function () {
+    //Rotas do user tipo escola
+    Route::prefix('escola')->name('escola.')->middleware('role:escola')->group(function () {
+        Route::get('/cardapio', [CardapioController::class, 'create'])->name('cardapio.create');
+        Route::post('/cardapio', [CardapioController::class, 'store'])->name('cardapio.store');
+        Route::get('/consumo', [ConsumoContoller::class, 'create'])->name('consumo.create');
+        Route::post('/consumo', [ConsumoContoller::class, 'store'])->name('consumo.store');
+        Route::get('/info', [EscolaContoller::class, 'edit'])->name('info');
+        Route::put('/atualizar/{id}', [EscolaContoller::class, 'update'])->name('update');
+    });
+
+    //Rotas do user tipo secretaria
+    Route::prefix('secretaria')->name('secretaria.')->middleware('role:secretaria')->group(function () {
+        Route::get('/escolas/acoes', [EscolaContoller::class, 'showActions'])->name('escolas.actions');
+        //Route::get('/usuario', [RegisterController::class, 'index'])->name('usuario/index')->middleware('auth');
+        Route::resource('/escolas', EscolaContoller::class)->except(['update', 'edit']);
+        Route::resource('/usuarios', User::class);
+    });
 });

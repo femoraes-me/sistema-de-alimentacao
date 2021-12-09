@@ -5,6 +5,8 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Secretaria\Escola;
+use GuzzleHttp\Promise\Create;
 
 class CreateSecUser extends Command
 {
@@ -39,6 +41,15 @@ class CreateSecUser extends Command
      */
     public function handle()
     {
+        $escolas = Escola::all();
+
+        if ($escolas->isEmpty()) {
+            Escola::create([
+                'nome' => 'Secretaria de Educação',
+                'qtd_alunos' => '0'
+            ]);
+        }
+
         $name = $this->argument('name');
         $email = $this->argument('email');
         $password = $this->argument('password');
@@ -49,6 +60,7 @@ class CreateSecUser extends Command
             'email' => $email,
             'password' => Hash::make($password),
             'username' => $username,
+            'escola_id' => '1',
             'role' => 'secretaria'
         ]);
 

@@ -25,7 +25,7 @@ class Role
             }
 
             if ($userRole === 'secretaria') {
-                return redirect()->route('secretaria.escolas.index');
+                return redirect()->route('alimentos');
             }
         }
         return $next($request);
