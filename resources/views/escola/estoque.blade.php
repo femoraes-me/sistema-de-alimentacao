@@ -23,7 +23,6 @@
                                     <th>ID</th>
                                     <th>Alimento</th>
                                     <th class="text-center">Unidade</th>
-                                    <th class="text-center">Quantidade</th>
                                     @if (Auth::user()->role == 'secretaria')
                                         <th class="text-center">Editar</th>
                                         <th class="text-center">Excluir</th>
@@ -35,7 +34,7 @@
                                     <th>ID</th>
                                     <th>Alimento</th>
                                     <th class="text-center">Unidade</th>
-                                    <th class="text-center">Quantidade</th>
+
                                     @if (Auth::user()->role == 'secretaria')
                                         <th class="text-center">Editar</th>
                                         <th class="text-center">Excluir</th>
@@ -48,7 +47,6 @@
                                         <td>{{ $alimento->id }}</td>
                                         <td>{{ $alimento->nome }}</td>
                                         <td class="text-center">{{ $alimento->unidade }}</td>
-                                        <td class="text-center">{{ $alimento->quantidade }}</td>
                                         @if (Auth::user()->role == 'secretaria')
                                             <td> <a href="{{ route('alimentos.editar', $alimento->id) }}"><i
                                                         class="far fa-edit text-purple"></i></a>
