@@ -21,13 +21,17 @@
                 <div class="card-body text-center">
                     <div class="row mb-4">
                         <div class="col-4">
-                            <a href="{{ route('secretaria.escolas.actions.consumo') }}" class="btn btn-primary p-5">Consumo Diário</a>
+                            <a href="{{ route('secretaria.escolas.actions.consumo', $escola->id) }}"
+                                class="btn btn-primary p-5">Consumo Diário</a>
                         </div>
                         <div class="col-4">
-                            <a href="{{ route('secretaria.escolas.actions.cardapio') }}" class="btn btn-primary p-5">Cardápio Diário</a>
+                            <a href="{{ route('secretaria.escolas.actions.cardapio', $escola->id) }}"
+                                class="btn btn-primary p-5">Cardápio Diário</a>
                         </div>
                         <div class="col-4">
-                            <a href="" class="btn btn-primary p-5">Entrada de Alimentos</a>
+                            <a href="{{ route('secretaria.escolas.actions.entrada', $escola->id) }}"
+                                class="btn btn-primary p-5">Entrada
+                                de Alimentos</a>
                         </div>
                     </div>
                     <div class="row mt-4 mb-4">
@@ -36,7 +40,8 @@
                             <a href="" class="btn btn-primary p-5">Relatório da Escola</a>
                         </div>
                         <div class="col-4">
-                            <a href="{{ route('secretaria.escolas.actions.dados') }}" class="btn btn-primary p-5">Dados da Escola</a>
+                            <a href="{{ route('secretaria.escolas.actions.dados', $escola->id) }}"
+                                class="btn btn-primary p-5">Dados da Escola</a>
                         </div>
                         <div class="col-2"></div>
                     </div>

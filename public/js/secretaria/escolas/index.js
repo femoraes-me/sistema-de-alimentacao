@@ -9,7 +9,7 @@ $('.close').on('click', function(event) {
 
 //cadastra escola 
 $(document).on('click', '#btnCadastrar', function(event) {
-    e.preventDefault();
+    event.preventDefault();
     var data = {
         'nome': $('#nome').val(),
         'qtd_alunos': $('#qtd_alunos').val()

@@ -7,20 +7,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Secretaria\Escola;
 use App\Http\Requests\EscolaRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class EscolaContoller extends Controller
 {
     public function index()
     {
-        $escolas = Escola::paginate(10);
+        $escolas = Escola::query()->select('id', 'nome')->where('id', '>', 1);
+
         return view('secretaria.escolas.index', [
-            'escolas' => $escolas
+            'escolas' => $escolas->paginate(10)
         ]);
     }
 
-    public function showActions()
+    public function showActions($id)
     {
-        return view('secretaria.escolas.menu-acoes-escolas');
+        $escola = Escola::find($id);
+        return view('secretaria.escolas.menu-acoes-escolas', compact('escola'));
     }
 
     public function store(EscolaRequest $request)
@@ -34,7 +38,42 @@ class EscolaContoller extends Controller
         ]);
     }
 
-    
+    public function edit()
+    {
+        $userId = Auth::user()->id;
+
+        $escola = User::find($userId)->escolas()->select('id', 'nome', 'qtd_alunos')->get();
+
+        return  view('escola.edit-escola', ['escola' => $escola]);
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $validator = Validator::make(
+            /*dados a ser validados*/
+            $request->all(),
+            /*rules*/
+            ['qtd_alunos' => [
+                'required',
+                'numeric',
+                'integer',
+                'gt:0'
+            ]],
+            /*messages*/
+            [],
+            /*attributes*/
+            ['qtd_alunos' => 'quantidade de alunos']
+        );
+
+        if ($validator->fails()) {
+            return redirect('escola/info')
+                ->withErrors($validator);
+        }
+        return $validator->validated(); //Escola::findOrFail($id)->update($request->validate());
+        // $escola->update($request->all());
+        // return redirect()->route('escola.info')->with('success', 'Quantidade de alunos atualizada');
+    }
 
 
     public function destroy(Escola $escola)

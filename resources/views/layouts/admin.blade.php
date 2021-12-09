@@ -43,6 +43,12 @@
                             <span>Home</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link icon-white" href="{{ route('alimentos.novo') }}">
+                            <i class="fas fa-fw fa-apple-alt fa-2x"></i>
+                            <span>Cadastrar Alimentos</span>
+                        </a>
+                    </li>
                 @else
                     <li class="nav-item">
                         <a class="nav-link icon-white" href="{{ route('alimentos') }}">
@@ -50,6 +56,7 @@
                             <span>Estoque de Alimentos</span>
                         </a>
                     </li>
+
                 @endif
 
 
@@ -73,6 +80,16 @@
                     </li>
                 @endif
 
+                 <!-- Nav Item - Editar quantidade de alunos da escola -->
+                @if (Auth::user()->role !== 'secretaria')
+                    <li class="nav-item">
+                        <a class="nav-link icon-white" href="{{ route('escola.info') }}">
+                            <i class="fas fa-fw fa-edit fa-2x"></i>
+                            <span>Info Escola</span>
+                        </a>
+                    </li>
+                @endif
+
                 <!-- Nav Item - escola -->
 
                 @if (Auth::user()->role == 'secretaria')
@@ -80,6 +97,15 @@
                         <a class="nav-link icon-white" href="{{ route('secretaria.escolas.index') }}">
                             <i class="fas fa-fw fa-school fa-2x"></i>
                             <span>Escolas</span>
+                        </a>
+                    </li>
+                @endif
+
+                @if (Auth::user()->role === 'secretaria')
+                    <li class="nav-item">
+                        <a class="nav-link icon-white" href="{{route('secretaria.usuarios.create')}}">
+                            <i class="fas fa-users"></i>
+                            <span>Usuários</span>
                         </a>
                     </li>
                 @endif

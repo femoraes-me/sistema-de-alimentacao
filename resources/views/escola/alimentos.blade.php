@@ -21,36 +21,17 @@
                             <label for="alimento">Nome do alimento</label>
                             <input type="text" id="alimento" name="alimento" class="form-control"
                                 placeholder="Ex: Arroz, Feijão, Óleo">
-                            <datalist id="alimento">
-                                <option value="Chocolate">
-                                <option value="Coconut">
-                                <option value="Mint">
-                                <option value="Strawberry">
-                                <option value="Vanilla">
-                            </datalist>
-
                         </div>
 
                         <div class="form-group">
                             <label for="alimento">Unidade de medida</label>
                             <select form="formAlimentos" id="unidade" name="unidade" class="form-control">
-                                <option value="kg">Quilograma</option>
+                                <option value="KG">Quilograma</option>
                                 <option value="g">Grama</option>
                                 <option value="mg">Miligrama</option>
                                 <option value="L">Litro</option>
                                 <option value="mL">Miliitro</option>
                             </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="alimento">Quantidade do alimento</label>
-                            <input type="text" id="quantidade" name="quantidade" class="form-control"
-                                placeholder="Ex: 10, 100 (usar apenas números)">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="data">Data</label>
-                            <input type="date" id="data" name="data" class="form-control">
                         </div>
 
                         <div class="form-group mt-4 d-flex justify-content-center">

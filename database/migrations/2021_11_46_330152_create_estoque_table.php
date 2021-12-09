@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateEstoqueTable extends Migration
 {
-    
+
     public function up()
     {
         Schema::create('estoque', function (Blueprint $table) {
@@ -14,12 +14,14 @@ class CreateEstoqueTable extends Migration
             $table->date('data');
             $table->integer('quantidade');
             $table->unsignedBigInteger('alimento_id');
+            $table->unsignedBigInteger('escola_id');
             $table->timestamps();
             $table->foreign('alimento_id')->references('id')->on('alimentos');
+            $table->foreign('escola_id')->references('id')->on('escolas');
         });
     }
 
-    
+
     public function down()
     {
         Schema::dropIfExists('estoque');

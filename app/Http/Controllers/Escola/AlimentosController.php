@@ -17,9 +17,9 @@ class AlimentosController extends Controller
     public function index()
     {
 
-        $estoques = Estoque::with('alimentos')->get();
+        $alimentos = Alimento::all();
 
-        return view('escola.estoque', compact('estoques'));
+        return view('escola.estoque', compact('alimentos'));
     }
 
     /**
@@ -40,7 +40,7 @@ class AlimentosController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        //dd($request->all());
 
         $requestData = $request->all(); // pega todos os dados do formulario  e armazena na variavel requestData
         $alimento = new Alimento(); // cria um novo objeto do tipo alimento
@@ -48,13 +48,6 @@ class AlimentosController extends Controller
         $alimento->nome = $requestData['alimento']; // armazena o nome do alimento no atributo nome do objeto alimento
         $alimento->unidade = $requestData['unidade']; // armazena a unidade do alimento no atributo unidade do objeto alimento
         $alimento->save(); // salva o objeto alimento no banco de dados
-
-        $estoque = new Estoque();
-
-        $estoque->data = $requestData['data'];
-        $estoque->quantidade = $requestData['quantidade'];
-        $estoque->alimento_id = $alimento->id;
-        $estoque->save();
 
         return redirect()->route('alimentos'); // redireciona para a pagina de estoque
     }
@@ -78,11 +71,11 @@ class AlimentosController extends Controller
      */
     public function edit($id)
     {
-        $estoque = Estoque::with('alimentos')->where('id','=',$id)->get()[0];
+        $alimento = Alimento::findOrFail($id);
 
         // dd($estoque);
 
-        return view('escola.alimentos-editar', compact('estoque') );
+        return view('escola.alimentos-editar', compact('alimento'));
     }
 
     /**
@@ -94,16 +87,14 @@ class AlimentosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $estoque = Estoque::with('alimentos')->where('id','=',$id)->get()[0];
+        //dd($request->all());
+        $alimento = Alimento::findOrFail($id);
         $requestData = $request->all();
 
-        $estoque->quantidade =  $requestData['quantidade'];
-        $estoque->alimentos->nome = $requestData['alimento'];
-        $estoque->alimentos->unidade = $requestData['unidade'];
-        $estoque->data = $requestData['data'];
-        $estoque->save();
-        $estoque->alimentos->save();
-        
+        $alimento->nome = $requestData['alimento'];
+        $alimento->unidade = $requestData['unidade'];
+        $alimento->save();
+
         return redirect()->route('alimentos');
     }
 
@@ -115,8 +106,8 @@ class AlimentosController extends Controller
      */
     public function destroy($id)
     {
-        $estoque = Estoque::with('alimentos')->where('id','=',$id)->get()[0];
-        $estoque->delete();
+        $alimento = Alimento::findOrFail($id);
+        $alimento->delete();
         return redirect()->route('alimentos');
     }
 }
