@@ -11,14 +11,25 @@
             </h1>
         </div>
 
+        @include('layouts._partials.return_message')
+
         <div class="row justify-content-center">
             <div class="col">
-                <form action="">
+                <form action="{{ route('escola.update', Auth::user()->escolas_id) }}" method="POST" autocomplete="off">
+                    @method('PUT')
+                    @csrf
                     <div class="card pb-4 px-3">
                         <div class="form-row justify-content-center">
                             <div class="form-group p-4 col-8">
                                 <label for="qtd_alunos" class="">Quantidade de alunos</label>
-                                <input type="text" id="qtd_alunos" value="{{ $escola->qtd_alunos }}" class="form-control">
+                                <input type="text" id="qtd_alunos" name="qtd_alunos" value="{{ $escola->qtd_alunos }}"
+                                    class="form-control @error('qtd_alunos') is-invalid @enderror">
+
+                                @error('qtd_alunos')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group d-flex justify-content-center">

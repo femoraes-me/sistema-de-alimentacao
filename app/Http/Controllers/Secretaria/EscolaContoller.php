@@ -37,13 +37,41 @@ class EscolaContoller extends Controller
         ]);
     }
 
-    public function show()
+    public function edit()
     {
         $userId = Auth::user()->id;
 
-        $escola = User::find($userId)->escolas()->select('nome', 'qtd_alunos')->get();
+        $escola = User::find($userId)->escolas()->select('id', 'nome', 'qtd_alunos')->get();
 
-        return  view('escola.show-escola', ['escola' => $escola]);
+        return  view('escola.edit-escola', ['escola' => $escola]);
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $validator = Validator::make(
+            /*dados a ser validados*/
+            $request->all(),
+            /*rules*/
+            ['qtd_alunos' => [
+                'required',
+                'numeric',
+                'integer',
+                'gt:0'
+            ]],
+            /*messages*/
+            [],
+            /*attributes*/
+            ['qtd_alunos' => 'quantidade de alunos']
+        );
+
+        if ($validator->fails()) {
+            return redirect('escola/info')
+                ->withErrors($validator);
+        }
+        return $validator->validated(); //Escola::findOrFail($id)->update($request->validate());
+        // $escola->update($request->all());
+        // return redirect()->route('escola.info')->with('success', 'Quantidade de alunos atualizada');
     }
 
 

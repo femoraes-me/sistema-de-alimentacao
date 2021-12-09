@@ -47,14 +47,15 @@ Route::middleware('auth')->group(function () {
         Route::post('/cardapio', [CardapioController::class, 'store'])->name('cardapio.store');
         Route::get('/consumo', [ConsumoContoller::class, 'create'])->name('consumo.create');
         Route::post('/consumo', [ConsumoContoller::class, 'store'])->name('consumo.store');
-        Route::get('/info', [EscolaContoller::class, 'show'])->name('escola.info');
+        Route::get('/info', [EscolaContoller::class, 'edit'])->name('info');
+        Route::put('/atualizar/{id}', [EscolaContoller::class, 'update'])->name('update');
     });
     
     //Rotas do user tipo secretaria
     Route::prefix('secretaria')->name('secretaria.')->middleware('role:secretaria')->group(function () {
         Route::get('/escolas/acoes', [EscolaContoller::class, 'showActions'])->name('escolas.actions');
         //Route::get('/usuario', [RegisterController::class, 'index'])->name('usuario/index')->middleware('auth');
-        Route::resource('/escolas', EscolaContoller::class);
+        Route::resource('/escolas', EscolaContoller::class)->except(['update', 'edit']);
         Route::resource('/usuarios', User::class);
     });
 });
