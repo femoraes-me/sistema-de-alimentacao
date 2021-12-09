@@ -70,9 +70,8 @@ class EscolaContoller extends Controller
             return redirect('escola/info')
                 ->withErrors($validator);
         }
-        return $validator->validated(); //Escola::findOrFail($id)->update($request->validate());
-        // $escola->update($request->all());
-        // return redirect()->route('escola.info')->with('success', 'Quantidade de alunos atualizada');
+        Escola::findOrFail($id)->update($validator->validate());
+        return redirect()->route('escola.info')->with('success', 'Quantidade de alunos atualizada');
     }
 
 

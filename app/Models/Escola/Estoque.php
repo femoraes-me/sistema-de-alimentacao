@@ -5,6 +5,7 @@ namespace App\Models\Escola;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Escola\Alimento;
+use App\Models\Secretaria\Escola;
 
 class Estoque extends Model
 {
@@ -21,7 +22,11 @@ class Estoque extends Model
     public function alimentos()
     {
         return $this->belongsTo(Alimento::class, 'alimento_id', 'id');
-        // return $this->hasOne(Alimento::class);
+    }
+
+    public function escolas()
+    {
+        return $this->belongsTo(Escola::class, 'escola_id', 'id');
     }
 
     public function getDataAttribute($value)
