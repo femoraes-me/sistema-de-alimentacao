@@ -21,4 +21,9 @@ class Escola extends Model
     public function users(){
         return $this->hasMany(User::class);
     }
+
+    //mutators
+    public function setNomeAttribute($value){
+        $this->attributes['nome'] = strtoupper($value);
+    }
 }
