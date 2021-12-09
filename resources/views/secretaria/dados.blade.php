@@ -13,12 +13,12 @@
         <div class="container-fluid mt-4">
             @csrf
             <div class="card border-light shadow pb-4 px-3">
-                <div class="form-group p-4 col-10">
+                <div class="form-group p-4 col-12">
                     <label for="" class="">Quantidade de alunos</label>
-                    <input type="text" class="form-control">
+                    <input readonly value="{{ $escola->qtd_alunos }}" type="text" class="form-control">
                 </div>
                 <div class="form-group mt-4 d-flex justify-content-center">
-                    <input type="submit" value="Voltar" class="btn btn-color letra px-4 w-25">
+                    <button onclick="history.back()" class="btn btn-primary letra px-4 w-25">Voltar</button>
                 </div>
             </div>
         </div>

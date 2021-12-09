@@ -91,7 +91,7 @@
                                                 <i class="fa fa-trash "></i>
                                             </button>
                                         </form>
-                                        <a href="{{ route('secretaria.escolas.actions') }}"
+                                        <a href="{{ route('secretaria.escolas.actions', $escola->id) }}"
                                             class="btn btn-sm btn-secondary ml-2">
                                             <i class="fas fa-ellipsis-h"></i>
                                         </a>

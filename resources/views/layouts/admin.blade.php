@@ -43,6 +43,12 @@
                             <span>Home</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link icon-white" href="{{ route('alimentos.novo') }}">
+                            <i class="fas fa-fw fa-apple-alt fa-2x"></i>
+                            <span>Cadastrar Alimentos</span>
+                        </a>
+                    </li>
                 @else
                     <li class="nav-item">
                         <a class="nav-link icon-white" href="{{ route('alimentos') }}">
@@ -50,6 +56,7 @@
                             <span>Estoque de Alimentos</span>
                         </a>
                     </li>
+
                 @endif
 
 

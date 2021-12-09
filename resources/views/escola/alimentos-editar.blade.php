@@ -6,7 +6,7 @@
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="text-center">
-                    <h1 class="h3 text-gray-900 mb-4">Editar alimentos</h1>
+                    <h1 class="h3 text-gray-900 mb-4">Editar alimento</h1>
                 </div>
 
                 @if (session()->has('message'))
@@ -15,12 +15,12 @@
 
                 <div class="card p-4 col-10">
 
-                    <form action="{{ route('alimentos.salvar', $estoque->id) }}" method="POST">
+                    <form action="{{ route('alimentos.salvar', $alimento->id) }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="alimento">Nome do alimento</label>
                             <input type="text" id="alimento" name="alimento" class="form-control"
-                                placeholder="Ex: Arroz, Feijão, Óleo" value="{{ $estoque->alimentos->nome }}">
+                                placeholder="Ex: Arroz, Feijão, Óleo" value="{{ $alimento->nome }}">
                             <datalist id="alimento">
                                 <option value="Chocolate">
                                 <option value="Coconut">
@@ -33,22 +33,13 @@
 
                         <div class="form-group">
                             <label for="alimento">Unidade de medida</label>
-                            <input type="text" id="unidade" name="unidade" class="form-control"
-                                placeholder="Ex: KG, g (grama), L (litro)"
-                                value="{{ $estoque->alimentos->unidade }}">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="alimento">Quantidade do alimento</label>
-                            <input type="text" id="quantidade" name="quantidade" class="form-control"
-                                placeholder="Ex: 10, 100 (usar apenas números)"
-                                value="{{ $estoque->quantidade }}">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="data">Data</label>
-                            <input type="date" id="data" name="data" class="form-control"
-                            value="{{ $estoque->data }}">
+                            <select id="unidade" name="unidade" class="form-control">
+                                <option value="KG" {{ $alimento->unidade == 'KG' ? 'selected' : '' }}>Quilograma</option>
+                                <option value="g" {{ $alimento->unidade == 'g' ? 'selected' : '' }}>Grama</option>
+                                <option value="mg" {{ $alimento->unidade == 'mg' ? 'selected' : '' }}>Miligrama</option>
+                                <option value="L" {{ $alimento->unidade == 'L' ? 'selected' : '' }}>Litro</option>
+                                <option value="mL" {{ $alimento->unidade == 'mL' ? 'selected' : '' }}>Miliitro</option>
+                            </select>
                         </div>
 
                         <div class="form-group mt-4 d-flex justify-content-center">

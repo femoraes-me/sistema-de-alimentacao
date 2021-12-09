@@ -8,9 +8,8 @@
             <div class="form-group row">
                 <div class="col-sm-8 mb-3 mb-sm-0">
                     <!-- Page Heading -->
-                    <h1 class="h2 mb-2 text-gray-800">Alimentos</h1>
+                    <h1 class="h2 mb-2 text-gray-800">Entrada de Alimentos: {{ $escola->nome }}</h1>
                 </div>
-
             </div>
 
             <!-- DataTales Example -->
@@ -43,16 +42,16 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                                @foreach ($alimentos as $alimento)
+                                @foreach ($estoques as $estoque)
                                     <tr>
-                                        <td>{{ $alimento->id }}</td>
-                                        <td>{{ $alimento->nome }}</td>
-                                        <td class="text-center">{{ $alimento->unidade }}</td>
-                                        <td class="text-center">{{ $alimento->quantidade }}</td>
+                                        <td>{{ $estoque->id }}</td>
+                                        <td>{{ $estoque->alimentos->nome }}</td>
+                                        <td class="text-center">{{ $estoque->alimentos->unidade }}</td>
+                                        <td class="text-center">{{ $estoque->quantidade }}</td>
                                         @if (Auth::user()->role == 'secretaria')
-                                            <td> <a href="{{ route('alimentos.editar', $alimento->id) }}"><i
+                                            <td> <a href="{{ route('alimentos.editar', $estoque->id) }}"><i
                                                         class="far fa-edit text-purple"></i></a>
-                                            <td> <a href="{{ route('alimentos.apagar', $alimento->id) }}"><i
+                                            <td> <a href="{{ route('alimentos.apagar', $estoque->id) }}"><i
                                                         class="fas fa-trash text-red"></i></a>
                                         @endif
                                     </tr>

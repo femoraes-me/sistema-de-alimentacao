@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Auth;
 */
 // ROTA INICIAL
 Route::get('/', function () {
-    return Auth::user()->role == 'secretaria' ? redirect('alimentos') : redirect('alimentos');
+    return Auth::user()->role == 'escola' ? redirect('alimentos') : redirect('alimentos');
 })->middleware('auth');
 
 Auth::routes();
@@ -35,7 +35,7 @@ Route::get('alimentos/{id}/apagar', [AlimentosController::class, 'destroy'])->na
 
 //DADOS ESCOLA
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //
 //Rotas do user tipo escola
@@ -48,10 +48,11 @@ Route::prefix('escola')->name('escola.')->middleware('role:escola')->group(funct
 
 //Rotas do user tipo secretaria
 Route::prefix('secretaria')->name('secretaria.')->middleware('role:secretaria')->group(function () {
-    Route::get('/escolas/id/acoes', [EscolaContoller::class, 'showActions'])->name('escolas.actions')->middleware('auth');
-    Route::get('/escolas/id/acoes/consumo', [DadosEscolaController::class, 'exibeConsumo'])->name('escolas.actions.consumo')->middleware('auth');
-    Route::get('/escolas/id/acoes/cardapio', [DadosEscolaController::class, 'exibeCardapio'])->name('escolas.actions.cardapio')->middleware('auth');
-    Route::get('/escolas/id/acoes/dados', [DadosEscolaController::class, 'exibeDados'])->name('escolas.actions.dados')->middleware('auth');
+    Route::get('/escolas/{id}/acoes', [EscolaContoller::class, 'showActions'])->name('escolas.actions')->middleware('auth');
+    Route::get('/escolas/{id}/acoes/consumo', [DadosEscolaController::class, 'exibeConsumo'])->name('escolas.actions.consumo')->middleware('auth');
+    Route::get('/escolas/{id}/acoes/cardapio', [DadosEscolaController::class, 'exibeCardapio'])->name('escolas.actions.cardapio')->middleware('auth');
+    Route::get('/escolas/{id}/acoes/dados', [DadosEscolaController::class, 'exibeDados'])->name('escolas.actions.dados')->middleware('auth');
     Route::delete('escolas/{escola}', [EscolaContoller::class, 'destroy'])->name('events.destroy')->middleware('auth');
+    Route::get('/escolas/{id}/acoes/entrada', [DadosEscolaController::class, 'exibeEntrada'])->name('escolas.actions.entrada')->middleware('auth');
     Route::resource('/escolas', EscolaContoller::class)->middleware('auth');
 });

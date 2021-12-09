@@ -18,9 +18,10 @@ class EscolaContoller extends Controller
         ]);
     }
 
-    public function showActions()
+    public function showActions($id)
     {
-        return view('secretaria.escolas.menu-acoes-escolas');
+        $escola = Escola::find($id);
+        return view('secretaria.escolas.menu-acoes-escolas', compact('escola'));
     }
 
     public function store(EscolaRequest $request)
@@ -34,7 +35,7 @@ class EscolaContoller extends Controller
         ]);
     }
 
-    
+
 
 
     public function destroy(Escola $escola)
