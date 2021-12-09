@@ -21,7 +21,7 @@ use App\Http\Controllers\Secretaria\Auth\RegisterController as User;
 */
 // ROTA INICIAL
 Route::get('/', function () {
-    return Auth::user()->role == 'escola' ? redirect('alimentos') : redirect('alimentos');
+    return Auth::user()->role == 'secretaria' ? redirect('alimentos') : redirect('alimentos');
 })->middleware('auth');
 
 Auth::routes();
@@ -63,7 +63,13 @@ Route::middleware('auth')->group(function () {
 
     //Rotas do user tipo secretaria
     Route::prefix('secretaria')->name('secretaria.')->middleware('role:secretaria')->group(function () {
-        Route::get('/escolas/acoes', [EscolaContoller::class, 'showActions'])->name('escolas.actions');
+        Route::get('/escolas/{id}/acoes', [EscolaContoller::class, 'showActions'])->name('escolas.actions')->middleware('auth');
+        Route::get('/escolas/{id}/acoes/consumo', [DadosEscolaController::class, 'exibeConsumo'])->name('escolas.actions.consumo')->middleware('auth');
+        Route::get('/escolas/{id}/acoes/cardapio', [DadosEscolaController::class, 'exibeCardapio'])->name('escolas.actions.cardapio')->middleware('auth');
+        Route::get('/escolas/{id}/acoes/dados', [DadosEscolaController::class, 'exibeDados'])->name('escolas.actions.dados')->middleware('auth');
+        Route::delete('escolas/{escola}', [EscolaContoller::class, 'destroy'])->name('events.destroy')->middleware('auth');
+        Route::get('/escolas/{id}/acoes/entrada', [DadosEscolaController::class, 'exibeEntrada'])->name('escolas.actions.entrada')->middleware('auth');
+        Route::resource('/escolas', EscolaContoller::class)->middleware('auth');
         //Route::get('/usuario', [RegisterController::class, 'index'])->name('usuario/index')->middleware('auth');
         Route::resource('/escolas', EscolaContoller::class)->except(['update', 'edit']);
         Route::resource('/usuarios', User::class);

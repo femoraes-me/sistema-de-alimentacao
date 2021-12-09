@@ -2,7 +2,7 @@
 @section('pageHeading')
     <div class="container-fluid mt-4">
         <div class="text-left">
-            <h1 class="h2 text-gray-900 mb-4">Nome da escola vem aqui!</h1>
+            <h1 class="h2 text-gray-900 mb-4">{{ $escola->nome }}</h1>
         </div>
     </div>
 @endsection
