@@ -43,7 +43,7 @@ class CreateSecUser extends Command
     {
         $escolas = Escola::all();
 
-        if (!$escolas->isEmpty()) {
+        if ($escolas->isEmpty()) {
             Escola::create([
                 'nome' => 'Secretaria de Educação',
                 'qtd_alunos' => '0'
