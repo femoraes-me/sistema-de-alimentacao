@@ -26,12 +26,12 @@ class CardapioRequest extends FormRequest
         return [
             'data' => 'required',
             //café da manhã
-            'cardapios.0.alimentacao' => 'required',
-            'cardapios.0.cardapio' => 'required',
-            'cardapios.0.quantidade' => 'required',
-            'cardapios.0.repeticoes' => 'required',
+            'cardapios.*.alimentacao' => 'required',
+            'cardapios.*.cardapio' => 'required',
+            'cardapios.*.quantidade' => 'required',
+            'cardapios.*.repeticoes' => 'required'
 
-            //almoço
+            /*almoço
             'cardapios.1.alimentacao' => '',
             'cardapios.1.cardapio' => 'required',
             'cardapios.1.quantidade' => 'required',
@@ -47,7 +47,7 @@ class CardapioRequest extends FormRequest
             'cardapios.3.alimentacao' => '',
             'cardapios.3.cardapio' => 'required',
             'cardapios.3.quantidade' => 'required',
-            'cardapios.3.repeticoes' => 'required',
+            'cardapios.3.repeticoes' => 'required',*/
         ];
     }
 
@@ -56,23 +56,23 @@ class CardapioRequest extends FormRequest
         return [
             //café da manhã
             'cardapios.0.cardapio' => 'café da manhã',
-            'cardapios.0.quantidade' => 'quantidade',
-            'cardapios.0.repeticoes' => 'repeticoes',
+            'cardapios.*.quantidade' => 'quantidade',
+            'cardapios.*.repeticoes' => 'repeticoes',
 
             //almoco
             'cardapios.1.cardapio' => 'almoço',
-            'cardapios.1.quantidade' => 'quantidade',
-            'cardapios.1.repeticoes' => 'repeticoes',
+            //'cardapios.1.quantidade' => 'quantidade',
+            //'cardapios.1.repeticoes' => 'repeticoes',
 
             //café da tarde
             'cardapios.2.cardapio' => 'café da tarde',
-            'cardapios.2.quantidade' => 'quantidade',
-            'cardapios.2.repeticoes' => 'repeticoes',
+           // 'cardapios.2.quantidade' => 'quantidade',
+           // 'cardapios.2.repeticoes' => 'repeticoes',
 
             //jantar
-            'cardapios.3.cardapio' => 'jantar',
-            'cardapios.3.quantidade' => 'quantidade',
-            'cardapios.3.repeticoes' => 'repeticoes',
+            'cardapios.3.cardapio' => 'jantar'
+            //'cardapios.3.quantidade' => 'quantidade',
+//'cardapios.3.repeticoes' => 'repeticoes'
 
         ];
     }
@@ -80,14 +80,8 @@ class CardapioRequest extends FormRequest
     public function messages()
     {
         return [
-            'cardapios.0.quantidade.required' => 'Campo obrigatório',
-            'cardapios.0.repeticoes.required' => 'Campo obrigatório',
-            'cardapios.1.quantidade.required' => 'Campo obrigatório',
-            'cardapios.1.repeticoes.required' => 'Campo obrigatório',
-            'cardapios.2.quantidade.required' => 'Campo obrigatório',
-            'cardapios.2.repeticoes.required' => 'Campo obrigatório',
-            'cardapios.3.quantidade.required' => 'Campo obrigatório',
-            'cardapios.3.repeticoes.required' => 'Campo obrigatório'
+            'cardapios.*.quantidade.required' => 'Campo obrigatório',
+            'cardapios.*.repeticoes.required' => 'Campo obrigatório'
         ];
     }
 }

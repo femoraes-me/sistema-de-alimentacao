@@ -15,8 +15,7 @@
                     <div class="card-body">
 
                         <div class="row justify-content-center">
-                            <div class="
-                            col-md-10 pt-3">
+                            <div class="col-md-10 pt-3">
                                 <form method="POST" action="{{ route('secretaria.usuarios.store') }}">
                                     @csrf
 

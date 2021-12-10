@@ -1,40 +1,34 @@
 @extends('layouts.admin')
-@section('pageHeading')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-10 mt-5 text-left">
-                <h1 class="h3 text-gray-900 mb-4">Cadastrar Cardápio do Dia</h1>
-            </div>
-        </div>
-    </div>
-@endsection
 
 @section('content')
-    <!-- Main Content-->
-    <div class="container mt-2">
-        <div class="row justify-content-center">
+    <div class="container-fluid mt-4">
 
-            <!-- messagem -->
-            @include('layouts._partials.return_message')
+        <!-- page heading -->
+        <div class="text-left">
+            <h1 class="h3 text-gray-900 mb-4">Cadastrar Cardápio do Dia</h1>
+        </div>
 
-            <!-- formulário -->
-            <div class="col-10">
-                <form action="{{ route('escola.cardapio.store') }}" method="POST">
-                    @csrf
-                    <!--campo data -->
-                    <div class="form-group">
-                        <label for="data">Dia:</label>
-                        <input type="date"
-                            class="text-secondary border p-1 rounded {{ $errors->has('data') ? 'is-invalid' : '' }}"
-                            id="data_cardapio" name="data" value="{{ old('data') }}" maxlength="100">
-                        <div class="invalid-feedback">{{ $errors->first('data') }}</div>
-                    </div>
+        <!-- Mensagem de retorno -->
+        @include('layouts._partials.return_message')
 
-                    <div class="card pt-4 px-4">
-                        <!-- inputs café da manhã -->
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-8">
+        <!-- formulário -->
+        <form action="{{ route('escola.cardapio.store') }}" method="POST">
+            @csrf
+            <!--campo data -->
+            <div class="form-group">
+                <label for="data">Dia:</label>
+                <input type="date" class="text-secondary border p-1 rounded {{ $errors->has('data') ? 'is-invalid' : '' }}"
+                    id="data_cardapio" name="data" value="{{ old('data') }}" maxlength="100">
+                <strong class="invalid-feedback">{{ $errors->first('data') }}</strong>
+            </div>
+
+            <div class="card border-light shadow-sm">
+                <div class="card-body">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 p-2">
+                            <!-- inputs café da manhã -->
+                            <div class="form-row">
+                                <div class="form-group col-8">
                                     <label for="cardapio_manha">Café da Manhã</label>
                                     <input type="hidden" name="cardapios[0][alimentacao]" value="café da manhã">
                                     <input type="text" name="cardapios[0][cardapio]"
@@ -42,90 +36,90 @@
                                         value="{{ old('cardapios.0.cardapio') }}"
                                         placeholder="Ex: Bolacha maizena, bolacha rosquinha, café, leite..."
                                         maxlength="100">
-                                    <div class="invalid-feedback">{{ $errors->first('cardapios.0.cardapio') }}</div>
+                                    <strong class="invalid-feedback">{{ $errors->first('cardapios.0.cardapio') }}</strong>
                                 </div>
 
-                                <div class="col-2">
+                                <div class="form-group col-2">
                                     <label>Quantidade</label>
                                     <input type="number" name="cardapios[0][quantidade]"
                                         class="form-control {{ $errors->has('cardapios.0.quantidade') ? 'is-invalid' : '' }}"
                                         value="{{ old('cardapios.0.quantidade') }}">
-                                    <div class="invalid-feedback">{{ $errors->first('cardapios.0.quantidade') }}</div>
+                                    <strong class="invalid-feedback">{{ $errors->first('cardapios.0.quantidade') }}</strong>
                                 </div>
 
-                                <div class="col-2">
+                                <div class="form-group col-2">
                                     <label>Repetições</label>
                                     <input type="number" name="cardapios[0][repeticoes]"
                                         class="form-control {{ $errors->has('cardapios.0.repeticoes') ? 'is-invalid' : '' }}"
                                         value="{{ old('cardapios.0.repeticoes') }}">
-                                    <div class="invalid-feedback">{{ $errors->first('cardapios.0.repeticoes') }}</div>
+                                    <strong class="invalid-feedback">{{ $errors->first('cardapios.0.repeticoes') }}
+                                    </strong>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- inputs almoço -->
-                        <div class="form-group">
-                            <div class="row">
+                            <!-- inputs almoço -->
+                            <div class="form-row">
                                 <input type="hidden" name="cardapios[1][alimentacao]" value="almoço">
-                                <div class="col-8">
+                                <div class="form-group col-8">
                                     <label for="almoco">Almoço</label>
                                     <input type="text" name="cardapios[1][cardapio]"
                                         class="form-control {{ $errors->has('cardapios.1.cardapio') ? 'is-invalid' : '' }}"
                                         value="{{ old('cardapios.1.cardapio') }}"
                                         placeholder="Ex: Arroz, feijão, frango desfiado e salada de alface e tomate..."
                                         maxlength="100">
-                                    <div class="invalid-feedback">{{ $errors->first('cardapios.1.cardapio') }}</div>
+                                    <strong class="invalid-feedback">{{ $errors->first('cardapios.1.cardapio') }}</strong>
                                 </div>
-                                <div class="col-2">
+                                <div class="form-group col-2">
                                     <label>Quantidade</label>
                                     <input type="number" name="cardapios[1][quantidade]"
                                         class="form-control {{ $errors->has('cardapios.1.quantidade') ? 'is-invalid' : '' }}"
                                         value="{{ old('cardapios.1.quantidade') }}">
-                                    <div class="invalid-feedback">{{ $errors->first('cardapios.1.quantidade') }}</div>
+                                    <strong class="invalid-feedback">{{ $errors->first('cardapios.1.quantidade') }}
+                                    </strong>
                                 </div>
-                                <div class="col-2">
+                                <div class="form-group col-2">
                                     <label>Repetições</label>
                                     <input type="number" name="cardapios[1][repeticoes]"
                                         class="form-control {{ $errors->has('cardapios.1.repeticoes') ? 'is-invalid' : '' }}"
                                         value="{{ old('cardapios.1.repeticoes') }}">
-                                    <div class="invalid-feedback">{{ $errors->first('cardapios.1.repeticoes') }}</div>
+                                    <strong
+                                        class="invalid-feedback">{{ $errors->first('cardapios.1.repeticoes') }}</strong>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- inputs café da tarde -->
-                        <div class="form-group">
-                            <div class="row">
+
+                            <!-- inputs café da tarde -->
+                            <div class="form-row">
                                 <input type="hidden" name="cardapios[2][alimentacao]" value="café da tarde">
-                                <div class="col-8">
+                                <div class="form-group col-8">
                                     <label for="lanche_tarde">Lanche da Tarde</label>
                                     <input type="text" name="cardapios[2][cardapio]"
                                         class="form-control {{ $errors->has('cardapios.2.cardapio') ? 'is-invalid' : '' }}"
                                         value="{{ old('cardapios.2.cardapio') }}"
                                         placeholder="Ex: Bolacha maizena, bolacha rosquinha, café, leite..."
                                         maxlength="100">
-                                    <div class="invalid-feedback">{{ $errors->first('cardapios.2.cardapio') }}</div>
+                                    <strong
+                                        class="invalid-feedback">{{ $errors->first('cardapios.2.cardapio') }}</strong>
                                 </div>
-                                <div class="col-2">
+                                <div class="form-group col-2">
                                     <label>Quantidade</label>
                                     <input name="cardapios[2][quantidade]"
                                         class="form-control {{ $errors->has('cardapios.2.quantidade') ? 'is-invalid' : '' }}"
                                         value="{{ old('cardapios.2.quantidade') }}">
-                                    <div class="invalid-feedback">{{ $errors->first('cardapios.2.quantidade') }}</div>
+                                    <strong class="invalid-feedback">{{ $errors->first('cardapios.2.quantidade') }}</strong>
                                 </div>
-                                <div class="col-2">
+                                <div class="form-group col-2">
                                     <label>Repetições</label>
                                     <input name="cardapios[2][repeticoes]"
                                         class="form-control {{ $errors->has('cardapios.2.repeticoes') ? 'is-invalid' : '' }}"
                                         value="{{ old('cardapios.2.repeticoes') }}">
-                                    <div class="invalid-feedback">{{ $errors->first('cardapios.2.repeticoes') }}</div>
+                                    <strong class="invalid-feedback">{{ $errors->first('cardapios.2.repeticoes') }}
+                                    </strong>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- inputs jantar -->
-                        <div class="form-group">
-                            <div class="row">
+                            <!-- inputs jantar -->
+                            <div class="form-row">
                                 <input type="hidden" name="cardapios[3][alimentacao]" value="jantar">
                                 <div class="col-8">
                                     <label for="janta">Janta</label>
@@ -134,36 +128,35 @@
                                         value="{{ old('cardapios.3.cardapio') }}"
                                         placeholder="Ex: Arroz, feijão, frango desfiado e salada de alface e tomate..."
                                         maxlength="100">
-                                    <div class="invalid-feedback">{{ $errors->first('cardapios.3.cardapio') }}</div>
+                                    <strong class="invalid-feedback">{{ $errors->first('cardapios.3.cardapio') }}</strong>
                                 </div>
                                 <div class="col-2">
                                     <label>Quantidade</label>
                                     <input name="cardapios[3][quantidade]"
                                         class="form-control {{ $errors->has('cardapios.3.quantidade') ? 'is-invalid' : '' }}"
                                         value="{{ old('cardapios.3.quantidade') }}">
-                                    <div class="invalid-feedback">{{ $errors->first('cardapios.3.quantidade') }}</div>
+                                    <strong class="invalid-feedback">{{ $errors->first('cardapios.3.quantidade') }}
+                                    </strong>
                                 </div>
                                 <div class="col-2">
                                     <label>Repetições</label>
                                     <input name="cardapios[3][repeticoes]"
                                         class="form-control {{ $errors->has('cardapios.3.repeticoes') ? 'is-invalid' : '' }}"
                                         value="{{ old('cardapios.3.repeticoes') }}">
-                                    <div class="invalid-feedback">{{ $errors->first('cardapios.3.repeticoes') }}</div>
+                                    <strong class="invalid-feedback">{{ $errors->first('cardapios.3.repeticoes') }}
+                                    </strong>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="form-group mt-4 d-flex justify-content-center">
-                            <input type="submit" value="Cadastrar" class="btn btn-success px-5">
+                            <!-- botão cadastrar -->
+                            <div class="form-group mt-4 mb-0 d-flex justify-content-center">
+                                <button type="submit" class="btn btn-success px-5">Cadastrar</button>
+                            </div>
                         </div>
-
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
-
         </form>
-
     </div>
 
     <!-- Bootstrap core JavaScript-->

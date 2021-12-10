@@ -103,7 +103,7 @@
 
                 @if (Auth::user()->role === 'secretaria')
                     <li class="nav-item">
-                        <a class="nav-link icon-white" href="{{route('secretaria.usuarios.create')}}">
+                        <a class="nav-link icon-white" href="{{route('secretaria.usuarios.index')}}">
                             <i class="fas fa-users"></i>
                             <span>Usuários</span>
                         </a>

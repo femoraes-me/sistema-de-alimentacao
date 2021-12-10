@@ -49,7 +49,6 @@ class EscolaContoller extends Controller
 
     public function update(Request $request, $id)
     {
-
         $validator = Validator::make(
             /*dados a ser validados*/
             $request->all(),

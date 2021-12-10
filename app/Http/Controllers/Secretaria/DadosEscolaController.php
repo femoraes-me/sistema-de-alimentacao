@@ -7,7 +7,6 @@ use App\Models\Escola\Estoque;
 use Illuminate\Http\Request;
 use App\Models\Secretaria\Escola;
 use App\Models\Escola\Alimento;
-use Illuminate\Support\Facades\DB;
 
 class DadosEscolaController extends Controller
 {
@@ -34,7 +33,7 @@ class DadosEscolaController extends Controller
     public function exibeEntrada($id)
     {
         $escola = Escola::find($id);
-        //query para fazer um join entre tabelas estoque e alimentos
+        //query para fazer um join entre as tabelas estoque e alimentos
         $estoques = Estoque::join('alimentos', 'estoque.alimento_id', '=', 'alimentos.id')
             ->select('estoque.id', 'estoque.quantidade', 'alimentos.nome', 'alimentos.unidade')
             ->get();
