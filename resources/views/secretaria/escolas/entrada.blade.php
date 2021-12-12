@@ -11,10 +11,8 @@
         </div>
 
         <!-- Data Tables e Form -->
-        <form action="{{ route('escola.consumo.store') }}" method="POST">
+        <form action="{{ route('secretaria.escolas.actions.entrada.store') }}" method="POST">
             @csrf
-
-            
             <div class="d-flex justify-content-between mx-0 mt-0 mb-2">
                 <!-- input de data -->
                 <div class="form-group col-md-6 pl-0 my-0">
@@ -47,12 +45,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($estoques as $estoque)
+                            @foreach ($estoque as $estoque)
                                 <tr>
-                                    <!--campo id  -->
-                                    <input type="hidden" name="" value="">
+                                    <!--campo id escola-->
+                                    <input type="hidden" name="{{$estoque->nome}}[escola_id]" value="{{$escola->id}}">
+                                    <input type="hidden" name="{{$estoque->nome}}[alimento_id]" value="{{$estoque->alimento_id}}">
                                     <td class="align-middle pl-4">
-                                        {{ $estoque->nome }}
+                                       <span class="text-uppercase"> {{ $estoque->nome }} </span>
                                     </td>
                                     <!-- campo unidade -->
                                     <td class="align-middle">
@@ -69,7 +68,38 @@
                                         <div class="">
                                             <input type="text"
                                                 class="form-control col-md-5 mx-auto {{ $errors->has('') ? 'is-invalid' : '' }}  text-center"
-                                                name="Entrada" value="">
+                                                name="{{$estoque->nome}}[entrada]" value="">
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('') }}
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            @foreach ($alimentos as $alimento)
+                                <tr>
+                                    <!--campo id  escola-->
+                                    <input type="hidden" name="{{$alimento->nome}}[escola_id]" value="{{$escola->id}}">
+                                    <input type="hidden" name="{{$alimento->nome}}[alimento_id]" value="{{$alimento->id}}">
+                                    <td class="align-middle pl-4">
+                                        <span class="text-uppercase">{{ $alimento->nome }}</span>
+                                    </td>
+                                    <!-- campo unidade -->
+                                    <td class="align-middle">
+                                        <div class="align-middle text-center">
+                                            {{ $alimento->unidade }}
+                                        </div>
+                                    </td>
+                                    <!-- campo quantidade atual-->
+                                    <td class="align-middle text-center">
+                                        0
+                                    </td>
+                                    <!-- campo entrada de alimento -->
+                                    <td class="align-middle text-center">
+                                        <div class="">
+                                            <input type="text"
+                                                class="form-control col-md-5 mx-auto {{ $errors->has('') ? 'is-invalid' : '' }}  text-center"
+                                                name="{{$alimento->nome}}[entrada]" value="">
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('') }}
                                             </div>

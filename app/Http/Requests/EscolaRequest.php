@@ -25,7 +25,8 @@ class EscolaRequest extends FormRequest
     {
         return [
             'nome' => 'required',
-            'qtd_alunos' => ['required', 'numeric']
+            'qtd_alunos' => ['required', 'numeric', 'integer', 'gt:0'],
+            'telefone' => ['required', 'size :14']
         ];
     }
 
@@ -37,5 +38,10 @@ class EscolaRequest extends FormRequest
         ];
     }
 
-    
+    public function messages()
+    {
+        return [
+            'telefone.size' => 'Número de telefone inválido'
+        ];
+    }
 }

@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-
-class AddEscolaIdToUsersTable extends Migration
+class AddEscolasIdToConsumosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +13,7 @@ class AddEscolaIdToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('consumos', function (Blueprint $table) {
             $table->unsignedBigInteger('escolas_id')->after('id');
 
             $table->foreign('escolas_id')->references('id')->on("escolas");
@@ -28,7 +27,7 @@ class AddEscolaIdToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('consumos', function (Blueprint $table) {
             $table->dropColumn('escolas_id');
         });
     }

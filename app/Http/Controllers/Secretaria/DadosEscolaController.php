@@ -33,11 +33,25 @@ class DadosEscolaController extends Controller
     public function exibeEntrada($id)
     {
         $escola = Escola::find($id);
-        //query para fazer um join entre as tabelas estoque e alimentos
-        $estoques = Estoque::join('alimentos', 'estoque.alimento_id', '=', 'alimentos.id')
-            ->select('estoque.id', 'estoque.quantidade', 'alimentos.nome', 'alimentos.unidade')
+
+        $estoque = $escola->estoques()->join('alimentos', 'estoque.alimento_id', '=', 'alimentos.id')
+            ->select('estoque.alimento_id', 'alimentos.nome','alimentos.unidade', 'estoque.quantidade')
             ->get();
-       
-        return view('secretaria.escolas.entrada', compact('estoques', 'escola'));
+
+        foreach ($estoque as $line) {
+            $alimentosId[] = $line->alimento_id;
+        }
+
+        // $alimentosId = 
+        //query para fazer um join entre as tabelas estoque e alimentos
+        $alimentos = Alimento::select('nome', 'unidade')->whereNotIn('alimentos.id', $alimentosId)->get();
+
+        return view('secretaria.escolas.entrada', compact('estoque', 'escola', 'alimentos'));
+    }
+
+    public function storeEntradeDeAlimentos(Request $request){
+
+        $requestData = $request->all();
+        return $requestData;
     }
 }

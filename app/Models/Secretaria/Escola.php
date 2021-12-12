@@ -14,11 +14,11 @@ class Escola extends Model
 
     protected $fillable = [
         'nome',
-        'qtd_alunos'
+        'qtd_alunos',
+        'telefone'
     ];
 
     //relationships
-
     public function users(){
         return $this->hasMany(User::class);
     }
@@ -28,7 +28,8 @@ class Escola extends Model
     }
 
     //mutators
+    /*
     public function setNomeAttribute($value){
         $this->attributes['nome'] = strtoupper($value);
-    }
+    }*/
 }
