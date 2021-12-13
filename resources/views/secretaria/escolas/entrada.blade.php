@@ -45,13 +45,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($estoque as $estoque)
+                            {{-- @foreach ($estoque as $estoque)
                                 <tr>
                                     <!--campo id escola-->
-                                    <input type="hidden" name="{{$estoque->nome}}[escola_id]" value="{{$escola->id}}">
-                                    <input type="hidden" name="{{$estoque->nome}}[alimento_id]" value="{{$estoque->alimento_id}}">
+                                    <input type="hidden" name="dasda[escola_id]" value="{{ $escola->id }}">
+                                    <input type="hidden" name="{{ $estoque->nome }}[alimento_id]"
+                                        value="{{ $estoque->alimento_id }}">
                                     <td class="align-middle pl-4">
-                                       <span class="text-uppercase"> {{ $estoque->nome }} </span>
+                                        <span class="text-uppercase"> {{ $estoque->nome }} </span>
                                     </td>
                                     <!-- campo unidade -->
                                     <td class="align-middle">
@@ -68,19 +69,24 @@
                                         <div class="">
                                             <input type="text"
                                                 class="form-control col-md-5 mx-auto {{ $errors->has('') ? 'is-invalid' : '' }}  text-center"
-                                                name="{{$estoque->nome}}[entrada]" value="">
+                                                name="{{ $estoque->nome }}[entrada]" value="">
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('') }}
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @endforeach --}}
+                            <input type="hidden" name="escola_id" value="{{ $escola->id }}">
                             @foreach ($alimentos as $alimento)
                                 <tr>
                                     <!--campo id  escola-->
-                                    <input type="hidden" name="{{$alimento->nome}}[escola_id]" value="{{$escola->id}}">
-                                    <input type="hidden" name="{{$alimento->nome}}[alimento_id]" value="{{$alimento->id}}">
+
+
+                                    <input type="hidden" name="alimento[{{ $loop->index }}][id]"
+                                        value="{{ $alimento->id }}">
+                                    <input type="hidden" name="alimento[{{ $loop->index }}][nome]"
+                                        value="{{ $alimento->nome }}">
                                     <td class="align-middle pl-4">
                                         <span class="text-uppercase">{{ $alimento->nome }}</span>
                                     </td>
@@ -92,14 +98,19 @@
                                     </td>
                                     <!-- campo quantidade atual-->
                                     <td class="align-middle text-center">
-                                        0
+                                        @foreach ($estoque as $estoqui)
+                                            @if ($estoqui->alimento_id == $alimento->id)
+                                                {{ $estoqui->quantidade }}
+                                            @else
+                                            @endif
+                                        @endforeach
                                     </td>
                                     <!-- campo entrada de alimento -->
                                     <td class="align-middle text-center">
                                         <div class="">
                                             <input type="text"
                                                 class="form-control col-md-5 mx-auto {{ $errors->has('') ? 'is-invalid' : '' }}  text-center"
-                                                name="{{$alimento->nome}}[entrada]" value="">
+                                                name="alimento[{{ $loop->index }}][quantidade]" value="">
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('') }}
                                             </div>

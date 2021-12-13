@@ -20,7 +20,8 @@
                     <div class="invalid-feedback"></div>
                 </div>
                 <div class="">
-                    <button class="btn letra btn-primary font-weight-bolder ml-2" id="escolaCadastro">Voltar</button>
+                    <button onclick="history.back()" class="btn letra btn-primary font-weight-bolder ml-2"
+                        id="escolaCadastro">Voltar</button>
                 </div>
             </div>
         </div>
@@ -43,7 +44,7 @@
                                 <td>
                                     <div class="form-group text-center">
                                         <div class="col-4 mx-auto" name="medida">
-                                           kg 
+                                            kg
                                         </div>
                                     </div>
                                 </td>

@@ -17,6 +17,7 @@ class Estoque extends Model
         'data',
         'quantidade',
         'alimento_id',
+        'escola_id',
     ];
 
     public function alimentos()

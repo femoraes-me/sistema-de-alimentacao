@@ -22,7 +22,7 @@
                     <div class="invalid-feedback"></div>
                 </div>
                 <div class="">
-                    <button class="btn letra btn-primary font-weight-bolder ml-2" id="escolaCadastro">Voltar</button>
+                    <button onclick="history.back()" class="btn letra btn-primary font-weight-bolder ml-2" id="escolaCadastro">Voltar</button>
                 </div>
             </div>
         </div>

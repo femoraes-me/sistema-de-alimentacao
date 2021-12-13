@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Escola\Alimento;
 use App\Models\Escola\Estoque;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AlimentosController extends Controller
 {
@@ -16,8 +17,10 @@ class AlimentosController extends Controller
      */
     public function index()
     {
-
-        $alimentos = Alimento::all();
+        $alimentos = DB::select(DB::raw("
+        select alimentos.id as id, sum(estoque.quantidade) as quantidade, alimentos.nome as nome, alimentos.unidade as unidade  from estoque inner join alimentos on alimentos.id = estoque.alimento_id
+        where estoque.escola_id = " . auth()->user()->escolas_id . "
+        group by alimentos.id, alimentos.nome, alimentos.unidade"));
 
         return view('escola.estoque', compact('alimentos'));
     }
@@ -49,7 +52,7 @@ class AlimentosController extends Controller
         $alimento->unidade = $requestData['unidade']; // armazena a unidade do alimento no atributo unidade do objeto alimento
         $alimento->save(); // salva o objeto alimento no banco de dados
 
-        return redirect()->route('alimentos'); // redireciona para a pagina de estoque
+        return redirect()->route('secretaria.alimentos'); // redireciona para a pagina de estoque
     }
 
     /**
@@ -95,7 +98,7 @@ class AlimentosController extends Controller
         $alimento->unidade = $requestData['unidade'];
         $alimento->save();
 
-        return redirect()->route('alimentos');
+        return redirect()->route('secretaria.alimentos');
     }
 
     /**
@@ -108,6 +111,13 @@ class AlimentosController extends Controller
     {
         $alimento = Alimento::findOrFail($id);
         $alimento->delete();
-        return redirect()->route('alimentos');
+        return redirect()->route('secretaria.alimentos');
+    }
+
+
+    function secretaria()
+    {
+        $alimentos = Alimento::all();
+        return view('secretaria.alimentos', compact('alimentos'));
     }
 }

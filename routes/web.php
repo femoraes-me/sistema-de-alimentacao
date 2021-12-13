@@ -21,7 +21,7 @@ use App\Http\Controllers\Secretaria\Auth\RegisterController as User;
 */
 // ROTA INICIAL
 Route::get('/', function () {
-    return Auth::user()->role == 'secretaria' ? redirect('alimentos') : redirect('alimentos');
+    return Auth::user()->role == 'secretaria' ? redirect('secretaria/alimentos') : redirect('alimentos');
 })->middleware('auth');
 
 Auth::routes();
@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function () {
 
     //Rotas do user tipo secretaria
     Route::prefix('secretaria')->name('secretaria.')->middleware('role:secretaria')->group(function () {
+        Route::get('alimentos',  [AlimentosController::class, 'secretaria'])->name('alimentos');
         Route::get('/escolas/{id}/acoes', [EscolaContoller::class, 'showActions'])->name('escolas.actions');
         Route::get('/escolas/{id}/acoes/consumo', [DadosEscolaController::class, 'exibeConsumo'])->name('escolas.actions.consumo');
         Route::get('/escolas/{id}/acoes/cardapio', [DadosEscolaController::class, 'exibeCardapio'])->name('escolas.actions.cardapio');
