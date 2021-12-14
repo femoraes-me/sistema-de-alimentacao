@@ -8,7 +8,7 @@
             <div class="form-group row">
                 <div class="col-sm-8 mb-3 mb-sm-0">
                     <!-- Page Heading -->
-                    <h1 class="h2 mb-2 text-gray-800">Estoque de Alimentos</h1>
+                    <h1 class="h2 mb-2 text-gray-800">Alimentos</h1>
                 </div>
 
             </div>
@@ -23,7 +23,10 @@
                                     <th>ID</th>
                                     <th>Alimento</th>
                                     <th class="text-center">Unidade</th>
-                                    <th class="text-center">Quantidade</th>
+                                    @if (Auth::user()->role == 'secretaria')
+                                        <th class="text-center">Editar</th>
+                                        <th class="text-center">Excluir</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tfoot class="table-secondary">
@@ -31,7 +34,11 @@
                                     <th>ID</th>
                                     <th>Alimento</th>
                                     <th class="text-center">Unidade</th>
-                                    <th class="text-center">Quantidade</th>
+
+                                    @if (Auth::user()->role == 'secretaria')
+                                        <th class="text-center">Editar</th>
+                                        <th class="text-center">Excluir</th>
+                                    @endif
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -40,17 +47,12 @@
                                         <td>{{ $alimento->id }}</td>
                                         <td>{{ $alimento->nome }}</td>
                                         <td class="text-center">{{ $alimento->unidade }}</td>
-<<<<<<< HEAD
                                         @if (Auth::user()->role == 'secretaria')
-                                            <td class="text-center"> <a href="{{ route('alimentos.editar', $alimento->id) }}"><i
+                                            <td> <a href="{{ route('alimentos.editar', $alimento->id) }}"><i
                                                         class="far fa-edit text-purple"></i></a>
-                                            <td class="text-center"> <a href="{{ route('alimentos.apagar', $alimento->id) }}"><i
+                                            <td> <a href="{{ route('alimentos.apagar', $alimento->id) }}"><i
                                                         class="fas fa-trash text-red"></i></a>
                                         @endif
-=======
-                                        <td class="text-center">{{ $alimento->quantidade }}</td>
-
->>>>>>> c33eab5afdad6d13a8382fca454327715ff2d74b
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -22,10 +22,7 @@
                     <div class="invalid-feedback"></div>
                 </div>
                 <div class="">
-                    <a href="{{ route('secretaria.escolas.actions', $escola->id) }}" 
-                        class="btn letra btn-primary font-weight-bolder ml-2" id="escolaCadastro">
-                        Voltar
-                    </a>
+                    <button onclick="history.back()" class="btn letra btn-primary font-weight-bolder ml-2" id="escolaCadastro">Voltar</button>
                 </div>
             </div>
         </div>

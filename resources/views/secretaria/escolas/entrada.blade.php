@@ -1,68 +1,132 @@
 @extends('layouts.admin')
 
 @section('content')
-    <!-- Main Content -->
-    <div id="content">
-        <!-- Begin Page Content -->
-        <div class="container-fluid mt-5">
-            <div class="form-group row">
-                <div class="col-sm-8 mb-3 mb-sm-0">
-                    <!-- Page Heading -->
-                    <h1 class="h2 mb-2 text-gray-800">Entrada de Alimentos: {{ $escola->nome }}</h1>
-                </div>
-            </div>
+    <!-- Begin Page Content -->
+    <div class="container-fluid mt-4">
 
-            <!-- DataTales Example -->
-            <div class="card shadow mb-4 espaco">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table" id="dataTable" width="100%" cellspacing="0">
-                            <thead class="table-secondary">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Alimento</th>
-                                    <th>Unidade</th>
-                                    <th>Quantidade</th>
-                                    @if (Auth::user()->role == 'secretaria')
-                                        <th>Editar</th>
-                                        <th>Excluir</th>
-                                    @endif
-                                </tr>
-                            </thead>
-                            <tfoot class="table-secondary">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Alimento</th>
-                                    <th>Unidade</th>
-                                    <th>Quantidade</th>
-                                    @if (Auth::user()->role == 'secretaria')
-                                        <th>Editar</th>
-                                        <th>Excluir</th>
-                                    @endif
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                @foreach ($estoques as $estoque)
-                                    <tr>
-                                        <td>{{ $estoque->id }}</td>
-                                        <td>{{ $estoque->alimentos->nome }}</td>
-                                        <td class="text-center">{{ $estoque->alimentos->unidade }}</td>
-                                        <td class="text-center">{{ $estoque->quantidade }}</td>
-                                        @if (Auth::user()->role == 'secretaria')
-                                            <td> <a href="{{ route('alimentos.editar', $estoque->id) }}"><i
-                                                        class="far fa-edit text-purple"></i></a>
-                                            <td> <a href="{{ route('alimentos.apagar', $estoque->id) }}"><i
-                                                        class="fas fa-trash text-red"></i></a>
-                                        @endif
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+        <!-- page heading -->
+        <div class="text-left">
+            <h1 class="h2 text-gray-900 ml-0">Entrada de Alimentos:</h1>
+            <h1 class="h3 text-gray-900 mb-4">{{ $escola->nome }}</h1>
+        </div>
+
+        <!-- Data Tables e Form -->
+        <form action="{{ route('secretaria.escolas.actions.entrada.store') }}" method="POST">
+            @csrf
+            <div class="d-flex justify-content-between mx-0 mt-0 mb-2">
+                <!-- input de data -->
+                <div class="form-group col-md-6 pl-0 my-0">
+                    <label for="data_consumo">Dia:</label>
+                    <input type="date" name="data_consumo" id="data_consumo"
+                        class="text-secondary border rounded p-1 {{ $errors->has('data_consumo') ? 'is-invalid' : '' }}">
+                    <div class="invalid-feedback">{{ $errors->first('data_consumo') }}</div>
+                </div>
+                <!-- -->
+                <!-- botao voltar -->
+                <div class="col-md-6 d-flex justify-content-end pr-0">
+                    <div class="">
+                        <a class="btn btn-primary"
+                            href="{{ route('secretaria.escolas.actions', $escola->id) }}">Voltar</a>
                     </div>
                 </div>
+                <!-- -->
             </div>
-        </div>
-        <!-- /.container-fluid -->
+
+            <!-- Tabela de estoque -->
+            <div class="card border-light shadow-sm py-1">
+                <div class="card-body px-4">
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="pl-4">Alimentos</th>
+                                <th class="text-center col-3">Unidade de Medida</th>
+                                <th class="text-center col-3">Quantidade Atual</th>
+                                <th class="text-center col-3">Entrada</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{-- @foreach ($estoque as $estoque)
+                                <tr>
+                                    <!--campo id escola-->
+                                    <input type="hidden" name="dasda[escola_id]" value="{{ $escola->id }}">
+                                    <input type="hidden" name="{{ $estoque->nome }}[alimento_id]"
+                                        value="{{ $estoque->alimento_id }}">
+                                    <td class="align-middle pl-4">
+                                        <span class="text-uppercase"> {{ $estoque->nome }} </span>
+                                    </td>
+                                    <!-- campo unidade -->
+                                    <td class="align-middle">
+                                        <div class="align-middle text-center">
+                                            {{ $estoque->unidade }}
+                                        </div>
+                                    </td>
+                                    <!-- campo quantidade atual-->
+                                    <td class="align-middle text-center">
+                                        {{ $estoque->quantidade }}
+                                    </td>
+                                    <!-- campo entrada de alimento -->
+                                    <td class="align-middle text-center">
+                                        <div class="">
+                                            <input type="text"
+                                                class="form-control col-md-5 mx-auto {{ $errors->has('') ? 'is-invalid' : '' }}  text-center"
+                                                name="{{ $estoque->nome }}[entrada]" value="">
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('') }}
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach --}}
+                            <input type="hidden" name="escola_id" value="{{ $escola->id }}">
+                            @foreach ($alimentos as $alimento)
+                                <tr>
+                                    <!--campo id  escola-->
+
+
+                                    <input type="hidden" name="alimento[{{ $loop->index }}][id]"
+                                        value="{{ $alimento->id }}">
+                                    <input type="hidden" name="alimento[{{ $loop->index }}][nome]"
+                                        value="{{ $alimento->nome }}">
+                                    <td class="align-middle pl-4">
+                                        <span class="text-uppercase">{{ $alimento->nome }}</span>
+                                    </td>
+                                    <!-- campo unidade -->
+                                    <td class="align-middle">
+                                        <div class="align-middle text-center">
+                                            {{ $alimento->unidade }}
+                                        </div>
+                                    </td>
+                                    <!-- campo quantidade atual-->
+                                    <td class="align-middle text-center">
+                                        @foreach ($estoque as $estoqui)
+                                            @if ($estoqui->alimento_id == $alimento->id)
+                                                {{ $estoqui->quantidade }}
+                                            @else
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    <!-- campo entrada de alimento -->
+                                    <td class="align-middle text-center">
+                                        <div class="">
+                                            <input type="text"
+                                                class="form-control col-md-5 mx-auto {{ $errors->has('') ? 'is-invalid' : '' }}  text-center"
+                                                name="alimento[{{ $loop->index }}][quantidade]" value="">
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('') }}
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <!-- botão cadastrar -->
+                <div class="form-group mt-4 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success px-5"><strong>Cadastrar</strong></button>
+                </div>
+            </div>
+        </form>
     </div>
-    <!-- End of Main Content -->
+
 @endsection

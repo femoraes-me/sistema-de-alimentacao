@@ -10,36 +10,46 @@
                 <input type="text" name="search" class="form-control mr-2 w-50" value="" placeholder="Pesquisar...">
                 <button type="submit" class="btn letra btn-primary "><i class="fa fa-search"></i></button>
             </div>
-            <button class="btn letra btn-primary font-weight-bolder ml-2" id="escolaCadastro">Cadastrar Escola</button>
+            <button class="btn letra btn-primary font-weight-bolder ml-2" id="showForm">Cadastrar Escola</button>
+            <button class="btn letra btn-secondary font-weight-bolder ml-2 {{ sizeof($errors) == 0 ? 'd-none' : '' }}" id="hideForm">Fechar</button>
         </div>
 
-        <!-- Register Escola -->
-        <div class="card d-none" id="formEscola">
-            <div class="card-body">
-
-                <div class="d-none" id="divMessage">
-                    <div class="alert alert-dismissible fade show" role="alert" id="message">
-                        <button type="button" class="close" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                </div>
-
-                <form>
-                    <div class="row justify-content-center px-2" id="formEscola">
-                        <div class="col-9" id="divInputNome">
+        @include('layouts._partials.return_message')
+        <!-- Form de cadastro de Escola -->
+        <div class="card {{ sizeof($errors) == 0 ? 'd-none' : '' }}" id="formEscola">
+            <div class="card-header py-3 px-5">
+                <strong class="h3 aling-middle m-5">Cadastro de Escola</strong>
+            </div>
+            <div class="card-body px-5 mx-5">
+                <form action="{{ route('secretaria.escolas.store') }}" method="POST">
+                    @csrf
+                    <div class="form-row">
+                        <div class="form-group col-md-9">
                             <label for="">Nome da Escola</label>
-                            <input name="nome" type="text" class="form-control" id="nome">
-                            <div class="invalid-feedback" id="nomeErrorMessage"></div>
+                            <input name="nome" value="{{ old('nome') }}" type="text"
+                                class="form-control {{ $errors->has('nome') ? 'is-invalid' : '' }}" id="nome">
+                            <strong class="invalid-feedback">{{ $errors->first('nome') }}</strong>
                         </div>
 
-                        <div class="col-3">
+                        <div class="form-group col-md-3">
                             <label for="">Quantidade de Alunos</label>
-                            <input name="qtd_alunos" type="text" class="form-control text-center" id="qtd_alunos">
-                            <div class="invalid-feedback" id="qtd_alunosErrorMessage"></div>
+                            <input name="qtd_alunos" type="text"
+                                class="form-control text-center {{ $errors->has('qtd_alunos') ? 'is-invalid' : '' }}"
+                                id="qtd_alunos" value="{{ old('qtd_alunos') }}">
+                            <strong class="invalid-feedback">{{ $errors->first('qtd_alunos') }}</strong>
                         </div>
                     </div>
-                    <div class="form-group mt-4 mb-0 d-flex justify-content-center">
+                    <hr>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="telefone">Telefone</label>
+                            <input type="text"
+                                class="form-control phone {{ $errors->has('telefone') ? 'is-invalid' : '' }}"
+                                name="telefone" id="telefone">
+                            <strong class="invalid-feedback">{{ $errors->first('telefone') }}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group mb-0 d-flex justify-content-center">
                         <button type="submit" class="btn btn-success px-3" id="btnCadastrar">Cadastrar</button>
                     </div>
                 </form>
@@ -52,7 +62,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body mt-3 mb-2">
-
+                        <!-- nome da escola-->
                     </div>
                     <div class="modal-footer py-2">
                         <button type="button" class="btn btn-danger" data-dismiss="modal" id="btnCancelar">Cancelar</button>
@@ -63,7 +73,6 @@
         </div>
         <!-- -->
 
-        @include('layouts._partials.return_message')
 
         <div class="card border-light shadow-sm pb-2 px-2 mt-2">
             <div class="card-body">
@@ -111,5 +120,6 @@
 @endsection
 
 @section('scripts')
+    <script src="{{ asset('vendor/jquery-mask/jquery.mask.min.js') }}"></script>
     <script src="{{ asset('js/secretaria/escolas/index.js') }}"></script>
 @endsection

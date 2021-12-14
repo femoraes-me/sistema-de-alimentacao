@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Secretaria\Escola;
 use App\Http\Requests\EscolaRequest;
 use App\Models\User;
+use Illuminate\Cache\RedisTaggedCache;
 use Illuminate\Support\Facades\Auth;
 
 class EscolaContoller extends Controller
@@ -30,12 +31,8 @@ class EscolaContoller extends Controller
     public function store(EscolaRequest $request)
     {
         $requestData = $request->validated();
-        //cria usuário
         Escola::create($requestData);
-        return response()->json([
-            'status' => 200,
-            'message' => 'Escola criada com sucesso'
-        ]);
+        return redirect()->route('secretaria.escolas.index')->with('success', 'Escola criada com sucesso');
     }
 
     public function edit()
@@ -49,7 +46,6 @@ class EscolaContoller extends Controller
 
     public function update(Request $request, $id)
     {
-
         $validator = Validator::make(
             /*dados a ser validados*/
             $request->all(),
@@ -70,9 +66,8 @@ class EscolaContoller extends Controller
             return redirect('escola/info')
                 ->withErrors($validator);
         }
-        return $validator->validated(); //Escola::findOrFail($id)->update($request->validate());
-        // $escola->update($request->all());
-        // return redirect()->route('escola.info')->with('success', 'Quantidade de alunos atualizada');
+        Escola::findOrFail($id)->update($validator->validate());
+        return redirect()->route('escola.info')->with('success', 'Quantidade de alunos atualizada');
     }
 
 

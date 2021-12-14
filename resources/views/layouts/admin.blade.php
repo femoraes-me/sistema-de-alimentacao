@@ -39,7 +39,7 @@
 
                 @if (Auth::user()->role == 'secretaria')
                     <li class="nav-item">
-                        <a class="nav-link icon-white" href="{{ route('alimentos') }}">
+                        <a class="nav-link icon-white" href="/">
                             <i class="fas fa-fw fa-home fa-2x"></i>
                             <span>Home</span>
                         </a>
@@ -81,7 +81,7 @@
                     </li>
                 @endif
 
-                 <!-- Nav Item - Editar quantidade de alunos da escola -->
+                <!-- Nav Item - Editar quantidade de alunos da escola -->
                 @if (Auth::user()->role !== 'secretaria')
                     <li class="nav-item">
                         <a class="nav-link icon-white" href="{{ route('escola.info') }}">
@@ -104,7 +104,7 @@
 
                 @if (Auth::user()->role === 'secretaria')
                     <li class="nav-item">
-                        <a class="nav-link icon-white" href="{{route('secretaria.usuarios.create')}}">
+                        <a class="nav-link icon-white" href="{{ route('secretaria.usuarios.index') }}">
                             <i class="fas fa-users"></i>
                             <span>Usuários</span>
                         </a>

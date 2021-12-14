@@ -17,7 +17,8 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = User::all();
+        return view('secretaria.users.index', compact('usuarios'));
     }
 
     /**
