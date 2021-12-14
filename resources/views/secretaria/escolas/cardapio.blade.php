@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 @section('pageHeading')
-    <div class="container">
+    <div class="container mt-4">
         <div class="row ">
-            <div class="col-10 mt-5 text-left">
-                <h1 class="h3 text-gray-900 mb-4">Cardápio do Dia: Nome da Escola</h1>
+            <div class="col-10 text-left">
+                <h1 class="h2 text-gray-900 mb-4">CARDÁPIO: {{ $escola->nome }}</h1>
             </div>
         </div>
     </div>
@@ -22,7 +22,10 @@
                     <div class="invalid-feedback"></div>
                 </div>
                 <div class="">
-                    <button class="btn letra btn-primary font-weight-bolder ml-2" id="escolaCadastro">Voltar</button>
+                    <a href="{{ route('secretaria.escolas.actions', $escola->id) }}" 
+                        class="btn letra btn-primary font-weight-bolder ml-2" id="escolaCadastro">
+                        Voltar
+                    </a>
                 </div>
             </div>
         </div>

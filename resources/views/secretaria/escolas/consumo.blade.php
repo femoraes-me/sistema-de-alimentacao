@@ -2,7 +2,7 @@
 @section('pageHeading')
     <div class="container-fluid mt-4">
         <div class="text-left">
-            <h1 class="h2 text-gray-900 mb-4">Consumo Diário: Nome da Escola</h1>
+            <h1 class="h2 text-gray-900 mb-4">CONSUMO DIÁRIO: {{ $escola->nome }}</h1>
         </div>
     </div>
 @endsection
@@ -10,8 +10,8 @@
 
     <div id="content">
         <!-- Main Content-->
-        <div class="container-fluid mt-4">
-            <div class="d-flex justify-content-between mb-2">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between p-4">
                 <div class="">
                     <label for="data_consumo">Dia:</label>
                     <input type="date" name="data_consumo" id="data_consumo"
@@ -20,7 +20,10 @@
                     <div class="invalid-feedback"></div>
                 </div>
                 <div class="">
-                    <button class="btn letra btn-primary font-weight-bolder ml-2" id="escolaCadastro">Voltar</button>
+                    <a href="{{ route('secretaria.escolas.actions', $escola->id) }}" 
+                        class="btn letra btn-primary font-weight-bolder" id="escolaCadastro">
+                        Voltar
+                    </a>
                 </div>
             </div>
         </div>
@@ -36,24 +39,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    Arroz
-                                </td>
-                                <td>
-                                    <div class="form-group text-center">
-                                        <div class="col-4 mx-auto" name="medida">
-                                           kg 
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="text-center">
-                                    <div class="">
-                                        <!-- campo quantidade consumida -->
-                                        23
-                                    </div>
-                                </td>
-                            </tr>
+                        
                         </tbody>
                     </table>
                 </div>
