@@ -3,7 +3,7 @@
     <!-- Main Content-->
     <div class="container-fluid mt-4">
         <div class="text-left">
-            <h1 class="h2 text-gray-900 mb-4">Escolas</h1>
+            <h1 class="h2 text-gray-900 mb-4">Usuários</h1>
         </div>
         <div class="d-flex justify-content-between mb-2">
             <div class="d-flex flex-fill">
@@ -56,14 +56,13 @@
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger" id="btnDelete"
                                                 data-toggle="modal" data-target="#confirmationModal">
-                                                <i class="fa fa-trash "></i>
+                                                <i class="fa fa-trash fa-fw"></i>
                                             </button>
                                         </form>
                                             <a href="{{ route('secretaria.usuarios.show', $usuario->id) }}"
-                                                class="btn btn-sm btn-secondary ml-2">
-                                                <i class="fas fa-edit"></i>
+                                                class="btn btn-sm btn-primary ml-2">
+                                                <i class="fas fa-edit fa-fw"></i>
                                             </a>
-                                       
                                     </div>
                                 </td>
                             </tr>

@@ -98,8 +98,6 @@ class RegisterController extends Controller
      */
     public function destroy(User $usuario)
     {
-
-        return 'teste';
         $usuario->delete();
 
         return redirect()

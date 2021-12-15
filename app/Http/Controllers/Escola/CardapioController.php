@@ -7,7 +7,7 @@ use App\Models\Escola\Cardapio;
 use Illuminate\Http\Request;
 use App\Http\Requests\CardapioRequest;
 use Illuminate\Http\Resources\MergeValue;
-
+Use Illuminate\Support\Facades\Auth;
 class CardapioController extends Controller
 {
     public function create()
@@ -21,10 +21,12 @@ class CardapioController extends Controller
         $requestData = $request->validated();
 
         $data = ['data' => $requestData['data']];
+        $userEscola = ['escola_id' => Auth::user()->escolas_id];
         $cardapios = $requestData['cardapios'];
 
-        for ($i = 0; $i < count($cardapios); $i++) {
-            $newRequest = array_merge($data, $cardapios[$i]);
+        foreach ($requestData['cardapios'] as $cardapios) {
+            
+            $newRequest = array_merge($data, $cardapios, $userEscola);
             Cardapio::create($newRequest);
         }
 
