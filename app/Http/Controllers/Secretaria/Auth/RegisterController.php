@@ -96,8 +96,14 @@ class RegisterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $usuario)
     {
-        //
+
+        return 'teste';
+        $usuario->delete();
+
+        return redirect()
+            ->route('secretaria.usuarios.index')
+            ->with('success', 'Usuário deletado com sucesso');
     }
 }

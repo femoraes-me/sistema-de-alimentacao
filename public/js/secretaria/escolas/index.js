@@ -2,7 +2,6 @@ $('.phone').mask('(00) 0000-0000');
 
 
 $('#showForm').on('click', function () {
-    console.log('carregado');
     var btn = $('#hideForm');
     btn.removeClass('d-none');
     $('#formEscola').removeClass('d-none');
@@ -10,7 +9,6 @@ $('#showForm').on('click', function () {
 });
 
 $('#hideForm').on('click', function () {
-    console.log('carregado');
     $(this).addClass('d-none');
     $('#formEscola').addClass('d-none');
 });
