@@ -41,7 +41,8 @@ class CreateSecUser extends Command
      */
     public function handle()
     {
-        $escolas = Escola::all();
+        //
+        $escolas = Escola::select('id', 'nome')->where('nome', 'like', '%Secretaria%')->orWhere('nome', 'like', '%SEDUC%')->get();;
 
         if ($escolas->isEmpty()) {
             Escola::create([

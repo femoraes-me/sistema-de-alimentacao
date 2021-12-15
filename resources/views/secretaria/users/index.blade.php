@@ -14,7 +14,7 @@
         </div>
 
         <!-- cofirmation modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="confimationModal" tabindex="-1" aria-labelledby="confimationModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body mt-3 mb-2">
@@ -48,18 +48,18 @@
                                 <td class="align-middle" id="tdNome">{{ $usuario->name }}</td>
                                 <td class="align-middle">
                                     <div class="row justify-content-center">
-                                        <form action="{{ route('secretaria.escolas.destroy', $usuario->id) }}"
+                                        <form action="{{ route('secretaria.usuarios.destroy', $usuario->id) }}"
                                             method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger" id="btnDelete"
-                                                data-toggle="modal" data-target="#exampleModal">
+                                                data-toggle="modal" data-target="#confirmationModal">
                                                 <i class="fa fa-trash "></i>
                                             </button>
                                         </form>
                                         <a href="{{ route('secretaria.escolas.actions', $usuario->id) }}"
                                             class="btn btn-sm btn-secondary ml-2">
-                                            <i class="fas fa-ellipsis-h"></i>
+                                            <i class="fas fa-edit-h"></i>
                                         </a>
                                     </div>
                                 </td>
