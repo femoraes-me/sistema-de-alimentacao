@@ -11,9 +11,9 @@
 
 @section('content')
     <!-- Main Content-->
-    <div class="container mt-2">
-        <div class="container-fluid mt-4">
-            <div class="d-flex justify-content-between mb-2">
+    <div class="container">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between">
                 <div class="">
                     <label for="data_consumo">Dia:</label>
                     <input type="date" name="data_consumo" id="data_consumo"
@@ -26,12 +26,19 @@
                 </div>
             </div>
         </div>
-
-        <div class="card p-4 bg-primary mt-4">
-            <div class="bg-white p-2 m-2 rounded text-dark">Bolacha maizena, bolacha rosquinha, café, leite, achocolatado em pó</div>
-            <div class="bg-white p-2 m-2 rounded text-dark">Arroz, feijão, frango desfiado e salada de alface e tomate</div>
-            <div class="bg-white p-2 m-2 rounded text-dark">Bolacha maizena, bolacha rosquinha, café, leite, achocolatado em pó</div>
-            <div class="bg-white p-2 m-2 rounded text-dark">Arroz, feijão, frango desfiado e salada de alface e tomate</div>
+        <br>
+        <div class="card p-4 bg-white border mt-4">
+            <label class="pl-2"><strong>Café da Manhã:</strong></label>
+            <div class="bg-white p-2 mb-4 border rounded text-dark">Bolacha maizena, bolacha rosquinha, café, leite, achocolatado em pó</div>
+            
+            <label class="pl-2"><strong>Almoço:</strong></label>
+            <div class="bg-white p-2 mb-4 border rounded text-dark">Arroz, feijão, frango desfiado e salada de alface e tomate</div>
+            
+            <label class="pl-2"><strong>Lanche da Tarde:</strong></label>
+            <div class="bg-white p-2 mb-4 border rounded text-dark">Bolacha maizena, bolacha rosquinha, café, leite, achocolatado em pó</div>
+            
+            <label class="pl-2"><strong>Janta:</strong></label>
+            <div class="bg-white p-2 mb-4 border rounded text-dark">Arroz, feijão, frango desfiado e salada de alface e tomate</div>
         </div>
 
     </div>
