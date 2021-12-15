@@ -11,7 +11,6 @@ class CreateEstoqueTable extends Migration
     {
         Schema::create('estoque', function (Blueprint $table) {
             $table->id();
-            $table->date('data');
             $table->integer('quantidade');
             $table->unsignedBigInteger('alimento_id');
             $table->unsignedBigInteger('escola_id');

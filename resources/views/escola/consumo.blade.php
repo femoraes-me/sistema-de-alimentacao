@@ -35,7 +35,7 @@
                             @foreach ($alimentos as $alimento)
                                 <tr>
                                     <!--campo id  -->
-                                    <input type="hidden" name="alimentos[{{ $alimento->nome }}][alimentos_id]"
+                                    <input type="hidden" name="alimentos[{{ $alimento->nome }}][alimento_id]"
                                         value="{{ $alimento->id }}">
                                     <td class="align-middle pl-4">
                                         {{ $alimento->nome }}

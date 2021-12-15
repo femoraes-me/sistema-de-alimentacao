@@ -21,20 +21,20 @@ class ConsumoContoller extends Controller
 
         $requestData = $request->validated();
 
-        $userEscola = ['escolas_id' => Auth::user()->escolas_id];
+        $userEscola = ['escola_id' => Auth::user()->escolas_id];
         $data = ['data' => $requestData['data_consumo']];
 
 
         foreach ($requestData['alimentos'] as $alimento) {
             $data = array_merge($data, $alimento, $userEscola);
-            $estoque = Estoque::where(['escola_id' => $requestData['escola_id']])->where(['alimento_id' => $alimento['id']])->first();
-
-            $estoque->quantidade -= $alimento['quantidade'];
+            
+            $estoque = Estoque::where(['escola_id' => $data['escola_id']])->where(['alimento_id' => $alimento['alimento_id']])->first();
+            $estoque->quantidade -= $alimento['quantidade_consumida'];
             $estoque->save();
             Consumo::create([
                 'escolas_id' =>  $data['escola_id'],
-                'alimentos_id' => $alimento['id'],
-                'quantidade_entrada' => $alimento['quantidade'],
+                'alimentos_id' => $alimento['alimento_id'],
+                'quantidade_consumida' => $alimento['quantidade_consumida'],
                 'data' => $data['data']
             ]);
         }
