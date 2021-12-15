@@ -46,4 +46,12 @@ class ConsumoContoller extends Controller
         }
         return redirect()->route('escola.consumo.create')->with('success', "Consumo diário cadastrado");
     }
+
+    public function date()
+    {
+        $dataConsumo = Consumo::table('consumos')
+            ->select('data')
+            ->whereDate()
+            ->get();
+    }
 }

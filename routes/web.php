@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/cardapio', [CardapioController::class, 'create'])->name('cardapio.create');
         Route::post('/cardapio', [CardapioController::class, 'store'])->name('cardapio.store');
         Route::get('/consumo', [ConsumoContoller::class, 'create'])->name('consumo.create');
-        Route::post('/consumo', [ConsumoContoller::class, 'store'])->name('consumo.store');
+        Route::post('/consumo}', [ConsumoContoller::class, 'store'])->name('consumo.store');
         Route::get('/info', [EscolaContoller::class, 'edit'])->name('info');
         Route::put('/atualizar/{id}', [EscolaContoller::class, 'update'])->name('update');
     });
