@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use Carbon\Carbon;
 class CardapioRequest extends FormRequest
 {
     /**
@@ -24,30 +24,13 @@ class CardapioRequest extends FormRequest
     public function rules()
     {
         return [
-            'data' => 'required',
+            'data' => ['required','before_or_equal:today', 'after:' . Carbon::now()->subDays(7)],
             //café da manhã
             'cardapios.*.alimentacao' => 'required',
             'cardapios.*.cardapio' => 'required',
-            'cardapios.*.quantidade' => 'required',
+            'cardapios.*.quantidade' => ['required','numeric','integer', 'gte:0'],
             'cardapios.*.repeticoes' => 'required'
 
-            /*almoço
-            'cardapios.1.alimentacao' => '',
-            'cardapios.1.cardapio' => 'required',
-            'cardapios.1.quantidade' => 'required',
-            'cardapios.1.repeticoes' => 'required',
-
-            //café da tarde
-            'cardapios.2.alimentacao' => '',
-            'cardapios.2.cardapio' => 'required',
-            'cardapios.2.quantidade' => 'required',
-            'cardapios.2.repeticoes' => 'required',
-
-            //jantar
-            'cardapios.3.alimentacao' => '',
-            'cardapios.3.cardapio' => 'required',
-            'cardapios.3.quantidade' => 'required',
-            'cardapios.3.repeticoes' => 'required',*/
         ];
     }
 
@@ -61,18 +44,14 @@ class CardapioRequest extends FormRequest
 
             //almoco
             'cardapios.1.cardapio' => 'almoço',
-            //'cardapios.1.quantidade' => 'quantidade',
-            //'cardapios.1.repeticoes' => 'repeticoes',
+            
 
             //café da tarde
             'cardapios.2.cardapio' => 'café da tarde',
-           // 'cardapios.2.quantidade' => 'quantidade',
-           // 'cardapios.2.repeticoes' => 'repeticoes',
-
+           
             //jantar
             'cardapios.3.cardapio' => 'jantar'
-            //'cardapios.3.quantidade' => 'quantidade',
-//'cardapios.3.repeticoes' => 'repeticoes'
+            
 
         ];
     }
@@ -81,7 +60,12 @@ class CardapioRequest extends FormRequest
     {
         return [
             'cardapios.*.quantidade.required' => 'Campo obrigatório',
-            'cardapios.*.repeticoes.required' => 'Campo obrigatório'
+            'cardapios.*.repeticoes.required' => 'Campo obrigatório',
+            'cardapios.*.quantidade.numeric' => 'não é um número',
+            'cardapios.*.quantidade.integer' => 'número inválido',
+            'cardapios.*.quantidade.gte' => 'número inválido',
+            'data.before_or_equal' => 'A data deve ser anterior ou igual ao dia de hoje',
+            'data.after' => 'A data deve ser posterior a ' . Carbon::now()->subDays(7)->format('d/m/Y')
         ];
     }
 }

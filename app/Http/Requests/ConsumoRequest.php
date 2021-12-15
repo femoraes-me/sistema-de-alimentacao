@@ -41,7 +41,9 @@ class ConsumoRequest extends FormRequest
     public function messages()
     {
         return [
-            'alimentos.*.quantidade_consumida.required' => 'Campo obrigatório',
+            'alimentos.*.quantidade_consumida.required' => 'campo obrigatório',
+            'alimentos.*.quantidade_consumida.gt' => 'número inválido',
+            'alimentos.*.quantidade_consumida.numeric' => 'não é um número',
             'data_consumo.before_or_equal' => 'A data deve ser anterior ou igual ao dia de hoje',
             'data_consumo.after' => 'A data deve ser posterior a ' . Carbon::now()->subDays(7)->format('d/m/Y')
         ];

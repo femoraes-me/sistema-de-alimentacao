@@ -9,8 +9,13 @@ class Entrada extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
+    protected $table = 'entradas';
 
-    ///public function alimentos(){
-   ///
+    protected $fillable = [
+        'escolas_id',
+        'data',
+        'alimentos_id',
+        'unidade',
+        'quantidade_entrada'
+    ];
 }

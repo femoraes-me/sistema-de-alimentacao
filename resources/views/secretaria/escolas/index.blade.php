@@ -11,7 +11,8 @@
                 <button type="submit" class="btn letra btn-primary "><i class="fa fa-search"></i></button>
             </div>
             <button class="btn letra btn-primary font-weight-bolder ml-2" id="showForm">Cadastrar Escola</button>
-            <button class="btn letra btn-secondary font-weight-bolder ml-2 {{ sizeof($errors) == 0 ? 'd-none' : '' }}" id="hideForm">Fechar</button>
+            <button class="btn letra btn-secondary font-weight-bolder ml-2 {{ sizeof($errors) == 0 ? 'd-none' : '' }}"
+                id="hideForm">Fechar</button>
         </div>
 
         @include('layouts._partials.return_message')
@@ -59,7 +60,8 @@
         <!-- -->
 
         <!-- cofirmation modal -->
-        <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body mt-3 mb-2">
@@ -98,12 +100,12 @@
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger" id="btnDelete"
                                                 data-toggle="modal" data-target="#confirmationModal">
-                                                <i class="fa fa-trash "></i>
+                                                <i class="fa fa-trash fa-fw"></i>
                                             </button>
                                         </form>
                                         <a href="{{ route('secretaria.escolas.actions', $escola->id) }}"
                                             class="btn btn-sm btn-secondary ml-2">
-                                            <i class="fas fa-ellipsis-h"></i>
+                                            <i class="fas fa-ellipsis-h fa-fw"></i>
                                         </a>
                                     </div>
                                 </td>

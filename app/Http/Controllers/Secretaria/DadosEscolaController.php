@@ -9,6 +9,7 @@ use App\Models\Secretaria\Escola;
 use App\Models\Escola\Alimento;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use App\Models\Secretaria\Entrada;
 
 class DadosEscolaController extends Controller
 {
@@ -72,22 +73,29 @@ class DadosEscolaController extends Controller
 
     public function storeEntradeDeAlimentos(Request $request)
     {
-        $this->validate($request, [
-            'data_consumo' => 'required|after:' . Carbon::now()->subDays(7) . '|before_or_equal:today',
-        ]);
+        $requestData = $this->validate(
+            $request,
+            [
+                'data' => 'required|after:' . Carbon::now()->subDays(7) . '|before_or_equal:today',
+                'alimento.*.quantidade' => 'required|numeric|gt:0'
+            ],
+            //messages
+            [
+                'alimento.*.quantidade.required' => 'campo obrigatório',
+                'alimento.*.quantidade.gt' => 'número inválido',
+                'alimento.*.quantidade.numeric' => 'não é um número',
+                'data.before_or_equal' => 'A data deve ser anterior ou igual ao dia de hoje',
+                'data.after' => 'A data deve ser posterior a ' . Carbon::now()->subDays(7)->format('d/m/Y')
+            ]
+        );
 
-        $data = $request->all();
-
-        $requestData = $request->all();
 
         $requestData['alimento'] = array_filter($requestData['alimento'], function ($alimento) {
             return $alimento['quantidade'] != null;
         });
 
-        // dd($requestData);
-
         foreach ($requestData['alimento'] as $alimento) {
-            $estoque = Estoque::where(['alimento_id' => $alimento['id'], ['data', '=', $requestData['data_consumo']]])->first();
+            $estoque = Estoque::where(['alimento_id' => $alimento['id']])->first();
             if ($estoque) {
                 $estoque->quantidade += $alimento['quantidade'];
                 $estoque->save();
@@ -95,10 +103,15 @@ class DadosEscolaController extends Controller
                 Estoque::create([
                     'escola_id' =>  $requestData['escola_id'],
                     'alimento_id' => $alimento['id'],
-                    'quantidade' => $alimento['quantidade'],
-                    'data' => $requestData['data_consumo'],
+                    'quantidade' => $alimento['quantidade']
                 ]);
             }
+            Entrada::create([
+                'escolas_id' =>  $requestData['escola_id'],
+                'alimentos_id' => $alimento['id'],
+                'quantidade_entrada' => $alimento['quantidade'],
+                'data' => $requestData['data']
+            ]);
         }
 
         return redirect()->route('secretaria.escolas.actions.entrada', $requestData['escola_id'])->with('success', 'Alimentos adicionados com sucesso!');

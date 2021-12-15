@@ -20,8 +20,6 @@
                 <div class="invalid-feedback">{{ $errors->first('data_consumo') }}</div>
             </div>
 
-            <!-- id  da escola -->
-            <input type="hidden" name="escolas_id" value="{{Auth::user()->escolas_id}}">
             <!-- tabela de estoque -->
             <div class="card border-light shadow-sm py-1">
                 <div class="card-body px-4">
@@ -45,14 +43,19 @@
                                     <td class="text-center align-middle">
                                         {{ $alimento->unidade }}
                                     </td>
-                                    <td class="align-middle">
+                                    <td class="align-middle {{ $errors->has("alimentos.{$alimento->nome}.quantidade_consumida") ? 'pb-1' : '' }}">
                                         <!-- campo quantidade consumida -->
-                                        <input type="text"
-                                            class="form-control col-md-5 mx-auto {{ $errors->has("alimentos.{$alimento->nome}.quantidade_consumida") ? 'is-invalid' : '' }} text-center"
-                                            name="alimentos[{{ $alimento->nome }}][quantidade_consumida]"
-                                            value="{{ old("alimentos.{$alimento->nome}.quantidade_consumida") }}">
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first("alimentos.{$alimento->nome}.quantidade_consumida") }}
+                                        <div class="row justify-content-center">
+                                            <div class="col-md-6">
+                                                <input type="text"
+                                                    class="form-control mx-auto {{ $errors->has("alimentos.{$alimento->nome}.quantidade_consumida") ? 'is-invalid' : '' }} text-center"
+                                                    name="alimentos[{{ $alimento->nome }}][quantidade_consumida]"
+                                                    value="{{ old("alimentos.{$alimento->nome}.quantidade_consumida") }}">
+                                                <span class="invalid-feedback">
+                                                    <strong
+                                                        class="align-middle">{{ $errors->first("alimentos.{$alimento->nome}.quantidade_consumida") }}</strong>
+                                                </span>
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>
