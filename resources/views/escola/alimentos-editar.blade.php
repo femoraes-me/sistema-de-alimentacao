@@ -43,7 +43,7 @@
                         </div>
 
                         <div class="form-group mt-4 d-flex justify-content-center">
-                            <input type="submit" value="Editar" class="btn btn-color letra px-4 w-25">
+                            <input type="submit" value="Editar" class="btn btn-success px-4 w-25">
                         </div>
 
                     </form>
