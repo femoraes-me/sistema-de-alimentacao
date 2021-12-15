@@ -10,15 +10,17 @@
                 <input type="text" name="search" class="form-control mr-2 w-50" value="" placeholder="Pesquisar...">
                 <button type="submit" class="btn letra btn-primary "><i class="fa fa-search"></i></button>
             </div>
-            <a class="btn letra btn-primary font-weight-bolder ml-2" id="escolaCadastro" href="{{route('secretaria.usuarios.create')}}">Cadastrar Usuário</a>
+            <a class="btn letra btn-primary font-weight-bolder ml-2" id="escolaCadastro"
+                href="{{ route('secretaria.usuarios.create') }}">Cadastrar Usuário</a>
         </div>
 
         <!-- cofirmation modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body mt-3 mb-2">
-
+                        <!-- nome do usuario -->
                     </div>
                     <div class="modal-footer py-2">
                         <button type="button" class="btn btn-danger" data-dismiss="modal" id="btnCancelar">Cancelar</button>
@@ -48,19 +50,20 @@
                                 <td class="align-middle" id="tdNome">{{ $usuario->name }}</td>
                                 <td class="align-middle">
                                     <div class="row justify-content-center">
-                                        <form action="{{ route('secretaria.escolas.destroy', $usuario->id) }}"
+                                        <form action="{{ route('secretaria.usuarios.destroy', $usuario->id) }}"
                                             method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger" id="btnDelete"
-                                                data-toggle="modal" data-target="#exampleModal">
+                                                data-toggle="modal" data-target="#confirmationModal">
                                                 <i class="fa fa-trash "></i>
                                             </button>
                                         </form>
-                                        <a href="{{ route('secretaria.escolas.actions', $usuario->id) }}"
-                                            class="btn btn-sm btn-secondary ml-2">
-                                            <i class="fas fa-ellipsis-h"></i>
-                                        </a>
+                                            <a href="{{ route('secretaria.usuarios.show', $usuario->id) }}"
+                                                class="btn btn-sm btn-secondary ml-2">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                       
                                     </div>
                                 </td>
                             </tr>
@@ -68,8 +71,11 @@
                     </tbody>
                 </table>
                 <!-- Cria Paginação -->
-                
+
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script src="{{ asset('js/secretaria/users/index.js') }}"></script>
 @endsection

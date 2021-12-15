@@ -12,6 +12,7 @@ class Consumo extends Model
     protected $table = 'consumos';
 
     protected $fillable = [
+        'escolas_id',
         'data',
         'alimentos_id',
         'unidade',

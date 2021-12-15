@@ -20,6 +20,8 @@
                 <div class="invalid-feedback">{{ $errors->first('data_consumo') }}</div>
             </div>
 
+            <!-- id  da escola -->
+            <input type="hidden" name="escolas_id" value="{{Auth::user()->escolas_id}}">
             <!-- tabela de estoque -->
             <div class="card border-light shadow-sm py-1">
                 <div class="card-body px-4">

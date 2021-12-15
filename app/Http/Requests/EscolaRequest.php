@@ -24,7 +24,7 @@ class EscolaRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'required',
+            'nome' => ['required', 'string', 'unique:escolas,nome'],
             'qtd_alunos' => ['required', 'numeric', 'integer', 'gt:0'],
             'telefone' => ['required', 'size :14']
         ];
@@ -41,7 +41,8 @@ class EscolaRequest extends FormRequest
     public function messages()
     {
         return [
-            'telefone.size' => 'Número de telefone inválido'
+            'telefone.size' => 'Número de telefone inválido',
+            'nome.unique' => 'Esta escola já foi criada'
         ];
     }
 }

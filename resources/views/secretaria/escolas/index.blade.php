@@ -15,6 +15,7 @@
         </div>
 
         @include('layouts._partials.return_message')
+
         <!-- Form de cadastro de Escola -->
         <div class="card {{ sizeof($errors) == 0 ? 'd-none' : '' }}" id="formEscola">
             <div class="card-header py-3 px-5">
@@ -58,7 +59,7 @@
         <!-- -->
 
         <!-- cofirmation modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body mt-3 mb-2">
@@ -96,7 +97,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger" id="btnDelete"
-                                                data-toggle="modal" data-target="#exampleModal">
+                                                data-toggle="modal" data-target="#confirmationModal">
                                                 <i class="fa fa-trash "></i>
                                             </button>
                                         </form>

@@ -19,12 +19,14 @@ class ConsumoContoller extends Controller
     {
 
         $requestData = $request->all();
+        
+        $userEscola = ['escolas_id' =>$requestData['escolas_id']];
         $data = ['data' =>$requestData['data_consumo']];
         $ref = array_keys($requestData['alimentos']);
         
         
         for ($i = 0; $i < count($ref); $i++) {
-            $newRequest = array_merge($data, $requestData['alimentos'][$ref[$i]]);
+            $newRequest = array_merge($data, $requestData['alimentos'][$ref[$i]], $userEscola);
             Consumo::create($newRequest);
         }
 
