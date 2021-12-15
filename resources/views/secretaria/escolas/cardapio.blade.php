@@ -29,16 +29,16 @@
         <br>
         <div class="card p-4 bg-white border mt-4">
             <label class="pl-2"><strong>Café da Manhã:</strong></label>
-            <div class="bg-white p-2 mb-4 border rounded text-dark">Bolacha maizena, bolacha rosquinha, café, leite, achocolatado em pó</div>
+            <div class="bg-light p-2 mb-4 border rounded text-dark">Bolacha maizena, bolacha rosquinha, café, leite, achocolatado em pó</div>
             
             <label class="pl-2"><strong>Almoço:</strong></label>
-            <div class="bg-white p-2 mb-4 border rounded text-dark">Arroz, feijão, frango desfiado e salada de alface e tomate</div>
+            <div class="bg-light p-2 mb-4 border rounded text-dark">Arroz, feijão, frango desfiado e salada de alface e tomate</div>
             
             <label class="pl-2"><strong>Lanche da Tarde:</strong></label>
-            <div class="bg-white p-2 mb-4 border rounded text-dark">Bolacha maizena, bolacha rosquinha, café, leite, achocolatado em pó</div>
+            <div class="bg-light p-2 mb-4 border rounded text-dark">Bolacha maizena, bolacha rosquinha, café, leite, achocolatado em pó</div>
             
             <label class="pl-2"><strong>Janta:</strong></label>
-            <div class="bg-white p-2 mb-4 border rounded text-dark">Arroz, feijão, frango desfiado e salada de alface e tomate</div>
+            <div class="bg-light p-2 mb-4 border rounded text-dark">Arroz, feijão, frango desfiado e salada de alface e tomate</div>
         </div>
 
     </div>
