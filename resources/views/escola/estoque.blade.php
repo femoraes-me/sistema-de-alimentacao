@@ -40,17 +40,8 @@
                                         <td>{{ $alimento->id }}</td>
                                         <td>{{ $alimento->nome }}</td>
                                         <td class="text-center">{{ $alimento->unidade }}</td>
-<<<<<<< HEAD
-                                        @if (Auth::user()->role == 'secretaria')
-                                            <td class="text-center"> <a href="{{ route('alimentos.editar', $alimento->id) }}"><i
-                                                        class="far fa-edit text-purple"></i></a>
-                                            <td class="text-center"> <a href="{{ route('alimentos.apagar', $alimento->id) }}"><i
-                                                        class="fas fa-trash text-red"></i></a>
-                                        @endif
-=======
                                         <td class="text-center">{{ $alimento->quantidade }}</td>
 
->>>>>>> c33eab5afdad6d13a8382fca454327715ff2d74b
                                     </tr>
                                 @endforeach
                             </tbody>

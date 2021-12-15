@@ -22,7 +22,7 @@
                     <input readonly value="{{ $escola->telefone }}" type="text" class="form-control">
                 </div>
                 <div class="form-group mt-4 d-flex justify-content-center">
-                    <button onclick="history.back()" class="btn btn-primary letra px-4 w-25">Voltar</button>
+                    <button onclick="history.back()" class="btn btn-danger letra px-4 w-25">Voltar</button>
                 </div>
             </div>
         </div>

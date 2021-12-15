@@ -57,6 +57,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/escolas/{id}/acoes', [EscolaContoller::class, 'showActions'])->name('escolas.actions');
         Route::get('/escolas/{id}/acoes/consumo', [DadosEscolaController::class, 'exibeConsumo'])->name('escolas.actions.consumo');
         Route::get('/escolas/{id}/acoes/cardapio', [DadosEscolaController::class, 'exibeCardapio'])->name('escolas.actions.cardapio');
+        Route::get('/escolas/{id}/acoes/relatorio', [DadosEscolaController::class, 'exibeRelatorio'])->name('escolas.actions.relatorio');
         Route::get('/escolas/{id}/acoes/dados', [DadosEscolaController::class, 'exibeDados'])->name('escolas.actions.dados');
         Route::get('/escolas/{id}/acoes/entrada', [DadosEscolaController::class, 'exibeEntrada'])->name('escolas.actions.entrada');
         Route::post('/escolas/acoes/entrada/store', [DadosEscolaController::class, 'storeEntradeDeAlimentos'])->name('escolas.actions.entrada.store');

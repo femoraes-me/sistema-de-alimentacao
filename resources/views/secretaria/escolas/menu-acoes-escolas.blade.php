@@ -22,26 +22,26 @@
                     <div class="row mb-4">
                         <div class="col-4">
                             <a href="{{ route('secretaria.escolas.actions.consumo', $escola->id) }}"
-                                class="btn btn-primary p-5">Consumo Diário</a>
+                                class="btn btn-secondary p-5">Consumo Diário</a>
                         </div>
                         <div class="col-4">
                             <a href="{{ route('secretaria.escolas.actions.cardapio', $escola->id) }}"
-                                class="btn btn-primary p-5">Cardápio Diário</a>
+                                class="btn btn-secondary p-5">Cardápio Diário</a>
                         </div>
                         <div class="col-4">
                             <a href="{{ route('secretaria.escolas.actions.entrada', $escola->id) }}"
-                                class="btn btn-primary p-5">Entrada
-                                de Alimentos</a>
+                                class="btn btn-secondary p-5">Entrada de Alimentos</a>
                         </div>
                     </div>
                     <div class="row mt-4 mb-4">
                         <div class="col-2"></div>
                         <div class="col-4">
-                            <a href="" class="btn btn-primary p-5">Relatório da Escola</a>
+                            <a href="{{ route('secretaria.escolas.actions.relatorio', $escola->id) }}" 
+                            class="btn btn-secondary p-5">Relatório da Escola</a>
                         </div>
                         <div class="col-4">
                             <a href="{{ route('secretaria.escolas.actions.dados', $escola->id) }}"
-                                class="btn btn-primary p-5">Dados da Escola</a>
+                                class="btn btn-secondary p-5">Dados da Escola</a>
                         </div>
                         <div class="col-2"></div>
                     </div>

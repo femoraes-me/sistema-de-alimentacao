@@ -18,11 +18,11 @@
                     <label for="data_consumo">Dia:</label>
                     <input type="date" name="data_consumo" id="data_consumo"
                         class="text-secondary border rounded p-1 {{ $errors->has('data_consumo') ? 'is-invalid' : '' }}">
-                    <button type="submit" class="btn letra btn-primary "><i class="fa fa-search"></i></button>
+                    <button type="submit" class="btn letra btn-dark px-4"><i class="fa fa-search"></i>     Buscar</button>
                     <div class="invalid-feedback"></div>
                 </div>
                 <div class="">
-                    <button onclick="history.back()" class="btn letra btn-primary font-weight-bolder ml-2" id="escolaCadastro">Voltar</button>
+                    <button onclick="history.back()" class="btn letra btn-danger font-weight-bolder ml-2 px-4" id="escolaCadastro">Voltar</button>
                 </div>
             </div>
         </div>

@@ -18,7 +18,8 @@ class AlimentosController extends Controller
     public function index()
     {
         $alimentos = DB::select(DB::raw("
-        select alimentos.id as id, sum(estoque.quantidade) as quantidade, alimentos.nome as nome, alimentos.unidade as unidade  from estoque inner join alimentos on alimentos.id = estoque.alimento_id
+        select alimentos.id as id, sum(estoque.quantidade) as quantidade, alimentos.nome as nome, alimentos.unidade as unidade  
+        from estoque inner join alimentos on alimentos.id = estoque.alimento_id
         where estoque.escola_id = " . auth()->user()->escolas_id . "
         group by alimentos.id, alimentos.nome, alimentos.unidade"));
 
