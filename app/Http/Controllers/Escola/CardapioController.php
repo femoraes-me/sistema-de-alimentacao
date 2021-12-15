@@ -21,7 +21,7 @@ class CardapioController extends Controller
         $requestData = $request->validated();
 
         $data = ['data' => $requestData['data']];
-        $userEscola = ['escola_id' => Auth::user()->escolas_id];
+        $userEscola = ['escolas_id' => Auth::user()->escolas_id];
         $cardapios = $requestData['cardapios'];
 
         foreach ($requestData['cardapios'] as $cardapios) {
