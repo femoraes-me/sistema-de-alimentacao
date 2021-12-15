@@ -25,7 +25,7 @@
                 <!-- botao voltar -->
                 <div class="col-md-6 d-flex justify-content-end pr-0">
                     <div class="">
-                        <a class="btn btn-primary"
+                        <a class="btn btn-danger px-4"
                             href="{{ route('secretaria.escolas.actions', $escola->id) }}">Voltar</a>
                     </div>
                 </div>
