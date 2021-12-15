@@ -73,7 +73,7 @@ class DadosEscolaController extends Controller
 
     public function storeEntradeDeAlimentos(Request $request)
     {
-        $requestData = $this->validate(
+        $this->validate(
             $request,
             [
                 'data' => 'required|after:' . Carbon::now()->subDays(7) . '|before_or_equal:today',
@@ -89,13 +89,14 @@ class DadosEscolaController extends Controller
             ]
         );
 
+        $requestData = $request->all();
 
         $requestData['alimento'] = array_filter($requestData['alimento'], function ($alimento) {
             return $alimento['quantidade'] != null;
         });
 
         foreach ($requestData['alimento'] as $alimento) {
-            $estoque = Estoque::where(['alimento_id' => $alimento['id']])->first();
+            $estoque = Estoque::where(['escola_id' => $requestData['escola_id']])->where(['alimento_id' => $alimento['id']])->first();
             if ($estoque) {
                 $estoque->quantidade += $alimento['quantidade'];
                 $estoque->save();

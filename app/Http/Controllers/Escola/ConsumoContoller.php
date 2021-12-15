@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Escola;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Escola\{Consumo, Alimento};
+use App\Models\Escola\{Consumo, Alimento, Estoque};
 use App\Http\Requests\ConsumoRequest;
 use Illuminate\Support\Facades\Auth;
+
 class ConsumoContoller extends Controller
 {
     public function create()
@@ -22,14 +23,21 @@ class ConsumoContoller extends Controller
 
         $userEscola = ['escolas_id' => Auth::user()->escolas_id];
         $data = ['data' => $requestData['data_consumo']];
-        $ref = array_keys($requestData['alimentos']);
 
 
-        foreach ($requestData['alimentos'] as $alimentos) {
-            $newRequest = array_merge($data, $alimentos, $userEscola);
-            print_r($newRequest);
+        foreach ($requestData['alimentos'] as $alimento) {
+            $data = array_merge($data, $alimento, $userEscola);
+            $estoque = Estoque::where(['escola_id' => $requestData['escola_id']])->where(['alimento_id' => $alimento['id']])->first();
+
+            $estoque->quantidade -= $alimento['quantidade'];
+            $estoque->save();
+            Consumo::create([
+                'escolas_id' =>  $data['escola_id'],
+                'alimentos_id' => $alimento['id'],
+                'quantidade_entrada' => $alimento['quantidade'],
+                'data' => $data['data']
+            ]);
         }
-        return;
         return redirect()->route('escola.consumo.create')->with('success', "Consumo diário cadastrado");
     }
 }
