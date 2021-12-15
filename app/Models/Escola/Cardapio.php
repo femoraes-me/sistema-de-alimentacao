@@ -12,6 +12,7 @@ class Cardapio extends Model
     protected $table = 'cardapios';
 
     protected $fillable = [
+        'escolas_id',
         'data',
         'alimentacao',
         'cardapio',
