@@ -18,4 +18,9 @@ class Consumo extends Model
         'unidade',
         'quantidade_consumida'
     ];
+
+    public function alimento()
+    {
+        return $this->belongsTo(Alimento::class, 'alimentos_id', 'id');
+    }
 }
