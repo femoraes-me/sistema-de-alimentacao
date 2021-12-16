@@ -10,13 +10,14 @@
 
     <div id="content">
         <!-- Main Content-->
-        <div class="container-fluid mt-4">
+        <div class="container-fluid">
             @csrf
             <div class="card border-light shadow pb-2 px-2">
                 <div class="card-title">
                     <div class="mt-4 text-center">
-                        <h1 class="h4 text-gray-900 pl-4">Menu de Ações</h1>
+                        <h1 class="h4 text-gray-900 pl-4"><strong>Menu de Ações</strong></h1>
                     </div>
+                    <hr>
                 </div>
                 <div class="card-body text-center">
                     <div class="row mb-4">

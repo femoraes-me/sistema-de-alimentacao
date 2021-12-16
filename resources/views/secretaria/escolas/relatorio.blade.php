@@ -37,7 +37,7 @@
                     </div>
                     <div class="mr-3">
                         <button 
-                            class="btn btn-secondary px-4"
+                            class="btn btn-primary px-4"
                             onclick="location.search = `?fromDate=${$('#fromDate').val()}&toDate=${$('#toDate').val()}`;">
                                 Gerar Relatorios
                         </button>
@@ -45,7 +45,7 @@
                     </div>
 
                     <div class="">
-                        <button onclick="history.back()" class="btn letra btn-danger font-weight-bolder ml-2 px-4"
+                        <button onclick="history.back()" class="btn letra btn-primary font-weight-bolder ml-2 px-4"
                             id="escolaCadastro">Voltar</button>
                     </div>
                 </div>

@@ -96,7 +96,7 @@
                         @foreach ($escolas as $escola)
                             <tr>
                                 <td class="align-middle text-center">{{ $escola->id }}</td>
-                                <td class="align-middle" id="tdNome">{{ $escola->nome }}</td>
+                                <td class="align-middle" id="tdNome"><span class="text-uppercase">{{ $escola->nome }}</span></td>
                                 <td class="align-middle">
                                     <div class="row justify-content-center">
                                         <form action="{{ route('secretaria.escolas.destroy', $escola->id) }}"

@@ -45,7 +45,7 @@
                                 @foreach ($alimentos as $alimento)
                                     <tr>
                                         <td class="text-center">{{ $alimento->id }}</td>
-                                        <td>{{ $alimento->nome }}</td>
+                                        <td class="text-uppercase">{{ $alimento->nome }}</td>
                                         <td class="text-center">{{ $alimento->unidade }}</td>
                                         @if (Auth::user()->role == 'secretaria')
                                             <td>

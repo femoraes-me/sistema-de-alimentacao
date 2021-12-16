@@ -5,16 +5,17 @@
         <div class="text-left">
             <h1 class="h2 text-gray-900 mb-4">Usuários</h1>
         </div>
-        <form>
             <div class="d-flex justify-content-between mb-2">
+                <form>
                 <div class="d-flex flex-fill">
-                    <input type="text" name="search" class="form-control mr-2 w-50" value="{{$search}}" placeholder="Pesquisar...">
+                    <input type="text" name="search" class="form-control mr-2" value="{{$search}}" placeholder="Pesquisar...">
                     <button type="submit" class="btn letra btn-primary "><i class="fa fa-search"></i></button>
                 </div>
+                </form>
                 <a class="btn letra btn-primary font-weight-bolder ml-2" id="escolaCadastro"
                     href="{{ route('secretaria.usuarios.create') }}">Cadastrar Usuário</a>
             </div>
-        </form>
+        
 
         <!-- cofirmation modal -->
         <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
@@ -49,7 +50,7 @@
                         @foreach ($usuarios as $usuario)
                             <tr>
                                 <td class="align-middle text-center">{{ $usuario->id }}</td>
-                                <td class="align-middle" id="tdNome">{{ $usuario->name }}</td>
+                                <td class="align-middle" id="tdNome"><span class="text-uppercase">{{ $usuario->name }}</span></td>
                                 <td class="align-middle">
                                     <div class="row justify-content-center">
                                         <form action="{{ route('secretaria.usuarios.destroy', $usuario->id) }}"
