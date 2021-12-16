@@ -57,14 +57,41 @@ class DadosEscolaController extends Controller
         return view('secretaria.escolas.cardapio', compact('escola', 'refeicoes', 'data'));
     }
 
-    public function consultaCardapio()
+    public function exibeRelatorio(Request $request, $id)
     {
-    }
-
-    public function exibeRelatorio($id)
-    {
+        $fromDate = $request->get('fromDate') ?? Carbon::now()->format('Y-m-d');
+        $toDate = $request->get('toDate') ?? Carbon::now()->format('Y-m-d');
+        
         $escola = Escola::find($id);
-        return view('secretaria.escolas.relatorio', compact('escola'));
+
+        $entradas = DB::select(DB::raw('
+            select  a.nome,a.unidade,
+            sum(e.quantidade_entrada) quantidade_entrada
+            from entradas e 
+            inner join alimentos a on a.id = e.alimentos_id
+            where data BETWEEN \'' . $fromDate . '\' and \'' . $toDate . '\'
+            group by a.nome, a.unidade;
+        '));
+        //dd($entradas);
+
+        $consumos = DB::select(DB::raw('
+            select  a.nome,a.unidade,
+            sum(c.quantidade_consumida) quantidade_consumida
+            from consumos c 
+            inner join alimentos a on a.id = c.alimentos_id
+            where data BETWEEN \'' . $fromDate . '\' and \'' . $toDate . '\'
+            group by a.nome, a.unidade;
+        '));
+        //dd($consumos);
+
+        
+        $cardapios = DB::select(DB::raw('
+            select * from cardapios
+            where escolas_id = ' . $id . '
+            and data between \'' . $fromDate . '\' and \'' . $toDate . '\'
+        '));
+        
+        return view('secretaria.escolas.relatorio', compact('escola', 'entradas', 'consumos', 'cardapios'));
     }
 
     public function exibeEntrada($id)

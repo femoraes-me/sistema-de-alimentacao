@@ -35,12 +35,24 @@
             @foreach ($refeicoes as $refeicao)
                 <div class="">{{ $refeicao->alimentacao }}</div>
                 <div class="row pl-2">
-                    <input name="cafe_da_manha" id="cafe_da_manha"
-                        class="bg-light p-2 mb-4 border rounded text-dark col-7 mr-4" value="{{ $refeicao->cardapio }}">
-                    <input name="cafe_da_manha" id="cafe_da_manha"
-                        class="bg-light p-2 mb-4 border rounded text-dark col-2 mr-4" value="{{ $refeicao->quantidade }}">
-                    <input name="cafe_da_manha" id="cafe_da_manha" class="bg-light p-2 mb-4 border rounded text-dark col-2"
-                        value="{{ $refeicao->repeticoes }}">
+                    <input 
+                        name="cafe_da_manha" 
+                        id="cafe_da_manha"
+                        class="bg-light p-2 mb-4 border rounded text-dark col-7 mr-4"
+                        value="{{ $refeicao->cardapio }}"
+                    > 
+                    <input 
+                        name="cafe_da_manha" 
+                        id="cafe_da_manha"
+                        class="bg-light p-2 mb-4 border rounded text-dark col-2 mr-4 text-center"
+                        value="{{ $refeicao->quantidade }}"
+                    >
+                    <input 
+                        name="cafe_da_manha" 
+                        id="cafe_da_manha"
+                        class="bg-light p-2 mb-4 border rounded text-dark col-2 text-center"
+                        value="{{ $refeicao->repeticoes }}"
+                    >
                 </div>
             @endforeach
         </div>
