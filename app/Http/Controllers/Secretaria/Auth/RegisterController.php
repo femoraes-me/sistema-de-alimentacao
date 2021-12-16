@@ -15,10 +15,14 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $usuarios = User::all();
-        return view('secretaria.users.index', compact('usuarios'));
+        $usuarios = User::query();
+
+        if (isset($request->search) && $request->search !== '') {
+            $usuarios->where('nome', 'like', '%' . $request->search . '%');
+        }
+        return view('secretaria.users.index', ['usuarios' => $usuarios->select('id', 'nome', )->paginate(10)]);
     }
 
     /**

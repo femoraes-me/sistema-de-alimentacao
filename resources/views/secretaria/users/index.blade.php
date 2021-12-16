@@ -5,14 +5,16 @@
         <div class="text-left">
             <h1 class="h2 text-gray-900 mb-4">Usuários</h1>
         </div>
-        <div class="d-flex justify-content-between mb-2">
-            <div class="d-flex flex-fill">
-                <input type="text" name="search" class="form-control mr-2 w-50" value="" placeholder="Pesquisar...">
-                <button type="submit" class="btn letra btn-primary "><i class="fa fa-search"></i></button>
+        <form>
+            <div class="d-flex justify-content-between mb-2">
+                <div class="d-flex flex-fill">
+                    <input type="text" name="search" class="form-control mr-2 w-50" value="{{$search}}" placeholder="Pesquisar...">
+                    <button type="submit" class="btn letra btn-primary "><i class="fa fa-search"></i></button>
+                </div>
+                <a class="btn letra btn-primary font-weight-bolder ml-2" id="escolaCadastro"
+                    href="{{ route('secretaria.usuarios.create') }}">Cadastrar Usuário</a>
             </div>
-            <a class="btn letra btn-primary font-weight-bolder ml-2" id="escolaCadastro"
-                href="{{ route('secretaria.usuarios.create') }}">Cadastrar Usuário</a>
-        </div>
+        </form>
 
         <!-- cofirmation modal -->
         <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"

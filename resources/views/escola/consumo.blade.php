@@ -46,29 +46,34 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($alimentos as $alimento)
+                            @foreach ($estoque as $estoque)
                                 <tr>
                                     <!--campo id  -->
-                                    <input type="hidden" name="alimentos[{{ $alimento->nome }}][alimento_id]"
-                                        value="{{ $alimento->id }}">
-                                    <td class="align-middle pl-4">
-                                        {{ $alimento->nome }}
-                                    </td>
-                                    <td class="text-center align-middle">
-                                        {{ $alimento->unidade }}
-                                    </td>
+                                    <input type="hidden" name="alimentos[{{ $loop->index }}][alimento_id]"
+                                        value="{{ $estoque->id }}">
+
+                                    @foreach ($alimentos as $alimento)
+                                        @if ($estoque->alimento_id == $alimento->id)
+                                            <td class="align-middle pl-4">
+                                                {{ $alimento->nome }}
+                                            </td>
+                                            <td class="text-center align-middle">
+                                                {{ $alimento->unidade }}
+                                            </td>
+                                        @endif
+                                    @endforeach
                                     <td
-                                        class="align-middle {{ $errors->has("alimentos.{$alimento->nome}.quantidade_consumida") ? 'pb-1' : '' }}">
+                                        class="align-middle {{ $errors->has("alimentos.{$loop->index}.quantidade_consumida") ? 'pb-1' : '' }}">
                                         <!-- campo quantidade consumida -->
                                         <div class="row justify-content-center">
                                             <div class="col-md-6">
                                                 <input type="text"
-                                                    class="form-control mx-auto {{ $errors->has("alimentos.{$alimento->nome}.quantidade_consumida") ? 'is-invalid' : '' }} text-center"
-                                                    name="alimentos[{{ $alimento->nome }}][quantidade_consumida]"
-                                                    value="{{ old("alimentos.{$alimento->nome}.quantidade_consumida") }}">
+                                                    class="form-control mx-auto {{ $errors->has("alimentos.{$loop->index}.quantidade_consumida") ? 'is-invalid' : '' }} text-center"
+                                                    name="alimentos[{{ $loop->index }}][quantidade_consumida]"
+                                                    value="{{ old("alimentos.{$loop->index}.quantidade_consumida") }}">
                                                 <span class="invalid-feedback">
                                                     <strong
-                                                        class="align-middle">{{ $errors->first("alimentos.{$alimento->nome}.quantidade_consumida") }}</strong>
+                                                        class="align-middle">{{ $errors->first("alimentos.{$loop->index}.quantidade_consumida") }}</strong>
                                                 </span>
                                             </div>
                                         </div>

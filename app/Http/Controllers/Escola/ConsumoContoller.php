@@ -8,12 +8,15 @@ use App\Models\Escola\{Consumo, Alimento, Estoque};
 use App\Http\Requests\ConsumoRequest;
 use Illuminate\Support\Facades\Auth;
 
+
 class ConsumoContoller extends Controller
 {
     public function create()
     {
-        $alimentos = Estoque::where('escola_id', '=', Auth::user()->escolas_id)->get();
-        return view('escola.consumo', compact('alimentos'));
+        $estoque = Estoque::where('escola_id', '=', Auth::user()->escolas_id)->get();
+        $alimentos = Alimento::all();
+        return view('escola.consumo', compact('estoque'), compact('alimentos'));
+    
     }
 
     public function store(ConsumoRequest $request)
