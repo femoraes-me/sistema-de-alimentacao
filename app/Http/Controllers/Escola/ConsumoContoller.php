@@ -8,12 +8,14 @@ use App\Models\Escola\{Consumo, Alimento, Estoque};
 use App\Http\Requests\ConsumoRequest;
 use Illuminate\Support\Facades\Auth;
 
+
 class ConsumoContoller extends Controller
 {
     public function create()
     {
-        $alimentos = Estoque::where('escola_id', '=', Auth::user()->escolas_id)->get();
-        return view('escola.consumo', compact('alimentos'));
+        $estoque = Estoque::where('escola_id', '=', Auth::user()->escolas_id)->get();
+        $alimentos = Alimento::all();
+        return view('escola.consumo', compact('estoque'), compact('alimentos'));
     }
 
     public function store(ConsumoRequest $request)
@@ -27,22 +29,23 @@ class ConsumoContoller extends Controller
 
         foreach ($requestData['alimentos'] as $alimento) {
             $estoque = Estoque::where(['escola_id' => $userEscola])->where(['alimento_id' => $alimento['alimento_id']])->first();
-            if ($estoque->quantidade < $alimento['quantidade_consumida']) {
-                $fails[] = Alimento::where('id', '=', $alimento['alimento_id'])->get();
+            if ($estoque) {
+                if ($estoque->quantidade < $alimento['quantidade_consumida']) {
+                    $fails[] = Alimento::where('id', '=', $alimento['alimento_id'])->get();
+                }
             }
         }
 
-        if ($fails) {
+        if (isset($fails)) {
             return redirect()->route('escola.consumo.create')->with('fails', $fails);
         }
 
         foreach ($requestData['alimentos'] as $alimento) {
-            $data = array_merge($data, $alimento, $userEscola);
-            $estoque = Estoque::where(['escola_id' => $data['escola_id']])->where(['alimento_id' => $alimento['alimento_id']])->first();
+            $estoque = Estoque::where(['escola_id' => $userEscola['escola_id']])->where(['alimento_id' => $alimento['alimento_id']])->first();
             $estoque->quantidade -= $alimento['quantidade_consumida'];
             $estoque->save();
             Consumo::create([
-                'escolas_id' =>  $data['escola_id'],
+                'escolas_id' =>  $userEscola['escola_id'],
                 'alimentos_id' => $alimento['alimento_id'],
                 'quantidade_consumida' => $alimento['quantidade_consumida'],
                 'data' => $data['data']

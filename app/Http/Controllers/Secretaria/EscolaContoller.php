@@ -13,12 +13,18 @@ use Illuminate\Support\Facades\Auth;
 
 class EscolaContoller extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $escolas = Escola::query()->select('id', 'nome')->where('id', '>', 1);
+        $escolas = Escola::query();
 
-        return view('secretaria.escolas.index', [
-            'escolas' => $escolas->paginate(10)
+        if (isset($request->search) && $request->search !== '') {
+            $escolas->where('nome', 'like', '%' . $request->search . '%');
+        }
+
+        return view('secretaria.escolas.index', 
+        [
+            'escolas' => $escolas->select('id', 'nome')->where('id', '>', 1)->paginate(10),
+            'search' => isset($request->search) ? $request->search : ''
         ]);
     }
 
@@ -50,8 +56,10 @@ class EscolaContoller extends Controller
             /*dados a ser validados*/
             $request->all(),
             /*rules*/
-            ['qtd_alunos' => ['required', 'numeric', 'integer', 'gt:0'],
-            'telefone'=>['required', 'size :14']],
+            [
+                'qtd_alunos' => ['required', 'numeric', 'integer', 'gt:0'],
+                'telefone' => ['required', 'size :14']
+            ],
             /*messages*/
             ['telefone.size' => 'Número inválido'],
             /*attributes*/

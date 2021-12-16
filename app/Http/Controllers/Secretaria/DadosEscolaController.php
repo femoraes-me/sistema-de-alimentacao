@@ -57,8 +57,8 @@ class DadosEscolaController extends Controller
         return view('secretaria.escolas.cardapio', compact('escola', 'refeicoes', 'data'));
     }
 
-    public function consultaCardapio(){
-
+    public function consultaCardapio()
+    {
     }
 
     public function exibeRelatorio($id)
@@ -84,33 +84,10 @@ class DadosEscolaController extends Controller
     public function exibeEntrada($id)
     {
         $escola = Escola::find($id);
-
-        // $estoque = $escola->estoques()->join('alimentos', 'estoque.alimento_id', '=', 'alimentos.id')
-        //     ->select('estoque.alimento_id', 'alimentos.nome', 'alimentos.unidade', 'estoque.quantidade')
-        //     ->get();
-
-        // $alimentosId = [];
-
-        // foreach ($estoque as $line) {
-        //     $alimentosId[] = $line->alimento_id;
-        // }
-
-        // // $alimentosId = 
-        // //query para fazer um join entre as tabelas estoque e alimentos
-        // $alimentos = Alimento::whereNotIn('alimentos.id', $alimentosId)->get();
-
         $alimentos = Alimento::all();
         $estoque = Estoque::where('escola_id', $id)->get();
-        // $estoque = DB::table('estoque')
-        //     ->select('alimento_id', DB::raw('ifnull(sum(quantidade),0)  as quantidade'))
-        //     ->rightJoin('alimentos', 'estoque.alimento_id', '=', 'alimentos.id')
-        //     ->where('escola_id', $id)
-        //     ->groupBy(['alimento_id'])
-        //     ->get();
 
-        // dd($estoque);
         return view('secretaria.escolas.entrada', compact('escola', 'alimentos', 'estoque'));
-        return view('secretaria.escolas.entrada', compact('estoque', 'escola', 'alimentos'));
     }
 
     public function storeEntradeDeAlimentos(Request $request)
