@@ -26,6 +26,6 @@ $(document).on('click', '#btnDelete', function (event) {
     
     $('#confirmationModal').on('hide.bs.modal, hidden.bs.modal ', function (event) {
         $('.modal-body').empty();
-      })
+    })
 
 });

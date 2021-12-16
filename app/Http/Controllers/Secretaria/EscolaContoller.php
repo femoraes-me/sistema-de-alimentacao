@@ -39,7 +39,7 @@ class EscolaContoller extends Controller
     {
         $userId = Auth::user()->id;
 
-        $escola = User::find($userId)->escolas()->select('id', 'nome', 'qtd_alunos')->get();
+        $escola = User::find($userId)->escolas()->select('id', 'nome', 'qtd_alunos', 'telefone')->get();
 
         return  view('escola.edit-escola', ['escola' => $escola]);
     }
@@ -50,14 +50,10 @@ class EscolaContoller extends Controller
             /*dados a ser validados*/
             $request->all(),
             /*rules*/
-            ['qtd_alunos' => [
-                'required',
-                'numeric',
-                'integer',
-                'gt:0'
-            ]],
+            ['qtd_alunos' => ['required', 'numeric', 'integer', 'gt:0'],
+            'telefone'=>['required', 'size :14']],
             /*messages*/
-            [],
+            ['telefone.size' => 'Número inválido'],
             /*attributes*/
             ['qtd_alunos' => 'quantidade de alunos']
         );
@@ -67,7 +63,7 @@ class EscolaContoller extends Controller
                 ->withErrors($validator);
         }
         Escola::findOrFail($id)->update($validator->validate());
-        return redirect()->route('escola.info')->with('success', 'Quantidade de alunos atualizada');
+        return redirect()->route('escola.info')->with('success', 'Os dados da escola foram atualizados');
     }
 
 

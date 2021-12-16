@@ -11,6 +11,20 @@
         <!-- Mensagem de retorno -->
         @include('layouts._partials.return_message')
 
+        @if (session()->has('fails'))
+            <div class="alert alert-warning alert-dismissible fade show mb-2" role="alert">
+                A quantidade do(s) alimento(s)
+                @foreach (session()->get('fails') as $fail)
+                    @foreach ($fail as $key => $value)
+                        {{ $value->nome }},
+                    @endforeach
+                @endforeach
+                no estoque é menor que a quantidade consumida
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
         <form action="{{ route('escola.consumo.store') }}" method="POST">
             @csrf
             <div class="form-group mx-0 mt-0 mb-2">
@@ -43,7 +57,8 @@
                                     <td class="text-center align-middle">
                                         {{ $alimento->unidade }}
                                     </td>
-                                    <td class="align-middle {{ $errors->has("alimentos.{$alimento->nome}.quantidade_consumida") ? 'pb-1' : '' }}">
+                                    <td
+                                        class="align-middle {{ $errors->has("alimentos.{$alimento->nome}.quantidade_consumida") ? 'pb-1' : '' }}">
                                         <!-- campo quantidade consumida -->
                                         <div class="row justify-content-center">
                                             <div class="col-md-6">

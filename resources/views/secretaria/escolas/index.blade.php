@@ -123,6 +123,5 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('vendor/jquery-mask/jquery.mask.min.js') }}"></script>
     <script src="{{ asset('js/secretaria/escolas/index.js') }}"></script>
 @endsection

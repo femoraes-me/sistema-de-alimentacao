@@ -25,12 +25,16 @@ class ConsumoContoller extends Controller
         $data = ['data' => $requestData['data_consumo']];
 
 
-      /*  foreach ($requestData['alimentos'] as $alimento) {
+       foreach ($requestData['alimentos'] as $alimento) {
             $estoque = Estoque::where(['escola_id' => $userEscola])->where(['alimento_id' => $alimento['alimento_id']])->first();
             if ($estoque->quantidade < $alimento['quantidade_consumida']) {
-                $fail[] = $alimento['alimento_id']; 
+                $fails[] = Alimento::where('id', '=',$alimento['alimento_id'])->get(); 
             }
-        }*/
+        }
+
+        if ($fails) {
+            return redirect()->route('escola.consumo.create')->with('fails', $fails);
+        }
 
         foreach ($requestData['alimentos'] as $alimento) {
             $data = array_merge($data, $alimento, $userEscola);
