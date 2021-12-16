@@ -14,9 +14,15 @@
             <div class="d-flex justify-content-between p-4">
                 <div class="">
                     <label for="data_consumo">Dia:</label>
-                    <input type="date" name="data_consumo" id="data_consumo" value="{{ $data }}"
-                        class="text-secondary border rounded p-1 {{ $errors->has('data_consumo') ? 'is-invalid' : '' }}">
-                    <button class="btn letra btn-dark px-4" onclick="location.search = `?data=${$('#data_consumo').val()}`;">
+                    <input 
+                        type="date" 
+                        name="data_consumo" 
+                        id="data_consumo" value="{{ $data }}"
+                        class="text-secondary border rounded p-1 {{ $errors->has('data_consumo') ? 'is-invalid' : '' }}"
+                    >
+                    <button 
+                        class="btn letra btn-dark px-4" 
+                        onclick="location.search = `?data=${$('#data_consumo').val()}`;">
                         <i class="fa fa-search"></i>
                         Buscar
                     </button>

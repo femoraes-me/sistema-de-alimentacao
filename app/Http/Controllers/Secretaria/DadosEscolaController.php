@@ -42,14 +42,23 @@ class DadosEscolaController extends Controller
         return view('secretaria.escolas.consumo', compact('escola', 'alimentos', 'data'));
     }
 
-    public function exibeCardapio($id)
+    public function exibeCardapio(Request $request, $id)
     {
+        $data = $request->get('data') ?? Carbon::now()->format('Y-m-d');
+        //return $data;
         $escola = Escola::find($id);
-        return view('secretaria.escolas.cardapio', compact('escola'));
+        $refeicoes = DB::select(DB::raw('
+            SELECT alimentacao, cardapio, quantidade, repeticoes
+            FROM cardapios
+            WHERE data = \'' . $data . '\'
+            and escolas_id = 2
+        '));
+        //return $refeicoes;
+        return view('secretaria.escolas.cardapio', compact('escola', 'refeicoes', 'data'));
     }
 
     public function consultaCardapio(){
-        
+
     }
 
     public function exibeRelatorio($id)
