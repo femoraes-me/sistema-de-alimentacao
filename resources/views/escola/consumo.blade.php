@@ -48,12 +48,11 @@
                         <tbody>
                             @foreach ($estoque as $estoque)
                                 <tr>
-                                    <!--campo id  -->
-                                    <input type="hidden" name="alimentos[{{ $loop->index }}][alimento_id]"
-                                        value="{{ $estoque->id }}">
-
                                     @foreach ($alimentos as $alimento)
                                         @if ($estoque->alimento_id == $alimento->id)
+                                            <!--campo id  -->
+                                            <input type="hidden" name="alimentos[{{ $loop->index }}][alimento_id]"
+                                                value="{{ $alimento->id }}">
                                             <td class="align-middle pl-4">
                                                 {{ $alimento->nome }}
                                             </td>
