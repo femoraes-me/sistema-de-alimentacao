@@ -12,7 +12,7 @@ class ConsumoContoller extends Controller
 {
     public function create()
     {
-        $alimentos = Alimento::all();
+        $alimentos = Estoque::where('escola_id', '=', Auth::user()->escolas_id)->get();
         return view('escola.consumo', compact('alimentos'));
     }
 
@@ -25,10 +25,10 @@ class ConsumoContoller extends Controller
         $data = ['data' => $requestData['data_consumo']];
 
 
-       foreach ($requestData['alimentos'] as $alimento) {
+        foreach ($requestData['alimentos'] as $alimento) {
             $estoque = Estoque::where(['escola_id' => $userEscola])->where(['alimento_id' => $alimento['alimento_id']])->first();
             if ($estoque->quantidade < $alimento['quantidade_consumida']) {
-                $fails[] = Alimento::where('id', '=',$alimento['alimento_id'])->get(); 
+                $fails[] = Alimento::where('id', '=', $alimento['alimento_id'])->get();
             }
         }
 

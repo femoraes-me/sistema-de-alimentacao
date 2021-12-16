@@ -59,10 +59,6 @@
                                                 <i class="fa fa-trash fa-fw"></i>
                                             </button>
                                         </form>
-                                            <a href="{{ route('secretaria.usuarios.show', $usuario->id) }}"
-                                                class="btn btn-sm btn-primary ml-2">
-                                                <i class="fas fa-edit fa-fw"></i>
-                                            </a>
                                     </div>
                                 </td>
                             </tr>
