@@ -33,6 +33,10 @@ class DadosEscolaController extends Controller
         return view('secretaria.escolas.cardapio', compact('escola'));
     }
 
+    public function consultaCardapio(){
+        
+    }
+
     public function exibeRelatorio($id)
     {
         $escola = Escola::find($id);
