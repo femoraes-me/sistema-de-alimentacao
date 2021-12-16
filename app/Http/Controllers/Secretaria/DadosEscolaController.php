@@ -64,7 +64,21 @@ class DadosEscolaController extends Controller
     public function exibeRelatorio($id)
     {
         $escola = Escola::find($id);
-        return view('secretaria.escolas.relatorio', compact('escola'));
+
+        $entradas = [];
+
+        $consumos = DB::select(DB::raw('
+            select  a.nome,a.unidade,
+            sum(c.quantidade_consumida) quantidade_consumida
+            from consumos c 
+            inner join alimentos a on a.id = c.alimentos_id
+            where data BETWEEN "2021-12-12" and "2021-12-15" 
+            group by a.nome, a.unidade;
+        '));
+
+        $cardapios = [];
+        //dd($consumos);
+        return view('secretaria.escolas.relatorio', compact('escola', 'consumos'));
     }
 
     public function exibeEntrada($id)

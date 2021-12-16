@@ -54,13 +54,13 @@
                     <input 
                         name="cafe_da_manha" 
                         id="cafe_da_manha"
-                        class="bg-light p-2 mb-4 border rounded text-dark col-2 mr-4"
+                        class="bg-light p-2 mb-4 border rounded text-dark col-2 mr-4 text-center"
                         value="{{ $refeicao->quantidade }}"
                     >
                     <input 
                         name="cafe_da_manha" 
                         id="cafe_da_manha"
-                        class="bg-light p-2 mb-4 border rounded text-dark col-2"
+                        class="bg-light p-2 mb-4 border rounded text-dark col-2 text-center"
                         value="{{ $refeicao->repeticoes }}"
                     >
                 </div>
