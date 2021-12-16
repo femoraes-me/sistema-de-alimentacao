@@ -4,7 +4,7 @@
     <!-- Main Content -->
     <div id="content">
         <!-- Begin Page Content -->
-        <div class="container-fluid mt-5">
+        <div class="container-fluid mt-4">
             <div class="form-group row">
                 <div class="col-sm-8 mb-3 mb-sm-0">
                     <!-- Page Heading -->
@@ -14,13 +14,13 @@
             </div>
 
             <!-- DataTales Example -->
-            <div class="card shadow mb-4 espaco">
+            <div class="card shadow-sm mb-4 pb-2 px-2 mt-2">
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table" id="dataTable" width="100%" cellspacing="0">
                             <thead class="table-secondary">
                                 <tr>
-                                    <th>ID</th>
+                                    <th class="col-md-1 text-center">ID</th>
                                     <th>Alimento</th>
                                     <th class="text-center">Unidade</th>
                                     @if (Auth::user()->role == 'secretaria')
@@ -31,7 +31,7 @@
                             </thead>
                             <tfoot class="table-secondary">
                                 <tr>
-                                    <th>ID</th>
+                                    <th class="text-center">ID</th>
                                     <th>Alimento</th>
                                     <th class="text-center">Unidade</th>
 
@@ -44,14 +44,26 @@
                             <tbody>
                                 @foreach ($alimentos as $alimento)
                                     <tr>
-                                        <td>{{ $alimento->id }}</td>
+                                        <td class="text-center">{{ $alimento->id }}</td>
                                         <td>{{ $alimento->nome }}</td>
                                         <td class="text-center">{{ $alimento->unidade }}</td>
                                         @if (Auth::user()->role == 'secretaria')
-                                            <td> <a href="{{ route('alimentos.editar', $alimento->id) }}"><i
-                                                        class="far fa-edit text-purple"></i></a>
-                                            <td> <a href="{{ route('alimentos.apagar', $alimento->id) }}"><i
-                                                        class="fas fa-trash text-red"></i></a>
+                                            <td>
+                                                <div class="row justify-content-center p-0">
+                                                    <a href="{{ route('alimentos.editar', $alimento->id) }}">
+                                                        <i class="far fa-edit text-primary"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+
+                                            <td class="align-middle">
+                                                <div class="row justify-content-center p-0">
+                                                    <a href="{{ route('alimentos.apagar', $alimento->id) }}">
+                                                        <i class="fas fa-trash text-danger"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+
                                         @endif
                                     </tr>
                                 @endforeach

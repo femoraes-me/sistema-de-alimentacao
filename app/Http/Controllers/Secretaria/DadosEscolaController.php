@@ -82,12 +82,12 @@ class DadosEscolaController extends Controller
             $request,
             [
                 'data' => 'required|after:' . Carbon::now()->subDays(7) . '|before_or_equal:today',
-                'alimento.*.quantidade' => 'required|numeric|gt:0'
+                'alimento.*.quantidade' => 'required|numeric|gte:0'
             ],
             //messages
             [
                 'alimento.*.quantidade.required' => 'campo obrigatório',
-                'alimento.*.quantidade.gt' => 'número inválido',
+                'alimento.*.quantidade.gte' => 'número inválido',
                 'alimento.*.quantidade.numeric' => 'não é um número',
                 'data.before_or_equal' => 'A data deve ser anterior ou igual ao dia de hoje',
                 'data.after' => 'A data deve ser posterior a ' . Carbon::now()->subDays(7)->format('d/m/Y')

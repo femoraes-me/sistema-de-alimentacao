@@ -32,6 +32,15 @@
             <!-- Sidebar -->
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
+                <div class="sidebar-brand d-flex align-items-center justify-content-center">
+                    <div class="sidebar-brand-icon rotate-15">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="sidebar-brand-text mr-3">SEDUC Alimentação</div>
+                </div>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider my-0">
                 <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block" />
 
@@ -85,7 +94,7 @@
                 @if (Auth::user()->role !== 'secretaria')
                     <li class="nav-item">
                         <a class="nav-link icon-white" href="{{ route('escola.info') }}">
-                            <i class="fas fa-fw fa-edit fa-2x"></i>
+                            <i class="fas fa-fw fa-info-circle fa-2x"></i>
                             <span>Info Escola</span>
                         </a>
                     </li>
@@ -105,7 +114,7 @@
                 @if (Auth::user()->role === 'secretaria')
                     <li class="nav-item">
                         <a class="nav-link icon-white" href="{{ route('secretaria.usuarios.index') }}">
-                            <i class="fas fa-users"></i>
+                            <i class="fas fa-fw fa-users fa-2x"></i>
                             <span>Usuários</span>
                         </a>
                     </li>
