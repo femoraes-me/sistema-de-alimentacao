@@ -20,9 +20,15 @@ class RegisterController extends Controller
         $usuarios = User::query();
 
         if (isset($request->search) && $request->search !== '') {
-            $usuarios->where('nome', 'like', '%' . $request->search . '%');
+            $usuarios->where('name', 'like', '%' . $request->search . '%');
         }
-        return view('secretaria.users.index', ['usuarios' => $usuarios->select('id', 'nome', )->paginate(10)]);
+        return view(
+            'secretaria.users.index',
+            [
+                'usuarios' => $usuarios->select('id', 'name')->paginate(10),
+                'search' => isset($request->search) ? $request->search : ''
+            ]
+        );
     }
 
     /**
@@ -55,7 +61,7 @@ class RegisterController extends Controller
         } else {
             $requestData['role'] = 'escola';
         }
-       
+
         User::create($requestData);
         return redirect()->route('secretaria.usuarios.create')->with('success', 'Usuário criado com sucesso');
     }
