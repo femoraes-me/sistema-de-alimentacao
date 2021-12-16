@@ -16,7 +16,7 @@ class CreateConsumosTable extends Migration
         Schema::create('consumos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('alimentos_id');
-            $table->decimal('quantidade_consumida', $precision = 7, $scale = 3);
+            $table->decimal('quantidade_consumida', $precision = 7, $scale = 2);
             $table->date('data');
             $table->timestamps();
 

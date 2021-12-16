@@ -10,4 +10,9 @@ class Alimento extends Model
     use HasFactory;
     protected $table = 'alimentos';
     protected $fillable = ['nome', 'unidade'];
+
+    public function consumo()
+    {
+        return $this->hasMany(Consumo::class, 'alimentos_id', 'id');
+    }
 }

@@ -7,6 +7,7 @@ use App\Models\Escola\Estoque;
 use Illuminate\Http\Request;
 use App\Models\Secretaria\Escola;
 use App\Models\Escola\Alimento;
+use App\Models\Escola\Consumo;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Models\Secretaria\Entrada;
@@ -21,16 +22,43 @@ class DadosEscolaController extends Controller
     }
 
 
-    public function exibeConsumo($id)
+    public function exibeConsumo(Request $request, $id)
     {
+
+        $data = $request->get('data') ?? Carbon::now()->format('Y-m-d');
+        // return $data;
         $escola = Escola::find($id);
-        return view('secretaria.escolas.consumo', compact('escola'));
+        $alimentos = DB::select(DB::raw('
+        select  
+            a.nome,
+            a.unidade,
+            sum(c.quantidade_consumida) quantidade_consumida
+        from consumos c 
+        inner join alimentos a on a.id = c.alimentos_id
+        where data = \'' . $data . '\'
+        group by a.nome, a.unidade'));
+
+        // return $alimentos;
+        return view('secretaria.escolas.consumo', compact('escola', 'alimentos', 'data'));
     }
 
-    public function exibeCardapio($id)
+    public function exibeCardapio(Request $request, $id)
     {
+        $data = $request->get('data') ?? Carbon::now()->format('Y-m-d');
+        //return $data;
         $escola = Escola::find($id);
-        return view('secretaria.escolas.cardapio', compact('escola'));
+        $refeicoes = DB::select(DB::raw('
+            SELECT alimentacao, cardapio, quantidade, repeticoes
+            FROM cardapios
+            WHERE data = \'' . $data . '\'
+            and escolas_id = 2
+        '));
+        //return $refeicoes;
+        return view('secretaria.escolas.cardapio', compact('escola', 'refeicoes', 'data'));
+    }
+
+    public function consultaCardapio(){
+
     }
 
     public function exibeRelatorio($id)
