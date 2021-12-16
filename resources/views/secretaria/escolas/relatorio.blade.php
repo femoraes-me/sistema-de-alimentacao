@@ -11,7 +11,7 @@
 
     <div id="content">
         <!-- Main Content-->
-        <form action="searchDate" method="POST">
+        <!-- <form action="" method="POST"> -->
 
             <div class="container-fluid">
                 <div class="d-flex justify-content-between p-4">
@@ -36,7 +36,11 @@
                         <div class="invalid-feedback"></div>
                     </div>
                     <div class="mr-3">
-                        <button class="btn btn-secondary px-4">Gerar Relatorios</button>
+                        <button 
+                            class="btn btn-secondary px-4"
+                            onclick="location.search = `?fromDate=${$('#fromDate').val()}&toDate=${$('#toDate').val()}`;">
+                                Gerar Relatorios
+                        </button>
                     </div>
                     </div>
 
@@ -62,39 +66,24 @@
                                         <th class="text-center col-3">Quantidade de Entrada</th>
                                     </tr>
                                 </thead>
-                                <tbody>                                
+                                <tbody>   
+                                    @foreach ($entradas as $entrada)                            
                                         <tr>
-                                            <!--campo id escola-->
                                             <td class="align-middle pl-4">
-                                                <span class="text-uppercase"> TESTE </span>
+                                                <span class="text-uppercase">
+                                                    {{ $entrada->nome }}
+                                                </span>
                                             </td>
-                                            <!-- campo unidade -->
                                             <td class="align-middle">
                                                 <div class="align-middle text-center">
-                                                    KG
+                                                    {{ $entrada->unidade }}
                                                 </div>
                                             </td>
-                                            <!-- campo quantidade atual-->
                                             <td class="align-middle text-center">
-                                                10
+                                                {{ $entrada->quantidade_entrada }}
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <!--campo id escola-->
-                                            <td class="align-middle pl-4">
-                                                <span class="text-uppercase"> TESTE </span>
-                                            </td>
-                                            <!-- campo unidade -->
-                                            <td class="align-middle">
-                                                <div class="align-middle text-center">
-                                                    KG
-                                                </div>
-                                            </td>
-                                            <!-- campo quantidade atual-->
-                                            <td class="align-middle text-center">
-                                                10
-                                            </td>
-                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -145,57 +134,13 @@
                     <h4>Cardápio do Período</h4>
                         <div class="card p-2 border border-secondary bg-light">
                             <div class="card bg-white border p-2 m-2">
-                                <div class="">
-                                    <h5>25/10/2021</h5>
-                                </div>
-                                <div class="">
-                                    <strong>Café da Manhã:</strong> Teste
-                                </div>
-                                <div class="">
-                                    <strong>Almoço:</strong> Teste
-                                </div>
-                                <div class="">
-                                    <strong>Lanche da Tarde:</strong> Teste
-                                </div>
-                                <div class="">
-                                    <strong>Janta:</strong> Teste
-                                </div>
-                            </div>
-
-                            <div class="card bg-white border p-2 m-2">
-                                <div class="">
-                                    <h5>25/10/2021</h5>
-                                </div>
-                                <div class="">
-                                    <strong>Café da Manhã:</strong> Teste
-                                </div>
-                                <div class="">
-                                    <strong>Almoço:</strong> Teste
-                                </div>
-                                <div class="">
-                                    <strong>Lanche da Tarde:</strong> Teste
-                                </div>
-                                <div class="">
-                                    <strong>Janta:</strong> Teste
-                                </div>
-                            </div>
-
-                            <div class="card bg-white border p-2 m-2">
-                                <div class="">
-                                    <h5>25/10/2021</h5>
-                                </div>
-                                <div class="">
-                                    <strong>Café da Manhã:</strong> Teste
-                                </div>
-                                <div class="">
-                                    <strong>Almoço:</strong> Teste
-                                </div>
-                                <div class="">
-                                    <strong>Lanche da Tarde:</strong> Teste
-                                </div>
-                                <div class="">
-                                    <strong>Janta:</strong> Teste
-                                </div>
+                                @foreach ( $cardapios as $cardapio)
+                                    <div class="row text-uppercase"> 
+                                        <div class="col-2">{{ $cardapio->data }}</div>
+                                        <div class="col-2">{{ $cardapio->alimentacao }}</div>
+                                        <div class="col-8">{{ $cardapio->cardapio }}</div>
+                                    </div>      
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -206,6 +151,6 @@
 
                 </div>
             </div>
-        <form>
+        <!-- <form> -->
     </div>
 @endsection

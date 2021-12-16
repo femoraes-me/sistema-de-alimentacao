@@ -17,7 +17,8 @@
                     <input 
                         type="date" 
                         name="data_consumo" 
-                        id="data_consumo" value="{{ $data }}"
+                        id="data_consumo" 
+                        value="{{ $data }}"
                         class="text-secondary border rounded p-1 {{ $errors->has('data_consumo') ? 'is-invalid' : '' }}"
                     >
                     <button 
